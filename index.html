@@ -141,6 +141,21 @@ button{cursor:pointer}
 .result .score{font-family:var(--f-display);font-size:64px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
 .stars{font-size:34px;letter-spacing:6px;color:var(--sun)}
 
+/* QR-Code */
+.qrbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.qr-code{flex:none;background:#fff;padding:10px;border-radius:8px;border:1px solid var(--line);width:180px;height:180px;display:grid;place-items:center}
+.qr-code img,.qr-code canvas{width:160px!important;height:160px!important}
+.qr-side{flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.qr-side h3{font-size:20px}
+.qr-side select{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px;width:100%}
+.qr-url{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.qr-url code{font-size:13px;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:5px 8px;overflow-wrap:anywhere;min-width:0;user-select:all}
+.qr-overlay{position:fixed;inset:0;z-index:50;background:rgba(10,20,16,.82);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.qr-card{background:#fff;color:#15302a;border-radius:16px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%}
+.qr-card h2{font-size:clamp(28px,5vw,44px);font-weight:800}
+#qrBigCode img,#qrBigCode canvas{width:min(70vh,80vw,520px)!important;height:min(70vh,80vw,520px)!important}
+.qr-card p{margin:0;font-size:18px;text-align:center}
+
 /* Ablauf */
 .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;counter-reset:ph}
 .ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
@@ -289,7 +304,34 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
           <select id="wfGoal" class="btn"></select>
         </div>
         <div class="quiz" id="quiz" aria-live="polite"></div>
-        <p class="note teacher-only">Tipp: Über den Knopf „Schüleransicht“ siehst du nur die Übungen, so wie die Kinder sie am iPad sehen sollen.</p>
+        <div class="qrbox teacher-only">
+          <div class="qr-code" id="qrCode" aria-label="QR-Code"></div>
+          <div class="qr-side">
+            <h3>QR-Code für die iPads</h3>
+            <div class="field"><label class="lbl" for="qrTarget">Der Code führt zu</label>
+              <select id="qrTarget">
+                <option value="schueler">allen Übungen (Schüleransicht)</option>
+                <option value="schueler-detektiv">Ziel-Detektiv</option>
+                <option value="schueler-wf">Wahr oder falsch – gewähltes Ziel</option>
+                <option value="schueler-nummer">Nummern-Profi</option>
+              </select></div>
+            <div class="qr-url"><code id="qrUrl"></code><button class="btn" type="button" id="qrCopy">Link kopieren</button></div>
+            <div class="bar">
+              <button class="btn sun" type="button" id="qrBig">Groß zeigen (Beamer)</button>
+            </div>
+            <div class="bar">
+              <span class="lbl">QR-Blatt</span>
+              <div class="seg" id="qrSeg">
+                <button type="button" data-q="1" aria-pressed="false">1 groß</button>
+                <button type="button" data-q="6" aria-pressed="true">6 Karten</button>
+              </div>
+              <button class="btn" type="button" id="qrPrint" hidden>Drucken</button>
+              <button class="btn" type="button" id="qrSave">Speichern</button>
+            </div>
+            <p class="msg" id="qrMsg"></p>
+          </div>
+        </div>
+        <p class="note teacher-only">Der QR-Code führt immer zur GitHub-Seite der Werkstatt, weil die Kinder diese ohne Anmeldung öffnen können.</p>
       </section>
 
       <!-- Ablauf -->
@@ -317,6 +359,16 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
   </div>
 </div>
 
+<div class="qr-overlay" id="qrOverlay" hidden role="dialog" aria-label="QR-Code groß">
+  <div class="qr-card">
+    <h2>Scanne mich!</h2>
+    <div id="qrBigCode"></div>
+    <p id="qrBigLabel"></p>
+    <button class="btn primary" type="button" id="qrClose">Schließen</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 /* ================= Daten ================= */
 const G = [
@@ -642,43 +694,95 @@ window.addEventListener("resize",fitPaper);
 /* Speichern & Drucken: in Claude über die Download-Funktion, als eigene Webseite (GitHub Pages) direkt */
 const STANDALONE=!window.claude;
 let dl=null;
-function buildDoc(){
-  const g=goal(+$("#wsGoal").value);
-  const sh=SHEETS.find(s=>s.id===S.sheet);
+function makeDoc(inner,title){
   const css=$("#sheetcss").textContent;
-  const doc=`<!doctype html><html lang="de"><head><meta charset="utf-8"><title>${esc(sh.name)} – Ziel ${g.n}</title>
+  return `<!doctype html><html lang="de"><head><meta charset="utf-8"><title>${esc(title)}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>@page{size:A4;margin:0}html,body{margin:0;background:#ddd}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .paper{margin:10mm auto;box-shadow:0 2px 10px rgba(0,0,0,.2)}@media print{html,body{background:#fff}.paper{margin:0;box-shadow:none}}
-${css}</style></head><body><div class="paper">${sheetHTML()}</div></body></html>`;
-  const fname=`Freiday_${sh.name.replace(/[^A-Za-zÄÖÜäöüß0-9]+/g,"-")}_Ziel${g.n}.html`;
-  return {doc,fname};
+${css}</style></head><body><div class="paper">${inner}</div></body></html>`;
 }
-if(STANDALONE){
-  $("#printBtn").hidden=false;
-  $("#saveHint").textContent="„Drucken“ öffnet das Blatt in einem neuen Fenster mit dem Druckdialog. Beim Drucken „Ränder: keine“ wählen, falls der Browser fragt.";
-}else{
-  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){$("#saveBtn").hidden=true;$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
+const fileName=s=>"Freiday_"+s.replace(/[^A-Za-zÄÖÜäöüß0-9]+/g,"-")+".html";
+function buildDoc(){
+  const g=goal(+$("#wsGoal").value);
+  const sh=SHEETS.find(s=>s.id===S.sheet);
+  return {doc:makeDoc(sheetHTML(),`${sh.name} – Ziel ${g.n}`),fname:fileName(`${sh.name}_Ziel${g.n}`)};
 }
-$("#printBtn").addEventListener("click",()=>{
-  const {doc}=buildDoc();
+function printDoc(doc,msgEl){
   const w=window.open("","_blank");
-  if(!w){$("#saveMsg").textContent="Das neue Fenster wurde blockiert. Bitte Pop-ups für diese Seite erlauben.";return;}
+  if(!w){msgEl.textContent="Das neue Fenster wurde blockiert. Bitte Pop-ups für diese Seite erlauben.";return;}
   w.document.open(); w.document.write(doc.replace("</body>","<script>window.onload=()=>setTimeout(()=>window.print(),400)<\/script></body>")); w.document.close();
-});
-$("#saveBtn").addEventListener("click",async()=>{
-  const {doc,fname}=buildDoc();
-  $("#saveMsg").textContent="";
+}
+async function saveDoc(doc,fname,msgEl){
+  msgEl.textContent="";
   if(STANDALONE){
     const url=URL.createObjectURL(new Blob([doc],{type:"text/html"}));
     const a=document.createElement("a"); a.href=url; a.download=fname; document.body.appendChild(a); a.click(); a.remove();
     setTimeout(()=>URL.revokeObjectURL(url),2000);
-    $("#saveMsg").textContent="Gespeichert.";
-    return;
+    msgEl.textContent="Gespeichert."; return;
   }
-  try{await dl.save({filename:fname,data:doc});$("#saveMsg").textContent="Gespeichert. Datei öffnen und drucken.";}
-  catch(e){$("#saveMsg").textContent=e&&e.code==="declined"?"Speichern abgebrochen.":"Speichern hat nicht geklappt. Bitte noch einmal versuchen.";}
+  if(!dl){msgEl.textContent="Speichern ist in dieser Ansicht nicht möglich.";return;}
+  try{await dl.save({filename:fname,data:doc});msgEl.textContent="Gespeichert. Datei öffnen und drucken.";}
+  catch(e){msgEl.textContent=e&&e.code==="declined"?"Speichern abgebrochen.":"Speichern hat nicht geklappt. Bitte noch einmal versuchen.";}
+}
+if(STANDALONE){
+  $("#printBtn").hidden=false; $("#qrPrint").hidden=false;
+  $("#saveHint").textContent="„Drucken“ öffnet das Blatt in einem neuen Fenster mit dem Druckdialog. Beim Drucken „Ränder: keine“ wählen, falls der Browser fragt.";
+}else{
+  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){$("#saveBtn").hidden=true;$("#qrSave").hidden=true;$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
+}
+$("#printBtn").addEventListener("click",()=>printDoc(buildDoc().doc,$("#saveMsg")));
+$("#saveBtn").addEventListener("click",()=>{const {doc,fname}=buildDoc();saveDoc(doc,fname,$("#saveMsg"));});
+
+/* ================= QR-Code ================= */
+const PAGES_URL="https://haro2204.github.io/Freiday-Werkstatt/";
+let qrCount=6;
+function qrHash(){const v=$("#qrTarget").value;return v==="schueler-wf"?`schueler-wf-${S.wfGoal}`:v;}
+function qrLink(){return PAGES_URL+"#"+qrHash();}
+function qrLabel(){
+  const v=$("#qrTarget").value;
+  return v==="schueler-detektiv"?"Ziel-Detektiv":v==="schueler-nummer"?"Nummern-Profi":v==="schueler-wf"?`Wahr oder falsch – Ziel ${S.wfGoal}: ${goal(S.wfGoal).name}`:"Freiday-Übungen";
+}
+function drawQR(el,size){
+  el.innerHTML="";
+  if(typeof QRCode==="undefined"){el.textContent="QR-Code konnte nicht geladen werden.";return null;}
+  new QRCode(el,{text:qrLink(),width:size,height:size,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});
+  const c=el.querySelector("canvas"); return c?c.toDataURL("image/png"):null;
+}
+function renderQR(){
+  $("#qrUrl").textContent=qrLink();
+  drawQR($("#qrCode"),320);
+}
+$("#qrTarget").addEventListener("change",renderQR);
+$("#qrCopy").addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText(qrLink());$("#qrMsg").textContent="Link kopiert.";}
+  catch(e){const r=document.createRange();r.selectNodeContents($("#qrUrl"));const s=getSelection();s.removeAllRanges();s.addRange(r);$("#qrMsg").textContent="Link markiert – jetzt kopieren.";}
 });
+$("#qrBig").addEventListener("click",()=>{
+  $("#qrOverlay").hidden=false; drawQR($("#qrBigCode"),640); $("#qrBigLabel").textContent=qrLabel(); $("#qrClose").focus();
+});
+$("#qrClose").addEventListener("click",()=>{$("#qrOverlay").hidden=true;$("#qrBig").focus();});
+$("#qrOverlay").addEventListener("click",e=>{if(e.target.id==="qrOverlay")$("#qrOverlay").hidden=true;});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#qrOverlay").hidden)$("#qrOverlay").hidden=true;});
+$("#qrSeg").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;qrCount=+b.dataset.q;$("#qrSeg").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));});
+function qrSheet(){
+  const tmp=document.createElement("div"); const img=drawQR(tmp,640);
+  if(!img) return null;
+  const lab=esc(qrLabel()), url=esc(qrLink());
+  if(qrCount===1) return `<div class="ws" style="align-items:center;justify-content:center;text-align:center;gap:8mm">
+    <div class="ws-title" style="font-size:34pt">Scanne mich!</div>
+    <div style="font-size:16pt;font-weight:700">${lab}</div>
+    <img src="${img}" alt="QR-Code" style="width:140mm;height:140mm">
+    <div style="font-size:12pt;max-width:160mm">Kamera am iPad öffnen, auf den Code halten und den Link antippen.</div>
+    <div style="font-size:9pt;color:#555;word-break:break-all">${url}</div></div>`;
+  const card=`<div style="border:1.2px dashed #888;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2mm;text-align:center;padding:3mm">
+    <div style="font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:800;font-size:15pt">Scanne mich!</div>
+    <img src="${img}" alt="QR-Code" style="width:52mm;height:52mm">
+    <div style="font-size:10pt;font-weight:700">${lab}</div></div>`;
+  return `<div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);height:100%;gap:0">${card.repeat(6)}</div>`;
+}
+$("#qrPrint").addEventListener("click",()=>{const s=qrSheet();if(!s){$("#qrMsg").textContent="QR-Code konnte nicht geladen werden.";return;}printDoc(makeDoc(s,"QR-Code Freiday-Übungen"),$("#qrMsg"));});
+$("#qrSave").addEventListener("click",()=>{const s=qrSheet();if(!s){$("#qrMsg").textContent="QR-Code konnte nicht geladen werden.";return;}saveDoc(makeDoc(s,"QR-Code Freiday-Übungen"),fileName("QR-Code_"+qrHash()),$("#qrMsg"));});
 
 /* ================= Online-Übungen ================= */
 let Q=null;
@@ -727,20 +831,32 @@ function answer(k){
 }
 $("#exPick").addEventListener("click",e=>{const b=e.target.closest(".ex-card");if(!b)return;S.mode=b.dataset.m;
   $("#exPick").querySelectorAll(".ex-card").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#wfGoalBar").hidden=S.mode!=="wf";buildQuiz();});
-$("#wfGoal").addEventListener("change",()=>{S.wfGoal=+$("#wfGoal").value;buildQuiz();});
+$("#wfGoal").addEventListener("change",()=>{S.wfGoal=+$("#wfGoal").value;buildQuiz();renderQR();});
 
 /* ================= Ablauf ================= */
 $("#flow").innerHTML=PHASES.map((p,i)=>`<div class="ph"><span class="no">${i+1}</span><h3>${p[0]}</h3><p>${p[1]}</p><span class="tool">Werkzeug: ${p[2]}</span></div>`).join("");
 
 /* ================= Schüleransicht ================= */
+function setMode(m){
+  S.mode=m;
+  $("#exPick").querySelectorAll(".ex-card").forEach(x=>x.setAttribute("aria-pressed",x.dataset.m===m));
+  $("#wfGoalBar").hidden=m!=="wf";
+}
 function applyView(){
-  const st=location.hash==="#schueler";
+  const m=location.hash.slice(1).match(/^schueler(?:-(detektiv|nummer|wf)(?:-(\d{1,2}))?)?$/);
+  const st=!!m;
   document.body.classList.toggle("student",st);
   document.querySelector(".student-only").hidden=!st;
   $("#viewToggle").textContent=st?"Zurück zur Lehrer-Ansicht":"Schüleransicht";
-  if(st) setTab("uebungen");
+  if(st){
+    setTab("uebungen");
+    if(m[1]){
+      const n=+m[2]; if(m[1]==="wf"&&n>=1&&n<=17){S.wfGoal=n;$("#wfGoal").value=n;}
+      setMode(m[1]); buildQuiz();
+    }
+  }
 }
-$("#viewToggle").addEventListener("click",()=>{location.hash=location.hash==="#schueler"?"":"schueler";applyView();});
+$("#viewToggle").addEventListener("click",()=>{location.hash=document.body.classList.contains("student")?"":"schueler";applyView();});
 window.addEventListener("hashchange",applyView);
 
 /* ================= Start ================= */
@@ -752,6 +868,7 @@ function renderAll(){
   renderTypes();
   if(S.tab==="blaetter") renderSheet();
   if(S.mode==="wf") buildQuiz();
+  renderQR();
 }
 renderAll(); buildQuiz(); applyView();
 </script>
