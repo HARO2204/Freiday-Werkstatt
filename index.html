@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Projektideen, Arbeitsblätter, Rätsel und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
+<meta name="description" content="Projektideen, Arbeitsblätter, Rätsel, Spiele, Stillarbeit und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
 <title>Freiday-Werkstatt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -194,6 +194,35 @@ button{cursor:pointer}
 .wlist span.done{text-decoration:line-through;color:var(--muted)}
 .btnrow{display:flex;gap:8px;flex-wrap:wrap}
 
+/* Mehrseitige Vorschau */
+.pages{display:flex;flex-direction:column;gap:14px}
+.pg{position:relative;overflow:hidden}
+.pg .paper{transform-origin:top left;position:absolute;top:0;left:0;box-shadow:0 2px 14px rgba(0,0,0,.18)}
+.pages-note{font-size:13px;color:var(--muted);margin:0 0 -4px}
+.rules-box{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:14px}
+.rules-box b{display:block;font-family:var(--f-display);font-size:16px;margin-bottom:2px}
+.rules-box p{margin:0}
+
+/* Stillarbeit */
+.read-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.read-card .rc-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center}
+.read-card h2{font-size:clamp(22px,3vw,28px)}
+.read-text{font-size:clamp(17px,2vw,20px);line-height:1.65;max-width:68ch;margin:0}
+.read-text .w-on{background:var(--sun);color:var(--sun-ink);border-radius:3px}
+.still-plans{display:flex;flex-direction:column;gap:12px}
+body:not(.student) .read-card{order:2}
+.lesson-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.lesson{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.lesson b{font-family:var(--f-display);font-size:17px}
+.lesson span{color:var(--muted);font-size:13.5px}
+.lesson[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.lesson-info{display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.lesson-info h3{font-size:20px}
+.lesson-info table{border-collapse:collapse;width:100%}
+.lesson-info td{border-top:1px solid var(--line);padding:5px 4px;vertical-align:top}
+.lesson-info td:first-child{white-space:nowrap;font-weight:700;padding-right:10px;font-variant-numeric:tabular-nums}
+.lesson-info ul{margin:0;padding-left:18px}
+
 /* Ablauf */
 .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;counter-reset:ph}
 .ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
@@ -210,7 +239,7 @@ button{cursor:pointer}
 a{color:var(--accent)}
 
 /* Schüleransicht */
-body.student .shelf, body.student .teacher-only, body.student .tab:not([data-tab="uebungen"]):not([data-tab="raetsel"]){display:none!important}
+body.student .shelf, body.student .teacher-only, body.student .tab:not([data-tab="uebungen"]):not([data-tab="raetsel"]):not([data-tab="still"]){display:none!important}
 body.student .layout{grid-template-columns:minmax(0,1fr)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -256,6 +285,43 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
 .roles td small{display:block;font-weight:400;color:#555;font-size:8.5pt;line-height:1.2}
 .sig{display:flex;flex-wrap:wrap;gap:4mm 6mm}
 .sig span{flex:1 1 40mm;border-bottom:1px solid #555;height:9mm}
+/* Spielkarten */
+.paper.cardpage{padding:11mm 12mm}
+.cgrid{display:grid;width:100%;height:100%}
+.cut-c{border:1px dashed #9a9a9a;padding:1.6mm;min-width:0;min-height:0;display:flex}
+.cd{flex:1;border:1.4px solid #222;border-radius:3mm;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.5mm;padding:2mm;position:relative;min-width:0}
+.cd .big,.dom .big{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;line-height:1}
+.cd .lab,.dom .lab{font-size:7.5pt;text-transform:uppercase;letter-spacing:.4mm;font-weight:700;opacity:.85}
+.cd .w,.dom .w{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:800;letter-spacing:.2mm;overflow-wrap:anywhere;hyphens:auto}
+.cd .t,.dom .t{font-size:9.5pt;line-height:1.25}
+.cd .s{font-size:8pt;line-height:1.25;color:#333}
+.cd .chip{position:absolute;top:1.6mm;left:1.6mm;border-radius:1.5mm;padding:.4mm 1.6mm;font-size:7pt;font-weight:700;color:#fff}
+.back{background:repeating-linear-gradient(45deg,#e7efe9 0 3mm,#d4e3d9 3mm 6mm);color:#1d5c46}
+.back .big{font-size:20pt}
+.dom{flex:1;border:1.4px solid #222;border-radius:3mm;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.dom>div{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2mm 3mm;gap:1mm;min-width:0}
+.dom>div+div{border-left:1.4px dashed #222}
+.bingo{flex:1;border:1.6px solid #222;border-radius:3mm;display:flex;flex-direction:column;padding:2.5mm;gap:2mm;min-width:0}
+.bingo .bh{display:flex;justify-content:space-between;align-items:baseline}
+.bingo .bh b{font-family:"Bricolage Grotesque",Arial,sans-serif;font-size:14pt;font-weight:800}
+.bgrid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:1.4mm}
+.bgrid div{border-radius:2mm;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1mm;min-width:0}
+.bgrid div b{font-family:"Bricolage Grotesque",Arial,sans-serif;font-size:20pt;line-height:1}
+.bgrid div span{font-size:7.5pt;font-weight:700;line-height:1.1}
+.flip{transform:rotate(180deg);font-size:8pt;border-top:1px solid #bbb;padding-top:1mm;width:100%;color:#333}
+.modes{display:flex;gap:1.5mm;font-size:7.5pt;font-weight:700}
+.modes span{border:1px solid #888;border-radius:5mm;padding:.4mm 2mm;color:#777}
+.modes span.on{background:#222;color:#fff;border-color:#222}
+.rule-card{flex:1;border:1.4px solid #222;border-radius:3mm;padding:5mm;display:flex;flex-direction:column;gap:2.5mm;text-align:left}
+.rule-card h3{margin:0;font-family:"Bricolage Grotesque",Arial,sans-serif;font-size:16pt;font-weight:800}
+.rule-card p{margin:0;font-size:10.5pt;line-height:1.4}
+.rule-card .who{font-size:9pt;font-weight:700;color:#555}
+.text-box{font-size:11pt;line-height:1.55;text-align:justify;hyphens:auto}
+.panel6{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:3mm;flex:1;min-height:0}
+.panel6>div{border:1.4px solid #222;border-radius:2mm;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5mm}
+.panel6>div span{border-top:1px solid #9a9a9a;height:7mm}
+.chk td{height:13mm}
+.plan td{height:auto;padding:1.5mm 2mm;vertical-align:top}
 </style>
 
 </head>
@@ -286,6 +352,8 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
         <button class="tab" role="tab" data-tab="blaetter" aria-selected="false">Arbeitsblätter</button>
         <button class="tab" role="tab" data-tab="uebungen" aria-selected="false">Online-Übungen</button>
         <button class="tab" role="tab" data-tab="raetsel" aria-selected="false">Rätsel</button>
+        <button class="tab" role="tab" data-tab="spiele" aria-selected="false">Spiele</button>
+        <button class="tab" role="tab" data-tab="still" aria-selected="false">Stillarbeit</button>
         <button class="tab" role="tab" data-tab="ablauf" aria-selected="false">Ablauf &amp; Planung</button>
       </div>
 
@@ -355,6 +423,7 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
                 <option value="schueler-nummer">Nummern-Profi</option>
                 <option value="schueler-kreuz">Kreuzworträtsel – gewähltes Ziel</option>
                 <option value="schueler-wort">Wortsuche – gewähltes Ziel</option>
+                <option value="schueler-lesen">Lesetext zum Vorlesen – gewähltes Ziel</option>
               </select></div>
             <div class="qr-url"><code id="qrUrl"></code><button class="btn" type="button" id="qrCopy">Link kopieren</button></div>
             <div class="bar">
@@ -410,6 +479,53 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
             </div>
           </div>
           <div class="play" id="rzPlay"></div>
+        </div>
+      </section>
+
+      <!-- Spiele zum Laminieren -->
+      <section class="panel" id="p-spiele" hidden>
+        <div class="ws-grid">
+          <div class="ctrl">
+            <div class="field"><span class="lbl">Spiel</span><div class="types" id="gmTypes"></div></div>
+            <div class="field" id="gmVarF"><label class="lbl" for="gmVar">Variante</label><select id="gmVar"></select></div>
+            <div class="field" id="gmGoalF"><label class="lbl" for="gmGoal">Ziel</label><select id="gmGoal"></select></div>
+            <div class="field" id="gmCountF" hidden><label class="lbl" for="gmCount">Anzahl Bingo-Karten</label>
+              <select id="gmCount"><option value="6">6 (1 Blatt)</option><option value="12">12 (2 Blätter)</option><option value="18">18 (3 Blätter)</option><option value="24">24 (4 Blätter)</option><option value="30" selected>30 (5 Blätter)</option></select></div>
+            <label class="check"><input type="checkbox" id="gmBack" checked> Rückseiten (Muster zum Bekleben oder doppelseitigen Druck)</label>
+            <label class="check"><input type="checkbox" id="gmRules" checked> Spielregel-Karten (4 pro A4)</label>
+            <button class="btn sun" type="button" id="gmNew">Neu mischen</button>
+            <div class="bar">
+              <button class="btn primary" type="button" id="gmPrint" hidden>Drucken</button>
+              <button class="btn primary" type="button" id="gmSave">Speichern</button>
+            </div>
+            <p class="msg" id="gmMsg"></p>
+            <div class="rules-box" id="gmInfo"></div>
+          </div>
+          <div class="stage"><div class="pages" id="gmPages"></div></div>
+        </div>
+      </section>
+
+      <!-- Stillarbeit -->
+      <section class="panel" id="p-still" hidden>
+        <div class="read-card" id="readCard"></div>
+        <div class="teacher-only still-plans">
+          <h2 style="font-size:22px">Stundenbilder für stille Arbeit</h2>
+          <p class="note">Jede Stunde dauert 50 Minuten und hat ein eigenes Arbeitsblatt. Das Stundenbild selbst kannst du ebenfalls ausdrucken.</p>
+          <div class="lesson-pick" id="lessonPick"></div>
+          <div class="ws-grid">
+            <div class="ctrl" id="lessonCtrl">
+              <div id="lessonInfo" class="lesson-info"></div>
+              <div class="field" id="lsGoalF"><label class="lbl" for="lsGoal">Ziel</label><select id="lsGoal"></select></div>
+              <label class="check" id="lsSolF"><input type="checkbox" id="lsSol"> Lösung eintragen</label>
+              <label class="check"><input type="checkbox" id="lsName" checked> Name &amp; Datum</label>
+              <div class="field"><span class="lbl">Arbeitsblatt</span>
+                <div class="bar"><button class="btn primary" type="button" id="lsPrint" hidden>Drucken</button><button class="btn primary" type="button" id="lsSave">Speichern</button></div></div>
+              <div class="field"><span class="lbl">Stundenbild (für dich)</span>
+                <div class="bar"><button class="btn" type="button" id="lpPrint" hidden>Drucken</button><button class="btn" type="button" id="lpSave">Speichern</button></div></div>
+              <p class="msg" id="lsMsg"></p>
+            </div>
+            <div class="stage"><div class="pages" id="lsPages"></div></div>
+          </div>
         </div>
       </section>
 
@@ -658,9 +774,12 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setT
 function setTab(id){
   S.tab=id;
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===id));
-  ["ideen","blaetter","uebungen","raetsel","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
+  ["ideen","blaetter","uebungen","raetsel","spiele","still","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
   if(id==="blaetter") renderSheet();
   if(id==="raetsel"&&RZ.puz&&!RZ.fitted) renderPuzzle();
+  if(id==="spiele") gmRender();
+  if(id==="still") renderLessons();
+  if(id!=="still"&&speaking){speechSynthesis.cancel();speaking=false;}
 }
 
 /* ================= Projektideen ================= */
@@ -801,7 +920,8 @@ function makeDoc(inner,title){
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>@page{size:A4;margin:0}html,body{margin:0;background:#ddd}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .paper{margin:10mm auto;box-shadow:0 2px 10px rgba(0,0,0,.2)}@media print{html,body{background:#fff}.paper{margin:0;box-shadow:none}}
-${css}</style></head><body><div class="paper">${inner}</div></body></html>`;
+.paper{break-after:page}.paper:last-child{break-after:auto}
+${css}</style></head><body>${(Array.isArray(inner)?inner:[inner]).map(x=>`<div class="paper">${x}</div>`).join("")}</body></html>`;
 }
 const fileName=s=>"Freiday_"+s.replace(/[^A-Za-zÄÖÜäöüß0-9]+/g,"-")+".html";
 function buildDoc(){
@@ -827,10 +947,10 @@ async function saveDoc(doc,fname,msgEl){
   catch(e){msgEl.textContent=e&&e.code==="declined"?"Speichern abgebrochen.":"Speichern hat nicht geklappt. Bitte noch einmal versuchen.";}
 }
 if(STANDALONE){
-  $("#printBtn").hidden=false; $("#qrPrint").hidden=false; $("#rzPrint").hidden=false;
+  ["#printBtn","#qrPrint","#rzPrint","#gmPrint","#lsPrint","#lpPrint"].forEach(id=>$(id).hidden=false);
   $("#saveHint").textContent="„Drucken“ öffnet das Blatt in einem neuen Fenster mit dem Druckdialog. Beim Drucken „Ränder: keine“ wählen, falls der Browser fragt.";
 }else{
-  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){$("#saveBtn").hidden=true;$("#qrSave").hidden=true;$("#rzSave").hidden=true;$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
+  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){["#saveBtn","#qrSave","#rzSave","#gmSave","#lsSave","#lpSave"].forEach(id=>$(id).hidden=true);$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
 }
 $("#printBtn").addEventListener("click",()=>printDoc(buildDoc().doc,$("#saveMsg")));
 $("#saveBtn").addEventListener("click",()=>{const {doc,fname}=buildDoc();saveDoc(doc,fname,$("#saveMsg"));});
@@ -838,10 +958,11 @@ $("#saveBtn").addEventListener("click",()=>{const {doc,fname}=buildDoc();saveDoc
 /* ================= QR-Code ================= */
 const PAGES_URL="https://haro2204.github.io/Freiday-Werkstatt/";
 let qrCount=6;
-function qrHash(){const v=$("#qrTarget").value;return v==="schueler-wf"?`schueler-wf-${S.wfGoal}`:(v==="schueler-kreuz"||v==="schueler-wort")?`${v}-${S.goal}`:v;}
+function qrHash(){const v=$("#qrTarget").value;return v==="schueler-wf"?`schueler-wf-${S.wfGoal}`:(v==="schueler-kreuz"||v==="schueler-wort"||v==="schueler-lesen")?`${v}-${S.goal}`:v;}
 function qrLink(){return PAGES_URL+"#"+qrHash();}
 function qrLabel(){
   const v=$("#qrTarget").value;
+  if(v==="schueler-lesen") return `Lesetext – Ziel ${S.goal}: ${goal(S.goal).name}`;
   if(v==="schueler-kreuz"||v==="schueler-wort") return `${v==="schueler-kreuz"?"Kreuzworträtsel":"Wortsuche"} – Ziel ${S.goal}: ${goal(S.goal).name}`;
   return v==="schueler-detektiv"?"Ziel-Detektiv":v==="schueler-nummer"?"Nummern-Profi":v==="schueler-wf"?`Wahr oder falsch – Ziel ${S.wfGoal}: ${goal(S.wfGoal).name}`:"Freiday-Übungen";
 }
@@ -1190,6 +1311,301 @@ $("#rzNew").addEventListener("click",newPuzzle);
 $("#rzSol").addEventListener("change",renderPuzzle);
 $("#rzGoal").addEventListener("change",()=>{S.goal=S.wfGoal=+$("#rzGoal").value;try{localStorage.setItem("fd-goal",S.goal)}catch(e){}renderAll();});
 
+/* ================= Mehrseitige Vorschau ================= */
+function showPages(el,pages,note){
+  el.innerHTML=(note?`<p class="pages-note">${note}</p>`:"")+pages.map(p=>`<div class="pg"><div class="paper${p.cls?" "+p.cls:""}">${p.html}</div></div>`).join("");
+  fitPages(el);
+}
+function fitPages(el){
+  const avail=el.clientWidth; if(!avail) return;
+  el.querySelectorAll(".pg").forEach(pg=>{const p=pg.firstElementChild;const sc=Math.min(1,avail/p.offsetWidth);p.style.transform=`scale(${sc})`;pg.style.height=(p.offsetHeight*sc)+"px";});
+}
+window.addEventListener("resize",()=>{fitPages($("#gmPages"));fitPages($("#lsPages"));});
+const chunk=(a,n)=>Array.from({length:Math.ceil(a.length/n)},(_,i)=>a.slice(i*n,i*n+n));
+const NDLINE=`<div class="nd">Name: <span></span> Datum: <span style="min-width:20mm"></span></div>`;
+function wsHead(title,sub,g,nd){
+  const badge=g?`<span class="badge" style="background:${g.c}"><b>${g.n}</b> ${esc(g.name)}</span>`:"";
+  return `<div class="ws-head"><div><div class="ws-title">${title}</div><div class="ws-sub">${sub}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:2mm">${badge}${nd?NDLINE:""}</div></div>`;
+}
+const BOX=(h,em,inner,style="")=>`<div class="box" style="${style}"><h4>${h}${em?` <em>${em}</em>`:""}</h4>${inner}</div>`;
+
+/* ================= Spiele zum Laminieren ================= */
+const GAMES={
+  memory:{name:"Memory",info:"Paare finden",who:"2–4 Kinder",
+    rule:"Alle Karten verdeckt auflegen. Wer an der Reihe ist, deckt zwei Karten auf. Gehören sie zusammen, darf man das Paar behalten und noch einmal ziehen. Sonst werden beide wieder umgedreht. Wer am Ende die meisten Paare hat, gewinnt.",
+    vars:[["nummer","Nummer ↔ Name (alle 17 Ziele)",false],["wort","Wort ↔ Hinweis (ein Ziel)",true],["projekt","Projekt ↔ Ziel (alle 17 Ziele)",false]]},
+  domino:{name:"Domino",info:"Karten zu einem Kreis legen",who:"1–4 Kinder",
+    rule:"Karten aufteilen, eine Karte kommt in die Mitte. Rechts steht eine Frage, links eine Antwort. Wer die Antwort zur offenen Frage hat, legt seine Karte an. Am Ende schließt sich der Kreis – dann ist alles richtig.",
+    vars:[["nummer","Name → Nummer (alle 17 Ziele)",false],["wort","Hinweis → Wort (ein Ziel)",true]]},
+  bingo:{name:"Ziele-Bingo",info:"ganze Klasse",who:"ganze Klasse",
+    rule:"Jedes Kind bekommt eine Bingo-Karte. Die Lehrkraft zieht eine Rufkarte und liest das Projekt vor. Wer das passende Ziel auf der Karte hat, legt ein Plättchen darauf. Drei in einer Reihe – waagrecht, senkrecht oder schräg – ist Bingo!",
+    vars:[["projekt","Rufkarten mit Projekten",false]]},
+  quiz:{name:"Quizkarten",info:"mit Lösung zum Selbstprüfen",who:"2–6 Kinder oder allein",
+    rule:"Ein Kind liest die Karte vor, die anderen antworten. Die Lösung steht verkehrt herum unten auf der Karte. Wer richtig antwortet, bekommt die Karte.",
+    vars:[["alle","Wahr oder falsch (alle Ziele, 51 Karten)",false],["ziel","Fragen zu einem Ziel (10 Karten)",true]]},
+  erklaer:{name:"Erklärkarten",info:"erklären, zeichnen, vorspielen",who:"2 Teams",
+    rule:"Ein Kind zieht eine Karte und erklärt, zeichnet oder spielt das Wort vor – so, wie es unten auf der Karte markiert ist. Das Wort selbst darf nicht gesagt werden. Wer es errät, bekommt einen Punkt für das Team.",
+    vars:[["ziel","Wörter eines Ziels (7 Karten)",true],["mix","Mix aus allen Zielen (24 Karten)",false]]}
+};
+const GM={game:"memory",seed:0};
+function gmRender(){
+  const gm=GAMES[GM.game];
+  $("#gmTypes").innerHTML=Object.entries(GAMES).map(([k,v])=>`<button class="type" type="button" data-g="${k}" aria-pressed="${k===GM.game}"><span>${v.name}</span><small>${v.info}</small></button>`).join("");
+  const sel=$("#gmVar"), cur=sel.value;
+  sel.innerHTML=gm.vars.map(v=>`<option value="${v[0]}">${v[1]}</option>`).join("");
+  if(gm.vars.some(v=>v[0]===cur)) sel.value=cur;
+  $("#gmVarF").hidden=gm.vars.length<2;
+  const v=gm.vars.find(x=>x[0]===sel.value);
+  $("#gmGoalF").hidden=!v[2];
+  $("#gmCountF").hidden=GM.game!=="bingo";
+  $("#gmInfo").innerHTML=`<b>So geht's</b><p><i>${gm.who}.</i> ${esc(gm.rule)}</p>`;
+  const pages=gmPages();
+  const n=pages.length;
+  showPages($("#gmPages"),pages,`${n} ${n===1?"Blatt":"Blätter"} A4 – entlang der gestrichelten Linien ausschneiden.`);
+}
+function cardGrid(cards,cols,rows){
+  return `<div class="cgrid" style="grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr)">${cards.map(c=>`<div class="cut-c">${c}</div>`).join("")}${'<div class="cut-c" style="border-color:transparent"></div>'.repeat(cols*rows-cards.length)}</div>`;
+}
+function backCard(){return `<div class="cd back"><div class="big">Frei<span style="background:#f0b429;color:#3a2a00;padding:0 1mm;border-radius:1mm">day</span></div><div class="lab">Werkstatt</div></div>`;}
+function gmPages(){
+  const g=goal(+$("#gmGoal").value||S.goal), v=$("#gmVar").value, back=$("#gmBack").checked, rules=$("#gmRules").checked;
+  const gm=GAMES[GM.game]; let cards=[], cols=4, rows=5, extra=[];
+  const gl=x=>`<span class="chip" style="background:${x.c}">${x.n}</span>`;
+  if(GM.game==="memory"){
+    cols=4; rows=5;
+    if(v==="nummer") G.forEach(x=>{cards.push(`<div class="cd" style="background:${x.c};color:#fff;border-color:${x.c}"><div class="lab">Ziel</div><div class="big" style="font-size:40pt">${x.n}</div></div>`);
+      cards.push(`<div class="cd"><div class="w" style="font-size:${x.name.length>16?11:13}pt;color:${x.c};hyphens:manual">${esc(x.name)}</div><div class="s">${esc(x.k)}</div></div>`);});
+    if(v==="wort") W[g.n].forEach(([w,c])=>{cards.push(`<div class="cd">${gl(g)}<div class="w" style="font-size:${w.length>10?11:14}pt">${w}</div></div>`);cards.push(`<div class="cd" style="background:#f3f3f3">${gl(g)}<div class="lab">Hinweis</div><div class="t">${esc(c)}</div></div>`);});
+    if(v==="projekt") G.forEach(x=>{const i=x.i[(GM.seed+x.n)%x.i.length];cards.push(`<div class="cd"><div class="lab">Projekt</div><div class="t"><b>${esc(i[0])}</b></div><div class="s">${esc(i[1])}</div></div>`);
+      cards.push(`<div class="cd" style="background:${x.c};color:#fff;border-color:${x.c}"><div class="big" style="font-size:28pt">${x.n}</div><div class="w" style="font-size:11pt">${esc(x.name)}</div></div>`);});
+  }
+  if(GM.game==="domino"){
+    cols=2; rows=6;
+    const items=v==="nummer"?shuffle(G).map(x=>({a:`<div class="big" style="font-size:30pt;color:${x.c}">${x.n}</div>`,q:`<div class="lab">Welche Nummer hat …</div><div class="w" style="font-size:12pt">${esc(x.name)}</div>`}))
+      :shuffle(W[g.n]).map(([w,c])=>({a:`<div class="w" style="font-size:${w.length>10?11:14}pt">${w}</div>`,q:`<div class="lab">Gesucht</div><div class="t">${esc(c)}</div>`}));
+    cards=items.map((it,i)=>{const nx=items[(i+1)%items.length];return `<div class="dom"><div>${it.a}</div><div style="background:#f3f3f3">${nx.q}</div></div>`;});
+  }
+  if(GM.game==="bingo"){
+    cols=2; rows=3;
+    const n=+$("#gmCount").value, used=new Set();
+    for(let b=0;b<n;b++){
+      let pick, keyS, tries=0;
+      do{pick=shuffle(G).slice(0,9);keyS=pick.map(x=>x.n).sort((a,c)=>a-c).join(",");}while(used.has(keyS)&&++tries<50);
+      used.add(keyS);
+      cards.push(`<div class="bingo"><div class="bh"><b>Ziele-Bingo</b><span style="font-size:8pt">Karte ${b+1}</span></div><div class="bgrid">${pick.map(x=>`<div style="background:${x.c}"><b>${x.n}</b><span>${esc(x.name)}</span></div>`).join("")}</div></div>`);
+    }
+    const calls=G.map(x=>{const i=x.i[(GM.seed+x.n)%x.i.length];return `<div class="cd"><div class="lab">Rufkarte</div><div class="t"><b>${esc(i[0])}</b></div><div class="s">${esc(i[1])}</div><div style="position:absolute;bottom:1.4mm;right:2mm;font-size:7pt;color:#555">Ziel ${x.n}</div></div>`;});
+    extra=chunk(calls,20).map(c=>({html:cardGrid(c,4,5),cls:"cardpage"}));
+  }
+  if(GM.game==="quiz"){
+    cols=3; rows=4;
+    const mk=(q,ask,a,x)=>`<div class="cd" style="justify-content:space-between">${gl(x)}<div class="lab" style="margin-top:3mm">Frage</div><div class="t" style="font-size:10.5pt"><b>${esc(q)}</b><div style="margin-top:1.5mm;font-size:9pt;color:#444">${ask}</div></div><div class="flip">${a}</div></div>`;
+    if(v==="alle") G.forEach(x=>x.w.forEach(w=>cards.push(mk(w[0],"Wahr oder falsch?",`<b>${w[1]?"Wahr":"Falsch"}</b> – ${esc(w[2])}`,x))));
+    else{ g.w.forEach(w=>cards.push(mk(w[0],"Wahr oder falsch?",`<b>${w[1]?"Wahr":"Falsch"}</b> – ${esc(w[2])}`,g)));
+      W[g.n].forEach(([w,c])=>cards.push(mk(c,"Welches Wort ist gesucht?",`<b>${w}</b>`,g))); }
+    if(GM.seed) cards=shuffle(cards);
+  }
+  if(GM.game==="erklaer"){
+    cols=3; rows=4;
+    const list=v==="ziel"?W[g.n].map(x=>[x[0],g]):shuffle(G.flatMap(x=>W[x.n].map(w=>[w[0],x]))).slice(0,24);
+    const M=["Erklären","Zeichnen","Vorspielen"];
+    cards=list.map(([w,x],i)=>{const m=(i+GM.seed)%3;return `<div class="cd" style="justify-content:space-between">${gl(x)}<div class="lab" style="margin-top:3mm;color:${x.c}">${esc(x.name)}</div><div class="w" style="font-size:${w.length>11?13:w.length>8?15:18}pt">${w}</div><div class="modes">${M.map((t,j)=>`<span class="${j===m?"on":""}">${t}</span>`).join("")}</div></div>`;});
+  }
+  const per=cols*rows;
+  let pages=chunk(cards,per).map(c=>({html:cardGrid(c,cols,rows),cls:"cardpage"}));
+  if(back&&GM.game!=="bingo"&&GM.game!=="domino") pages=pages.flatMap(pg=>[pg,{html:cardGrid(Array(per).fill(backCard()),cols,rows),cls:"cardpage"}]);
+  if(back&&GM.game==="bingo") extra=extra.flatMap(pg=>[pg,{html:cardGrid(Array(20).fill(backCard()),4,5),cls:"cardpage"}]);
+  pages=pages.concat(extra);
+  if(rules){
+    const rc=`<div class="rule-card"><h3>${gm.name}</h3><div class="who">${gm.who}</div><p>${esc(gm.rule)}</p><div style="margin-top:auto;font-size:8pt;color:#777">Freiday-Werkstatt</div></div>`;
+    pages.push({html:cardGrid(Array(4).fill(rc),2,2),cls:"cardpage"});
+  }
+  return pages;
+}
+$("#gmTypes").addEventListener("click",e=>{const b=e.target.closest(".type");if(!b)return;GM.game=b.dataset.g;$("#gmVar").value="";gmRender();});
+["#gmVar","#gmGoal","#gmCount","#gmBack","#gmRules"].forEach(id=>$(id).addEventListener("change",gmRender));
+$("#gmNew").addEventListener("click",()=>{GM.seed=Math.floor(Math.random()*1000)+1;gmRender();});
+let gmLast=null;
+function gmDoc(){const gm=GAMES[GM.game];const pages=[...document.querySelectorAll("#gmPages .paper")].map(p=>p.innerHTML);
+  const v=$("#gmVar").value, g=+$("#gmGoal").value;
+  return {doc:makeDoc(pages,gm.name).replace(/<div class="paper">/g,'<div class="paper cardpage">'),fname:fileName(gm.name+"_"+v+(GAMES[GM.game].vars.find(x=>x[0]===v)?.[2]?"_Ziel"+g:""))};}
+$("#gmPrint").addEventListener("click",()=>printDoc(gmDoc().doc,$("#gmMsg")));
+$("#gmSave").addEventListener("click",()=>{const {doc,fname}=gmDoc();saveDoc(doc,fname,$("#gmMsg"));});
+
+/* ================= Stillarbeit ================= */
+const L={
+1:"Arm sein bedeutet, dass das Geld für wichtige Dinge nicht reicht: für Essen, Kleidung, eine warme Wohnung oder Schulsachen. Auf der Welt leben viele Millionen Menschen in großer Armut. Sie haben oft nicht genug zu essen und kein sauberes Wasser. Aber auch in Österreich gibt es Familien, die mit sehr wenig Geld auskommen müssen. Kinder aus diesen Familien können zum Beispiel nicht bei jedem Ausflug mitfahren. Gegen Armut helfen faire Löhne, gute Bildung und Unterstützung vom Staat. Auch wir können etwas tun: teilen, tauschen und gebrauchte Sachen weitergeben, statt sie wegzuwerfen.",
+2:"Auf der Erde wachsen eigentlich genug Lebensmittel für alle Menschen. Trotzdem hungern viele Millionen Menschen, vor allem in Ländern mit Krieg, Dürre oder großer Armut. Gleichzeitig wird ein großer Teil der Lebensmittel weggeworfen – auch bei uns, oft im eigenen Haushalt. Brot, Obst und Gemüse landen im Müll, obwohl man sie noch essen könnte. Das Mindesthaltbarkeitsdatum heißt übrigens nicht, dass ein Lebensmittel danach schlecht ist. Wer regional einkauft, Reste verwertet und nur so viel nimmt, wie er essen kann, hilft mit, dass Lebensmittel gerechter verteilt werden.",
+3:"Gesund sein heißt, dass es Körper und Seele gut geht. Dafür brauchen wir genug Bewegung, ausreichend Schlaf, Wasser zum Trinken und abwechslungsreiches Essen mit viel Obst und Gemüse. Auch Pausen und Zeit mit Freundinnen und Freunden sind wichtig. Wenn wir krank werden, brauchen wir Ärztinnen, Ärzte und Medikamente. In vielen Ländern der Welt gibt es aber kaum Krankenhäuser, und eine Behandlung ist für viele Familien zu teuer. Das Ziel 3 möchte, dass alle Menschen gesund leben können – egal, wo sie wohnen und wie viel Geld sie haben.",
+4:"Lesen, Schreiben und Rechnen öffnen viele Türen: Man kann einen Beruf lernen, sich informieren und bei Entscheidungen mitreden. In Österreich gibt es eine Schulpflicht von neun Jahren, und öffentliche Schulen kosten kein Schulgeld. In anderen Teilen der Welt können viele Millionen Kinder nicht zur Schule gehen. Manche müssen arbeiten, andere haben keine Schule in der Nähe, und manchen Mädchen wird der Schulbesuch verboten. Das Ziel 4 möchte, dass alle Kinder eine gute Schule besuchen und alle Menschen ein Leben lang lernen können.",
+5:"Gleichberechtigung heißt, dass Frauen und Männer, Mädchen und Buben die gleichen Rechte und Chancen haben. Alle dürfen den Beruf lernen, der zu ihnen passt. Alle sollen für die gleiche Arbeit den gleichen Lohn bekommen. Und die Arbeit zu Hause – kochen, putzen, sich um Kinder kümmern – soll gerecht aufgeteilt werden. Noch immer gibt es viele Klischees, zum Beispiel, dass Mädchen nicht gut in Technik sind oder Buben nicht weinen dürfen. Solche Vorurteile stimmen nicht. In manchen Ländern dürfen Mädchen nicht einmal zur Schule gehen.",
+6:"Ohne Wasser gibt es kein Leben. Wir brauchen es zum Trinken, Kochen, Waschen und für die Toilette. In Österreich kommt sauberes Trinkwasser einfach aus der Leitung. Das ist ein großes Glück, denn viele Millionen Menschen auf der Welt haben kein sauberes Trinkwasser. Oft müssen Kinder jeden Tag weit gehen, um Wasser zu holen, und haben deshalb keine Zeit für die Schule. Schmutziges Wasser kann außerdem krank machen. Auch wir sollten sorgsam mit Wasser umgehen: kurz duschen, den Wasserhahn beim Zähneputzen zudrehen und tropfende Hähne reparieren lassen.",
+7:"Wir brauchen Energie für Licht, Wärme, Computer und Fahrzeuge. Ein großer Teil der Energie auf der Welt kommt noch aus Kohle, Erdöl und Erdgas. Diese Rohstoffe sind in Millionen von Jahren entstanden und werden einmal aufgebraucht sein. Beim Verbrennen entsteht außerdem CO₂, das das Klima erwärmt. Erneuerbare Energie kommt dagegen aus Sonne, Wind und Wasser – sie geht nicht aus. In Österreich wird schon viel Strom mit Wasserkraft erzeugt. Alle können Energie sparen: Licht ausschalten, Geräte nicht im Stand-by lassen und kurz, aber kräftig lüften.",
+8:"Arbeit sichert Menschen ein Einkommen. Gute Arbeit bedeutet einen fairen Lohn, einen sicheren Arbeitsplatz und genug Freizeit. Leider ist das nicht überall so. In manchen Ländern arbeiten Menschen viele Stunden am Tag für sehr wenig Geld, zum Beispiel in Fabriken, in denen Kleidung genäht wird. Weltweit müssen außerdem noch viele Millionen Kinder arbeiten, statt zur Schule zu gehen. Siegel wie Fairtrade zeigen, dass bei einem Produkt auf fairere Bedingungen geachtet wurde. Wer beim Einkaufen auf solche Siegel achtet, unterstützt bessere Arbeit.",
+9:"Innovation heißt: neue Ideen, die das Leben besser machen. Dazu gehören große Erfindungen wie neue Medikamente, aber auch einfache Ideen, die ein Alltagsproblem lösen. Zur Infrastruktur gehört alles, was ein Ort zum Funktionieren braucht: Straßen, Radwege, Brücken, Bahnlinien, Strom- und Internetleitungen. In vielen Ländern fehlt so etwas noch. Ein wichtiger Gedanke ist auch das Reparieren: Wer Dinge repariert, statt sie wegzuwerfen, spart Rohstoffe und Energie. Gute Ideen können übrigens auch von Kindern kommen – viele Erfindungen stammen von jungen Menschen.",
+10:"Menschen sind verschieden: Sie kommen aus verschiedenen Ländern, sprechen verschiedene Sprachen, glauben an Verschiedenes oder haben eine Behinderung. Trotzdem haben alle die gleichen Rechte. Ungleichheit bedeutet, dass manche Menschen schlechtere Chancen haben, zum Beispiel weil ihre Familie wenig Geld hat oder weil ein Gebäude nur Stufen und keine Rampe hat. Barrierefreiheit hilft, dass alle überall hinkommen. Inklusion heißt, dass alle dazugehören und mitmachen können. Auch in der Klasse können wir darauf achten, dass niemand ausgeschlossen wird.",
+11:"Immer mehr Menschen auf der Welt leben in Städten. Eine lebenswerte Stadt oder Gemeinde braucht sichere Wege zum Gehen und Radfahren, gute öffentliche Verkehrsmittel, Parks, Spielplätze und leistbare Wohnungen. Bäume und Grünflächen sind besonders wichtig: Sie spenden Schatten, kühlen im Sommer und machen die Luft besser. Viele Autos verursachen dagegen Lärm und Abgase. Auch Kinder dürfen mitreden, wie ihr Ort aussehen soll – manche Gemeinden haben sogar ein Kinder- oder Jugendparlament. Und alle können helfen, den eigenen Ort sauber zu halten.",
+12:"Konsumieren heißt kaufen und verbrauchen. Für alles, was wir kaufen, werden Rohstoffe, Wasser und Energie gebraucht – für ein T-Shirt, ein Handy oder eine verpackte Jause. Viele Dinge werden nur kurz benutzt und landen dann im Müll. Bewusst konsumieren heißt: überlegen, ob man etwas wirklich braucht, Dinge lange verwenden, reparieren, tauschen oder gebraucht kaufen. Müll, der trotzdem entsteht, soll richtig getrennt werden, damit Papier, Glas, Metall und Plastik wiederverwertet werden können. Beim Upcycling macht man aus Altem sogar etwas Neues.",
+13:"Wetter ist das, was wir heute draußen erleben: Sonne, Regen oder Wind. Klima ist das durchschnittliche Wetter an einem Ort über viele Jahre. Seit vielen Jahrzehnten wird es auf der Erde wärmer. Der Hauptgrund sind Treibhausgase wie CO₂, die beim Verbrennen von Kohle, Erdöl und Erdgas entstehen – zum Beispiel im Auto, in Fabriken oder beim Heizen. Die Folgen spüren wir auch in Österreich: mehr heiße Tage, schmelzende Gletscher und mehr Unwetter. Klimaschutz heißt, weniger Treibhausgase auszustoßen: zu Fuß gehen, Rad fahren, Öffis nutzen und Energie sparen.",
+14:"Meere bedecken den größten Teil der Erde. In ihnen leben unzählige Tiere und Pflanzen – vom winzigen Plankton bis zum Blauwal, dem größten Tier der Welt. Korallenriffe sind besonders artenreich. Doch die Meere sind in Gefahr: Jedes Jahr gelangen große Mengen Plastik ins Wasser. Plastik verrottet nicht wie Laub, sondern zerfällt über Hunderte von Jahren in winzige Teilchen, das Mikroplastik. Tiere verwechseln Plastik mit Futter. Viel Müll gelangt über Flüsse ins Meer. Wer weniger Plastik verwendet, schützt deshalb auch das Meer – sogar in Österreich, das keine Küste hat.",
+15:"Wälder, Wiesen, Berge und Moore sind Lebensraum für sehr viele Tiere und Pflanzen. Diese Vielfalt nennt man Artenvielfalt. Alles hängt zusammen: Bienen und andere Insekten bestäuben Blüten, damit Obst wachsen kann. Vögel fressen Insekten, und Bäume speichern CO₂ und geben uns Sauerstoff. Viele Tier- und Pflanzenarten sind heute bedroht, weil Flächen verbaut, Wiesen zu oft gemäht oder Gifte verwendet werden. Schon kleine Dinge helfen: eine Blumenwiese statt kurz gemähtem Rasen, ein Insektenhotel oder heimische Sträucher im Garten.",
+16:"Frieden heißt nicht nur, dass kein Krieg herrscht. Frieden bedeutet auch, dass Menschen respektvoll miteinander umgehen, Streit ohne Gewalt lösen und sich an gerechte Regeln halten. Dafür braucht es Gesetze, Gerichte und eine Politik, bei der alle mitbestimmen können. Kinder haben eigene Rechte, die in der UN-Kinderrechtskonvention stehen: zum Beispiel das Recht auf Bildung, auf Schutz vor Gewalt und darauf, gehört zu werden. Frieden beginnt im Kleinen: in der Familie, in der Klasse und im Pausenhof – beim Zuhören, beim fairen Streiten und beim Entschuldigen.",
+17:"Im Jahr 2015 haben alle Mitgliedsländer der Vereinten Nationen gemeinsam 17 Ziele beschlossen. Sie sollen bis zum Jahr 2030 erreicht werden, darum heißt der Plan auch Agenda 2030. Kein Land kann diese Ziele allein schaffen. Es braucht Zusammenarbeit zwischen Ländern, aber auch zwischen Gemeinden, Firmen, Vereinen, Schulen und einzelnen Menschen. Reichere Länder sollen ärmere Länder unterstützen, und alle sollen ihr Wissen teilen. Auch beim Freiday gilt: Gemeinsam schafft man mehr. Ein Team mit guten Partnern kann viel mehr bewegen als eine Person allein."
+};
+
+/* Lesetext am Bildschirm, mit Vorlesen */
+let speaking=false;
+function renderRead(){
+  const g=goal(S.goal);
+  const words=L[g.n].split(" ");
+  $("#readCard").innerHTML=`<div class="rc-head"><div><span class="lbl">Lesetext · Ziel ${g.n}</span><h2>${esc(g.name)}</h2></div>
+    <div class="bar"><button class="btn sun" type="button" id="readBtn">🔊 Vorlesen</button><select class="btn" id="readGoal" aria-label="Ziel">${G.map(x=>`<option value="${x.n}"${x.n===g.n?" selected":""}>${x.n} – ${esc(x.name)}</option>`).join("")}</select></div></div>
+    <p class="read-text" id="readText">${words.map((w,i)=>`<span data-i="${i}">${esc(w)}</span>`).join(" ")}</p>
+    <p class="note" id="readNote">Tipp: Kopfhörer aufsetzen und „Vorlesen“ drücken. Danach kannst du die Aufgaben auf dem Arbeitsblatt lösen.</p>
+    <div class="bar"><button class="btn" type="button" id="readQuiz">Jetzt üben: Wahr oder falsch?</button><button class="btn" type="button" id="readWord">Wortsuche zu diesem Ziel</button></div>`;
+  const canSpeak="speechSynthesis" in window;
+  if(!canSpeak){$("#readBtn").hidden=true;$("#readNote").textContent="Lies den Text in Ruhe durch. Danach kannst du die Aufgaben auf dem Arbeitsblatt lösen.";}
+  $("#readBtn").onclick=()=>{
+    if(speaking){speechSynthesis.cancel();speaking=false;$("#readBtn").textContent="🔊 Vorlesen";return;}
+    const u=new SpeechSynthesisUtterance(L[g.n]); u.lang="de-AT"; u.rate=.9;
+    const v=speechSynthesis.getVoices().find(x=>/^de/i.test(x.lang)); if(v) u.voice=v;
+    const starts=[];let pos=0;words.forEach(w=>{starts.push(pos);pos+=w.length+1;});
+    u.onboundary=e=>{const i=starts.findLastIndex(s=>s<=e.charIndex);document.querySelectorAll("#readText .w-on").forEach(x=>x.classList.remove("w-on"));document.querySelector(`#readText [data-i="${i}"]`)?.classList.add("w-on");};
+    u.onend=u.onerror=()=>{speaking=false;$("#readBtn").textContent="🔊 Vorlesen";document.querySelectorAll("#readText .w-on").forEach(x=>x.classList.remove("w-on"));};
+    speechSynthesis.cancel(); speechSynthesis.speak(u); speaking=true; $("#readBtn").textContent="⏹ Stopp";
+  };
+  $("#readGoal").onchange=()=>{if(speaking){speechSynthesis.cancel();speaking=false;}S.goal=S.wfGoal=+$("#readGoal").value;renderAll();};
+  $("#readQuiz").onclick=()=>{S.wfGoal=S.goal;$("#wfGoal").value=S.goal;setMode("wf");buildQuiz();setTab("uebungen");};
+  $("#readWord").onclick=()=>{RZ.type="wort";newPuzzle();setTab("raetsel");};
+}
+
+/* Stundenbilder */
+const LESSONS=[
+ {id:"lesen",t:"Lesen & verstehen",k:"Sachtext zu einem Ziel lesen und Aufgaben lösen",goal:true,sol:true,
+  aim:"Die Kinder erschließen selbstständig einen Sachtext zu einem Nachhaltigkeitsziel und überlegen, was sie selbst beitragen können.",
+  mat:"Arbeitsblatt, Stifte; für Kinder, die Unterstützung brauchen: iPad mit Kopfhörern (Lesetext mit Vorlesefunktion)",
+  flow:[["0–5","Einstieg: Ziel an die Tafel schreiben, Arbeitsblatt austeilen, Auftrag kurz erklären. Ab jetzt Flüsterstille."],["5–40","Stillarbeit: Text zweimal lesen, drei wichtige Wörter unterstreichen, Aufgaben 1 bis 4 lösen."],["40–50","Abschluss: Partnerkontrolle mit dem Lösungsblatt, zwei bis drei Kinder lesen ihre Ideen aus Aufgabe 3 vor."]],
+  diff:["Text am iPad vorlesen lassen (QR-Code „Lesetext“ in den Online-Übungen)","Schneller fertig: Bonusfrage oder Wortsuche zum Ziel","Mehr Unterstützung: nur Aufgaben 1 und 2"]},
+ {id:"plakat",t:"Mein Ziel-Plakat",k:"Ein Mini-Plakat zu einem selbst gewählten Ziel gestalten",goal:true,free:true,
+  aim:"Die Kinder fassen ein Ziel in eigenen Worten zusammen und gestalten es übersichtlich.",
+  mat:"Arbeitsblatt, Buntstifte; Lesetexte (ausgedruckt oder am iPad)",
+  flow:[["0–5","Einstieg: Die 17 Ziele kurz zeigen. Jedes Kind wählt still ein Ziel (oder bekommt eines zugeteilt)."],["5–40","Stillarbeit: Lesetext zum Ziel lesen, dann das Plakat ausfüllen und gestalten."],["40–50","Abschluss: Stiller Galerie-Rundgang. Die Plakate liegen am Tisch, jedes Kind legt bei zwei Plakaten ein Lob-Kärtchen dazu."]],
+  diff:["Schneller fertig: ein zweites Ziel oder Rückseite als Rätsel gestalten","Mehr Unterstützung: Ziel mit Lesetext vorgeben"]},
+ {id:"brief",t:"Brief an mich im Jahr 2030",k:"Einen Brief an das eigene zukünftige Ich schreiben",goal:false,
+  aim:"Die Kinder denken über ihre Zukunft und ihren eigenen Beitrag zu den Zielen nach.",
+  mat:"Arbeitsblatt, Stifte; optional ein Kuvert pro Kind",
+  flow:[["0–5","Einstieg: „2030 ist das Jahr, bis zu dem die 17 Ziele erreicht werden sollen. Wie alt bist du dann?“"],["5–40","Stillarbeit: Brief nach den Leitfragen schreiben, unten eine kleine Zeichnung."],["40–50","Abschluss: Wer möchte, liest einen Satz vor. Die Briefe kommen in ein Kuvert und werden am Schulende zurückgegeben."]],
+  diff:["Schneller fertig: Brief verzieren, zweiten Brief an ein jüngeres Geschwister","Mehr Unterstützung: Satzanfänge verwenden, Zeichnung darf größer sein"]},
+ {id:"comic",t:"Comic: Held:in der Zukunft",k:"Eine Bildergeschichte, in der jemand ein Problem löst",goal:true,free:true,
+  aim:"Die Kinder übertragen ein Ziel in eine eigene Geschichte mit Problem und Lösung.",
+  mat:"Arbeitsblatt, Bleistift, Buntstifte",
+  flow:[["0–5","Einstieg: Kurz zeigen, wie ein Comic aufgebaut ist: Anfang – Problem – Idee – Lösung."],["5–40","Stillarbeit: Figur ausdenken, sechs Bilder zeichnen und je einen Satz darunter schreiben."],["40–50","Abschluss: Comics tauschen und still lesen, dem Zeichner oder der Zeichnerin eine kurze Rückmeldung schreiben."]],
+  diff:["Schneller fertig: Sprechblasen ergänzen, Titelbild auf der Rückseite","Mehr Unterstützung: nur vier Bilder"]},
+ {id:"erfinder",t:"Erfinder-Skizze",k:"Eine Erfindung zeichnen und beschriften",goal:true,free:true,
+  aim:"Die Kinder entwickeln eine kreative Lösung für ein Problem und beschreiben sie genau.",
+  mat:"Arbeitsblatt, Bleistift, Lineal, Buntstifte",
+  flow:[["0–5","Einstieg: Ein Problem zum gewählten Ziel nennen, z. B. „Im Pausenhof liegt viel Müll.“"],["5–40","Stillarbeit: Erfindung zeichnen, Teile beschriften und erklären, welches Problem sie löst."],["40–50","Abschluss: Zwei bis drei Kinder stellen ihre Erfindung in einer Minute vor."]],
+  diff:["Schneller fertig: Werbeplakat für die Erfindung auf der Rückseite","Mehr Unterstützung: Problem vorgeben"]},
+ {id:"check",t:"Mein Nachhaltigkeits-Check",k:"Den eigenen Alltag ehrlich unter die Lupe nehmen",goal:false,
+  aim:"Die Kinder reflektieren ihr eigenes Verhalten und setzen sich einen kleinen, machbaren Vorsatz.",
+  mat:"Arbeitsblatt, Stifte",
+  flow:[["0–5","Einstieg: „Heute geht es nur um dich. Niemand bewertet deine Antworten.“"],["5–40","Stillarbeit: An gestern denken und die Tabelle ausfüllen, danach den eigenen Vorsatz formulieren."],["40–50","Abschluss: Freiwillig Vorsätze vorlesen. Das Blatt kommt in die Mappe und wird in zwei Wochen wieder angeschaut."]],
+  diff:["Schneller fertig: Vorsatz für die ganze Klasse überlegen","Mehr Unterstützung: Tabelle gemeinsam beginnen"]},
+ {id:"raetsel",t:"Rätselstunde",k:"Kreuzworträtsel und Wortsuche zu einem Ziel",goal:true,
+  aim:"Die Kinder festigen Fachwörter zu einem Ziel auf spielerische Weise.",
+  mat:"Kreuzworträtsel und Wortsuche aus dem Bereich „Rätsel“ (gedruckt oder am iPad)",
+  flow:[["0–5","Einstieg: Lesetext zum Ziel vorlesen oder am iPad anhören lassen."],["5–40","Stillarbeit: Erst das Kreuzworträtsel, dann die Wortsuche."],["40–50","Abschluss: Selbstkontrolle mit dem Lösungsblatt, Lieblingswort an die Tafel schreiben."]],
+  diff:["Schneller fertig: Wortsuche „schwer“","Mehr Unterstützung: Wortsuche „leicht“ zuerst"]}
+];
+const LS={id:"lesen"};
+function lessonSheet(){
+  const ls=LESSONS.find(x=>x.id===LS.id), gv=+$("#lsGoal").value, g=gv?goal(gv):null, nd=$("#lsName").checked, sol=$("#lsSol").checked;
+  const gg=g||goal(S.goal);
+  const lines=(h,cls="")=>`<div class="lines${cls}" style="min-height:${h}mm"></div>`;
+  switch(ls.id){
+  case "lesen":{
+    const ws=W[gg.n].slice(0,4), order=[2,0,3,1].filter(i=>i<ws.length);
+    return `<div class="ws">${wsHead("Lesen &amp; verstehen","Lies den Text zweimal. Unterstreiche drei wichtige Wörter.",gg,nd)}
+      ${BOX("Ziel "+gg.n+": "+esc(gg.name),"",`<div class="text-box">${esc(L[gg.n])}</div>`)}
+      ${BOX("1 · Richtig oder falsch?","Kreuze an.",`<table class="t"><tr><th>Aussage</th><th style="width:13%">richtig</th><th style="width:13%">falsch</th></tr>${gg.w.map(w=>`<tr><td>${esc(w[0])}</td><td style="text-align:center;font-weight:700">${sol&&w[1]?"✗":""}</td><td style="text-align:center;font-weight:700">${sol&&!w[1]?"✗":""}</td></tr>`).join("")}</table>`)}
+      ${BOX("2 · Welches Wort passt?","Wähle aus: "+shuffle(ws.map(x=>x[0])).sort().join(" · "),`<table class="t">${order.map(i=>`<tr><td style="width:62%">${esc(ws[i][1])}</td><td style="font-weight:700">${sol?ws[i][0]:""}</td></tr>`).join("")}</table>`)}
+      <div class="row grow">${BOX("3 · Was kannst du selbst tun?","Schreibe zwei Ideen auf.",`<div class="lines s grow"></div>`)}${BOX("4 · Zeichne","So sieht es aus, wenn das Ziel erreicht ist.","")}</div>
+      ${BOX("Bonus · Forscherfrage",esc(gg.f[0]),lines(13,""))}
+      <div class="foot"><span>Freiday · Stillarbeit</span><span>${sol?"Lösung":"Ziel "+gg.n}</span></div></div>`;}
+  case "plakat":
+    return `<div class="ws">${wsHead("Mein Ziel-Plakat","Gestalte ein Plakat zu einem Ziel. Schreib in deinen eigenen Worten.",g,nd)}
+      ${g?"":`<div class="row" style="flex:none;font-size:11pt;gap:4mm"><span>Mein Ziel: Nr. <span style="display:inline-block;border-bottom:1px solid #555;width:14mm"></span></span><span style="flex:1">Name: <span style="display:inline-block;border-bottom:1px solid #555;width:90mm"></span></span></div>`}
+      <div class="row" style="flex:1.2;min-height:0">${BOX("Das bedeutet das Ziel","",`<div class="lines grow"></div>`)}${BOX("Mein Symbol für das Ziel","Zeichne!","","flex:.8")}</div>
+      ${BOX("Drei wichtige Tatsachen","",`<div style="display:flex;flex-direction:column;gap:1mm">${[1,2,3].map(n=>`<div style="display:flex;gap:2mm;align-items:flex-end"><b>${n}</b><div class="lines" style="flex:1;min-height:8mm"></div></div>`).join("")}</div>`)}
+      <div class="row" style="flex:1;min-height:0">${BOX("So kann ich helfen","",`<div class="lines grow"></div>`)}${BOX("Ein Projekt, das ich gern machen würde","",`<div class="lines grow"></div>`)}</div>
+      <div class="foot"><span>Freiday · Stillarbeit</span><span>Ziel-Plakat</span></div></div>`;
+  case "brief":
+    return `<div class="ws">${wsHead("Brief an mich im Jahr 2030","Bis 2030 sollen die 17 Ziele erreicht sein. Was wünschst du dir für dich und die Welt?",null,nd)}
+      ${BOX("Leitfragen","",`<div style="columns:2;font-size:9.5pt;line-height:1.5">Wie alt bist du 2030?<br>Was machst du dann wohl?<br>Wie soll die Welt dann aussehen?<br>Welches Ziel ist dir am wichtigsten?<br>Was willst du selbst dafür tun?<br>Was möchtest du deinem Ich sagen?</div>`)}
+      ${BOX("Mein Brief","",`<div style="font-size:11pt;padding-top:1mm">Liebe / Lieber <span style="display:inline-block;border-bottom:1px solid #555;width:50mm"></span>,</div><div class="lines grow"></div><div style="font-size:11pt;text-align:right;padding-top:1mm">Dein / Deine <span style="display:inline-block;border-bottom:1px solid #555;width:45mm"></span></div>`,"flex:1")}
+      ${BOX("Meine Zeichnung: Ich im Jahr 2030","","","height:52mm;flex:none")}
+      <div class="foot"><span>Freiday · Stillarbeit</span><span>Brief 2030</span></div></div>`;
+  case "comic":
+    return `<div class="ws">${wsHead("Comic: Held:in der Zukunft","Erfinde eine Figur, die ein Problem löst. Zeichne sechs Bilder und schreib einen Satz darunter.",g,nd)}
+      <div class="row" style="flex:none;font-size:11pt;gap:4mm"><span style="flex:1">Mein Comic heißt: <span style="display:inline-block;border-bottom:1px solid #555;width:100mm"></span></span></div>
+      <div class="row" style="flex:none;font-size:9pt;color:#444;gap:3mm"><span>1 Wer ist die Figur?</span><span>2 Wo ist sie?</span><span>3 Das Problem</span><span>4 Die Idee</span><span>5 Die Lösung</span><span>6 So ist es jetzt</span></div>
+      <div class="panel6">${[1,2,3,4,5,6].map(n=>`<div><b style="font-size:9pt;align-self:flex-start;margin-bottom:auto">${n}</b><span></span><span></span></div>`).join("")}</div>
+      <div class="foot"><span>Freiday · Stillarbeit</span><span>Comic</span></div></div>`;
+  case "erfinder":
+    return `<div class="ws">${wsHead("Erfinder-Skizze","Erfinde etwas, das ein Problem löst. Zeichne es groß und beschrifte die Teile.",g,nd)}
+      ${BOX("Name meiner Erfindung","",`<div class="pre"></div>`)}
+      ${BOX("Welches Problem löst sie?","",lines(16))}
+      ${BOX("Meine Skizze","Zeichne mit Bleistift und beschrifte mit Pfeilen.","","flex:1")}
+      ${BOX("Die Teile","",`<table class="t"><tr><th style="width:35%">Teil</th><th>Wofür ist es da?</th></tr>${"<tr><td></td><td></td></tr>".repeat(4)}</table>`)}
+      <div class="foot"><span>Freiday · Stillarbeit</span><span>Erfinder-Skizze</span></div></div>`;
+  case "check":{
+    const rows=[["Wasser","Wie lange habe ich geduscht? Habe ich den Hahn zugedreht?"],["Energie","Habe ich Licht und Geräte ausgeschaltet?"],["Müll","Was habe ich weggeworfen? Habe ich getrennt?"],["Weg","Wie bin ich in die Schule gekommen?"],["Essen","Was war in meiner Jause? Woher kam es?"],["Miteinander","Habe ich jemandem geholfen oder etwas geteilt?"]];
+    const faces=`<div class="faces" style="justify-content:center">${face(1)}${face(2)}${face(3)}</div>`;
+    return `<div class="ws">${wsHead("Mein Nachhaltigkeits-Check","Denk an gestern. Sei ehrlich – niemand bewertet deine Antworten.",null,nd)}
+      ${BOX("So war mein Tag","Schreib kurz auf und kreise ein Gesicht ein.",`<table class="t chk"><tr><th style="width:22%">Bereich</th><th>Was habe ich gemacht?</th><th style="width:30%">Wie finde ich das?</th></tr>${rows.map(r=>`<tr><td><b>${r[0]}</b><div style="font-size:8pt;color:#555;line-height:1.2">${r[1]}</div></td><td></td><td>${faces}</td></tr>`).join("")}</table>`)}
+      ${BOX("Darauf bin ich stolz","",lines(17))}
+      ${BOX("Das fällt mir schwer","",lines(17))}
+      ${BOX("Mein Vorsatz für die nächsten zwei Wochen","Klein und machbar!",`<div class="lines grow"></div>`,"flex:1")}
+      <div class="foot"><span>Freiday · Stillarbeit</span><span>Nachhaltigkeits-Check</span></div></div>`;}
+  }
+  return "";
+}
+function lessonPlanSheet(){
+  const ls=LESSONS.find(x=>x.id===LS.id), gv=+$("#lsGoal").value, g=ls.goal&&gv?goal(gv):null;
+  return `<div class="ws">${wsHead("Stundenbild: "+esc(ls.t),"Stillarbeit · 50 Minuten",g,false)}
+    ${BOX("Ziel der Stunde","",`<div class="t" style="font-size:10.5pt">${esc(ls.aim)}</div>`)}
+    ${BOX("Material","",`<div style="font-size:10.5pt">${esc(ls.mat)}</div>`)}
+    ${BOX("Ablauf","",`<table class="t plan"><tr><th style="width:18%">Minuten</th><th>Was passiert?</th></tr>${ls.flow.map(f=>`<tr><td><b>${f[0]}</b></td><td>${esc(f[1])}</td></tr>`).join("")}</table>`)}
+    ${BOX("Differenzierung","",`<ul style="margin:0;padding-left:5mm;font-size:10.5pt">${ls.diff.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>`)}
+    ${BOX("Meine Notizen","",`<div class="lines grow"></div>`,"flex:1")}
+    <div class="foot"><span>Freiday-Werkstatt</span><span>Stundenbild</span></div></div>`;
+}
+function renderLessons(){
+  $("#lessonPick").innerHTML=LESSONS.map(l=>`<button class="lesson" type="button" data-id="${l.id}" aria-pressed="${l.id===LS.id}"><b>${esc(l.t)}</b><span>${esc(l.k)}</span></button>`).join("");
+  const ls=LESSONS.find(x=>x.id===LS.id);
+  $("#lessonInfo").innerHTML=`<h3>${esc(ls.t)}</h3><div>${esc(ls.aim)}</div>
+    <table>${ls.flow.map(f=>`<tr><td>${f[0]} min</td><td>${esc(f[1])}</td></tr>`).join("")}</table>
+    <div><b>Material:</b> ${esc(ls.mat)}</div><div><b>Differenzierung:</b><ul>${ls.diff.map(d=>`<li>${esc(d)}</li>`).join("")}</ul></div>`;
+  const sel=$("#lsGoal"), cur=sel.value||String(S.goal);
+  sel.innerHTML=(ls.free?`<option value="0">Kinder wählen selbst</option>`:"")+G.map(g=>`<option value="${g.n}">${g.n} – ${esc(g.name)}</option>`).join("");
+  sel.value=(cur==="0"&&!ls.free)?String(S.goal):cur;
+  $("#lsGoalF").hidden=!ls.goal; $("#lsSolF").hidden=!ls.sol;
+  const raetsel=ls.id==="raetsel";
+  ["#lsSave","#lsPrint"].forEach(id=>$(id).closest(".field").hidden=raetsel);
+  if(raetsel){$("#lsPages").innerHTML=`<div class="dice"><h3>Rätsel verwenden</h3><p style="margin:0">Für diese Stunde nimmst du Kreuzworträtsel und Wortsuche aus dem Bereich „Rätsel“. Dort kannst du sie drucken oder per QR-Code aufs iPad schicken.</p><div class="bar" style="margin-top:8px"><button class="btn primary" type="button" id="goRaetsel">Zu den Rätseln</button></div></div>`;
+    $("#goRaetsel").onclick=()=>{if(+sel.value){S.goal=S.wfGoal=+sel.value;renderAll();}setTab("raetsel");};return;}
+  showPages($("#lsPages"),[{html:lessonSheet()}]);
+}
+$("#lessonPick").addEventListener("click",e=>{const b=e.target.closest(".lesson");if(!b)return;LS.id=b.dataset.id;$("#lsSol").checked=false;renderLessons();});
+["#lsGoal","#lsSol","#lsName"].forEach(id=>$(id).addEventListener("change",renderLessons));
+function lsDoc(plan){const ls=LESSONS.find(x=>x.id===LS.id),gv=+$("#lsGoal").value;
+  const nm=(plan?"Stundenbild_":"Stillarbeit_")+ls.t+(ls.goal&&gv?"_Ziel"+gv:"")+(!plan&&$("#lsSol").checked?"_Loesung":"");
+  return {doc:makeDoc(plan?lessonPlanSheet():lessonSheet(),nm.replace(/_/g," ")),fname:fileName(nm)};}
+$("#lsPrint").addEventListener("click",()=>printDoc(lsDoc(false).doc,$("#lsMsg")));
+$("#lsSave").addEventListener("click",()=>{const {doc,fname}=lsDoc(false);saveDoc(doc,fname,$("#lsMsg"));});
+$("#lpPrint").addEventListener("click",()=>printDoc(lsDoc(true).doc,$("#lsMsg")));
+$("#lpSave").addEventListener("click",()=>{const {doc,fname}=lsDoc(true);saveDoc(doc,fname,$("#lsMsg"));});
+
 /* ================= Ablauf ================= */
 $("#flow").innerHTML=PHASES.map((p,i)=>`<div class="ph"><span class="no">${i+1}</span><h3>${p[0]}</h3><p>${p[1]}</p><span class="tool">Werkzeug: ${p[2]}</span></div>`).join("");
 
@@ -1200,7 +1616,7 @@ function setMode(m){
   $("#wfGoalBar").hidden=m!=="wf";
 }
 function applyView(){
-  const m=location.hash.slice(1).match(/^schueler(?:-(detektiv|nummer|wf|kreuz|wort)(?:-(\d{1,2}))?)?$/);
+  const m=location.hash.slice(1).match(/^schueler(?:-(detektiv|nummer|wf|kreuz|wort|lesen)(?:-(\d{1,2}))?)?$/);
   const st=!!m;
   document.body.classList.toggle("student",st);
   document.querySelector(".student-only").hidden=!st;
@@ -1209,7 +1625,10 @@ function applyView(){
     setTab("uebungen");
     if(m[1]){
       const n=+m[2], okN=n>=1&&n<=17;
-      if(m[1]==="kreuz"||m[1]==="wort"){
+      if(m[1]==="lesen"){
+        if(okN){S.goal=S.wfGoal=n;}
+        renderAll(); setTab("still");
+      }else if(m[1]==="kreuz"||m[1]==="wort"){
         if(okN){S.goal=S.wfGoal=n;}
         RZ.type=m[1]; RZ.puz=null; renderAll(); setTab("raetsel");
       }else{
@@ -1229,6 +1648,11 @@ function renderAll(){
   $("#wsGoal").innerHTML=opts; $("#wsGoal").value=S.goal;
   $("#wfGoal").innerHTML=opts; $("#wfGoal").value=S.wfGoal;
   $("#rzGoal").innerHTML=opts; $("#rzGoal").value=S.goal;
+  $("#gmGoal").innerHTML=opts; $("#gmGoal").value=S.goal;
+  if($("#lsGoal").options.length&&$("#lsGoal").value!=="0") $("#lsGoal").value=S.goal;
+  renderRead();
+  if(S.tab==="spiele") gmRender();
+  if(S.tab==="still") renderLessons();
   if(!RZ.puz||RZ.puz.goal!==S.goal) newPuzzle();
   renderTypes();
   if(S.tab==="blaetter") renderSheet();
