@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Projektideen, Arbeitsblätter, Rätsel, Spiele, Stillarbeit und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
+<meta name="description" content="Projektideen, Arbeitsblätter (auch digital am iPad), Rätsel, Spiele, Klassenspiele, Stillarbeit und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
 <title>Freiday-Werkstatt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -223,6 +223,118 @@ body:not(.student) .read-card{order:2}
 .lesson-info td:first-child{white-space:nowrap;font-weight:700;padding-right:10px;font-variant-numeric:tabular-nums}
 .lesson-info ul{margin:0;padding-left:18px}
 
+/* Digital ausfüllen */
+.dg-bar{display:flex;flex-wrap:wrap;gap:12px}
+.dg-bar .field{flex:1 1 240px}
+.dg-bar select{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:9px 10px;width:100%}
+.dg-qr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.dg-form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:16px}
+.dg-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.dg-head h2{font-size:clamp(24px,3vw,32px)}
+.dg-head .gbadge{color:#fff;border-radius:8px;padding:4px 12px;font-weight:700}
+.dg-sub{color:var(--muted);margin:2px 0 0}
+.dg-f{display:flex;flex-direction:column;gap:6px}
+.dg-f>label,.dg-f>.dg-l{font-weight:700;font-size:17px}
+.dg-f .hint{font-weight:400;color:var(--muted);font-size:14px}
+.dg-f input[type=text],.dg-f textarea,.dg-f select,.dg-tbl input{font:inherit;font-size:17px;border:1.5px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px 12px;width:100%;color:var(--ink)}
+.dg-f textarea{resize:vertical;line-height:1.5;min-height:3.2em}
+.dg-f input:focus,.dg-f textarea:focus,.dg-tbl input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.dg-row2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.dg-tblw{overflow-x:auto}
+.dg-tbl{border-collapse:collapse;width:100%;min-width:460px}
+.dg-tbl th{text-align:left;font-size:14px;color:var(--muted);padding:4px 6px}
+.dg-tbl td{padding:3px}
+.dg-tbl td.cb{width:56px;text-align:center}
+.dg-tbl input[type=checkbox],.dg-checks input{width:24px;height:24px;accent-color:var(--accent)}
+.dg-checks{display:flex;flex-wrap:wrap;gap:10px 18px}
+.dg-checks label{display:flex;gap:8px;align-items:center;font-size:17px}
+.dg-faces{display:flex;gap:10px;flex-wrap:wrap}
+.dg-faces button{font-size:34px;line-height:1;border:2px solid var(--line);background:var(--surface-2);border-radius:14px;padding:8px 14px;filter:grayscale(.6)}
+.dg-faces button[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 18%,var(--surface));filter:none}
+.dg-scale{display:flex;gap:8px}
+.dg-scale button{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);background:var(--surface-2);font-size:19px;font-weight:700}
+.dg-scale button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.dg-rf{display:flex;flex-direction:column;gap:8px}
+.dg-rf .it{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:8px 10px;border-radius:8px;background:var(--surface-2)}
+.dg-rf .it span{flex:1 1 260px}
+.dg-rf .it.ok{box-shadow:inset 4px 0 0 var(--good)}
+.dg-rf .it.no{box-shadow:inset 4px 0 0 var(--bad)}
+.dg-pill{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden}
+.dg-pill button{border:0;background:transparent;padding:7px 14px;font-weight:700}
+.dg-pill button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.dg-info{background:var(--surface-2);border-radius:10px;padding:14px 16px;font-size:18px;line-height:1.6}
+.dg-draw{display:flex;flex-direction:column;gap:6px}
+.dg-draw canvas{width:100%;border:1.5px solid var(--line);border-radius:10px;background:#fff;touch-action:none;display:block}
+.dg-pen{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.dg-pen button.c{width:34px;height:34px;border-radius:50%;border:3px solid transparent}
+.dg-pen button.c[aria-pressed="true"]{border-color:var(--sun)}
+.dg-comic{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.dg-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-top:1px solid var(--line);padding-top:14px}
+.dg-saved{color:var(--muted);font-size:14px}
+.dg-confirm{background:var(--surface-2);border:1.5px solid var(--bad);border-radius:10px;padding:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* Klassenspiel – Bühne mit eigenem, bewusst dunklem Look */
+.kg-set{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:12px}
+.kg-set select{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px}
+.kg-names{display:flex;flex-wrap:wrap;gap:8px}
+.kg-names input{border:2px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px;font:inherit;width:170px}
+.stage-show{position:fixed;inset:0;z-index:60;background:radial-gradient(ellipse at 50% 0%,#17463a 0%,#0b1f19 55%,#06120e 100%);color:#f2f7f4;display:flex;flex-direction:column;
+  padding:max(14px,env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) max(14px,env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));overflow:auto;font-family:var(--f-body);color-scheme:dark}
+.sh-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sh-title{font-family:var(--f-display);font-weight:800;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em}
+.sh-title span{background:#f0b429;color:#2a1f00;border-radius:5px;padding:0 .18em}
+.sh-btn{border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#f2f7f4;border-radius:999px;padding:7px 14px;font-weight:700;font-size:15px}
+.sh-btn:hover{background:rgba(255,255,255,.16)}
+.sh-btn:disabled{opacity:.3;cursor:default}
+.sh-btn.gold{background:#f0b429;color:#2a1f00;border-color:#f0b429}
+.sh-main{flex:1;display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:22px;margin-top:14px;min-height:0}
+.sh-main.solo{grid-template-columns:minmax(0,1fr)}
+@media (max-width:820px){.sh-main{grid-template-columns:minmax(0,1fr)}}
+.sh-play{display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.4vh,26px);min-width:0}
+.sh-meta{display:flex;justify-content:space-between;gap:10px;color:#a9cbbd;font-weight:700;font-size:clamp(14px,1.6vw,19px);flex-wrap:wrap}
+.sh-q{border:2px solid #3f8f73;background:linear-gradient(180deg,#123a2f,#0c271f);border-radius:22px;padding:clamp(16px,3vh,34px) clamp(18px,3vw,40px);text-align:center;font-family:var(--f-display);font-weight:700;font-size:clamp(22px,3.4vw,46px);line-height:1.2;text-wrap:balance}
+.sh-q small{display:block;font-family:var(--f-body);font-weight:400;font-size:.5em;color:#a9cbbd;margin-bottom:.4em}
+.sh-ans{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vw,18px)}
+@media (max-width:620px){.sh-ans{grid-template-columns:1fr}}
+.sh-a{border:2px solid #3f8f73;background:#0f2e25;color:#f2f7f4;border-radius:999px;padding:clamp(10px,1.8vh,18px) 22px;font-size:clamp(17px,2.2vw,28px);font-weight:700;text-align:left;display:flex;gap:14px;align-items:center;min-height:clamp(54px,8vh,84px)}
+.sh-a b{color:#f0b429;font-family:var(--f-display);font-size:1.05em}
+.sh-a:hover:not(:disabled){border-color:#f0b429}
+.sh-a.lock{background:#f0b429;color:#2a1f00;border-color:#f0b429}
+.sh-a.lock b{color:#2a1f00}
+.sh-a.right{background:#2e9e62;border-color:#5fe39a;color:#fff;animation:pulse .5s 3}
+.sh-a.right b,.sh-a.wrong b{color:#fff}
+.sh-a.wrong{background:#b8352a;border-color:#ff8a7a;color:#fff}
+.sh-a.gone{visibility:hidden}
+.sh-a:disabled{cursor:default}
+@keyframes pulse{50%{transform:scale(1.03)}}
+.sh-ctrl{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.sh-ctrl .sh-btn{font-size:clamp(15px,1.6vw,20px);padding:10px 22px}
+.sh-ladder{display:flex;flex-direction:column-reverse;gap:3px;font-variant-numeric:tabular-nums;font-size:clamp(13px,1.35vw,17px);align-self:center}
+.sh-ladder div{display:flex;justify-content:space-between;padding:3px 12px;border-radius:999px;color:#a9cbbd}
+.sh-ladder div span:first-child{min-width:2.4ch;text-align:right;margin-right:18px;opacity:.75}
+.sh-ladder div.safe{color:#fff;font-weight:700}
+.sh-ladder div.done{color:#5fe39a}
+.sh-ladder div.cur{background:#f0b429;color:#2a1f00;font-weight:800}
+.sh-jokers{display:flex;gap:8px;justify-content:center}
+.sh-jokers button{width:64px;height:44px;border-radius:999px;border:2px solid #f0b429;background:transparent;color:#f0b429;font-weight:800;font-size:15px}
+.sh-jokers button:disabled{opacity:.25;text-decoration:line-through}
+.sh-pop{border:2px dashed #f0b429;border-radius:16px;padding:14px 18px;text-align:center;font-size:clamp(17px,2vw,24px)}
+.sh-pop b{color:#f0b429;font-family:var(--f-display)}
+.sh-end{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;flex:1}
+.sh-end .pts{font-family:var(--f-display);font-weight:800;font-size:clamp(46px,9vw,110px);color:#f0b429;line-height:1;font-variant-numeric:tabular-nums}
+.sh-end h2{font-size:clamp(26px,4vw,48px)}
+.sh-teams{display:flex;flex-direction:column;gap:10px;align-self:center;width:100%}
+.sh-team{border-radius:14px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:clamp(16px,1.7vw,21px);color:#fff}
+.sh-team .sc{font-family:var(--f-display);font-size:1.6em;font-variant-numeric:tabular-nums}
+.sh-award{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.sh-award button{border:0;border-radius:999px;padding:10px 18px;font-weight:800;color:#fff;font-size:clamp(15px,1.6vw,19px)}
+.sh-award button[aria-pressed="true"]{outline:4px solid #f0b429;outline-offset:2px}
+.sh-timer{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,2.6vw,34px);color:#f0b429;font-variant-numeric:tabular-nums;min-width:2.5em;text-align:right}
+.sh-timer.low{color:#ff8a7a}
+.podium{display:flex;align-items:flex-end;gap:12px;justify-content:center}
+.podium div{width:clamp(90px,14vw,170px);border-radius:12px 12px 0 0;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:10px;color:#fff;font-weight:800;text-align:center}
+.podium div span{font-family:var(--f-display);font-size:clamp(24px,3vw,40px)}
+
 /* Ablauf */
 .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;counter-reset:ph}
 .ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
@@ -239,7 +351,7 @@ body:not(.student) .read-card{order:2}
 a{color:var(--accent)}
 
 /* Schüleransicht */
-body.student .shelf, body.student .teacher-only, body.student .tab:not([data-tab="uebungen"]):not([data-tab="raetsel"]):not([data-tab="still"]){display:none!important}
+body.student .shelf, body.student .teacher-only, body.student .tab:not([data-tab="uebungen"]):not([data-tab="raetsel"]):not([data-tab="still"]):not([data-tab="digital"]){display:none!important}
 body.student .layout{grid-template-columns:minmax(0,1fr)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -354,6 +466,8 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
         <button class="tab" role="tab" data-tab="raetsel" aria-selected="false">Rätsel</button>
         <button class="tab" role="tab" data-tab="spiele" aria-selected="false">Spiele</button>
         <button class="tab" role="tab" data-tab="still" aria-selected="false">Stillarbeit</button>
+        <button class="tab" role="tab" data-tab="digital" aria-selected="false">Digital ausfüllen</button>
+        <button class="tab" role="tab" data-tab="klasse" aria-selected="false">Klassenspiel</button>
         <button class="tab" role="tab" data-tab="ablauf" aria-selected="false">Ablauf &amp; Planung</button>
       </div>
 
@@ -529,6 +643,48 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
         </div>
       </section>
 
+      <!-- Digital ausfüllen -->
+      <section class="panel" id="p-digital" hidden>
+        <div class="dg-bar" id="dgBar">
+          <div class="field"><label class="lbl" for="dgSheet">Arbeitsblatt</label><select id="dgSheet"></select></div>
+          <div class="field" id="dgGoalF"><label class="lbl" for="dgGoal">Ziel</label><select id="dgGoal"></select></div>
+        </div>
+        <div class="dg-qr teacher-only">
+          <div class="qr-code" id="dgQr" aria-label="QR-Code"></div>
+          <div class="qr-side">
+            <h3>Dieses Blatt aufs iPad schicken</h3>
+            <p class="note" style="margin:0">Die Kinder scannen den Code und landen direkt bei diesem Blatt. Was sie eintragen, bleibt auf ihrem iPad gespeichert, auch wenn sie die Seite schließen. Mit „Abgeben“ entsteht eine A4-Datei, die sie dir schicken (z. B. über AirDrop, Teams oder Mail).</p>
+            <div class="qr-url"><code id="dgUrl"></code><button class="btn" type="button" id="dgCopy">Link kopieren</button><button class="btn sun" type="button" id="dgBig">Groß zeigen</button></div>
+          </div>
+        </div>
+        <form class="dg-form" id="dgForm" autocomplete="off"></form>
+      </section>
+
+      <!-- Klassenspiel -->
+      <section class="panel" id="p-klasse" hidden>
+        <div class="ex-pick" id="kgPick">
+          <button class="ex-card" type="button" data-m="show" aria-pressed="true"><b>Zukunfts-Show</b><span>15 Fragen, immer schwieriger, mit drei Jokern. Ein Kind spielt, die Klasse fiebert mit.</span></button>
+          <button class="ex-card" type="button" data-m="team" aria-pressed="false"><b>Team-Quiz</b><span>2 bis 5 Teams spielen gegeneinander. Du vergibst die Punkte.</span></button>
+        </div>
+        <div class="kg-set" id="kgShowSet">
+          <p class="note" style="margin:0">Stufe 1–5: Nummern und Namen der Ziele · 6–10: Fachwörter · 11–15: Projekte und Aussagen. Sicherheitsstufen bei Frage 5 und 10.</p>
+        </div>
+        <div class="kg-set" id="kgTeamSet" hidden>
+          <div class="bar">
+            <div class="field"><label class="lbl" for="kgTeams">Teams</label><select id="kgTeams"><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+            <div class="field"><label class="lbl" for="kgCount">Fragen</label><select id="kgCount"><option>10</option><option selected>15</option><option>20</option><option>30</option></select></div>
+            <div class="field"><label class="lbl" for="kgSrc">Fragen aus</label><select id="kgSrc"><option value="0">allen Zielen</option></select></div>
+            <div class="field"><label class="lbl" for="kgTime">Zeit pro Frage</label><select id="kgTime"><option value="0">ohne Zeit</option><option value="20">20 Sekunden</option><option value="30" selected>30 Sekunden</option><option value="45">45 Sekunden</option></select></div>
+          </div>
+          <div class="kg-names" id="kgNames"></div>
+        </div>
+        <div class="bar">
+          <button class="btn primary" type="button" id="kgStart" style="font-size:18px;padding:12px 28px">Spiel starten</button>
+          <label class="check"><input type="checkbox" id="kgSound" checked> Töne</label>
+        </div>
+        <p class="note">Tipp: Im Spiel geht auch alles mit der Tastatur – <b>A</b>–<b>D</b> wählen, <b>Enter</b> auflösen und weiter.</p>
+      </section>
+
       <!-- Ablauf -->
       <section class="panel" id="p-ablauf" hidden>
         <div class="facts">
@@ -553,6 +709,8 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
     </main>
   </div>
 </div>
+
+<div class="stage-show" id="show" hidden role="dialog" aria-label="Klassenspiel"></div>
 
 <div class="qr-overlay" id="qrOverlay" hidden role="dialog" aria-label="QR-Code groß">
   <div class="qr-card">
@@ -774,11 +932,12 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setT
 function setTab(id){
   S.tab=id;
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===id));
-  ["ideen","blaetter","uebungen","raetsel","spiele","still","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
+  ["ideen","blaetter","uebungen","raetsel","spiele","still","digital","klasse","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
   if(id==="blaetter") renderSheet();
   if(id==="raetsel"&&RZ.puz&&!RZ.fitted) renderPuzzle();
   if(id==="spiele") gmRender();
   if(id==="still") renderLessons();
+  if(id==="digital") renderDigital();
   if(id!=="still"&&speaking){speechSynthesis.cancel();speaking=false;}
 }
 
@@ -966,10 +1125,10 @@ function qrLabel(){
   if(v==="schueler-kreuz"||v==="schueler-wort") return `${v==="schueler-kreuz"?"Kreuzworträtsel":"Wortsuche"} – Ziel ${S.goal}: ${goal(S.goal).name}`;
   return v==="schueler-detektiv"?"Ziel-Detektiv":v==="schueler-nummer"?"Nummern-Profi":v==="schueler-wf"?`Wahr oder falsch – Ziel ${S.wfGoal}: ${goal(S.wfGoal).name}`:"Freiday-Übungen";
 }
-function drawQR(el,size){
+function drawQR(el,size,text){
   el.innerHTML="";
   if(typeof QRCode==="undefined"){el.textContent="QR-Code konnte nicht geladen werden.";return null;}
-  new QRCode(el,{text:qrLink(),width:size,height:size,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});
+  new QRCode(el,{text:text||qrLink(),width:size,height:size,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});
   const c=el.querySelector("canvas"); return c?c.toDataURL("image/png"):null;
 }
 function renderQR(){
@@ -1606,6 +1765,389 @@ $("#lsSave").addEventListener("click",()=>{const {doc,fname}=lsDoc(false);saveDo
 $("#lpPrint").addEventListener("click",()=>printDoc(lsDoc(true).doc,$("#lsMsg")));
 $("#lpSave").addEventListener("click",()=>{const {doc,fname}=lsDoc(true);saveDoc(doc,fname,$("#lsMsg"));});
 
+/* ================= Klassenspiel ================= */
+const KG={mode:"show"};
+const LADDER=[50,100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,500000,1000000];
+const SAFE=[4,9];
+const fmt=n=>n.toLocaleString("de-AT");
+/* Fragen in drei Schwierigkeiten */
+function mkQ(kind,onlyGoal){
+  const others=(n,k)=>shuffle(G.filter(o=>o.n!==n)).slice(0,k);
+  const g=onlyGoal?goal(onlyGoal):G[Math.floor(Math.random()*17)];
+  if(kind==="nummer"){const o=others(g.n,3);return {q:`Welche Nummer hat das Ziel „${g.name}“?`,a:shuffle([g,...o]).map(x=>({t:"Ziel "+x.n,ok:x.n===g.n}))};}
+  if(kind==="name"){const o=others(g.n,3);return {q:`Wie heißt Ziel Nummer ${g.n}?`,a:shuffle([g,...o]).map(x=>({t:x.name,ok:x.n===g.n}))};}
+  if(kind==="wort"||kind==="wort2"){
+    const [w,c]=W[g.n][Math.floor(Math.random()*W[g.n].length)];
+    const pool=kind==="wort2"?W[g.n].map(x=>x[0]).filter(x=>x!==w):shuffle(G.filter(o=>o.n!==g.n)).flatMap(o=>W[o.n].map(x=>x[0]));
+    const d=shuffle([...new Set(pool)].filter(x=>x!==w)).slice(0,3);
+    return {q:c,sub:"Welches Wort ist gesucht?",a:shuffle([w,...d]).map(x=>({t:x,ok:x===w}))};}
+  if(kind==="projekt"){const i=g.i[Math.floor(Math.random()*g.i.length)];const o=others(g.n,3);
+    return {q:i[0],sub:"Zu welchem Ziel passt dieses Projekt?",a:shuffle([g,...o]).map(x=>({t:x.name,ok:x.n===g.n}))};}
+  if(kind==="aussage"){
+    const tru=shuffle((onlyGoal?[g]:G).flatMap(x=>x.w.filter(w=>w[1])))[0];
+    const fal=shuffle(G.flatMap(x=>x.w.filter(w=>!w[1]&&w!==tru))).slice(0,3);
+    return {q:"Welche Aussage stimmt?",a:shuffle([tru,...fal]).map(w=>({t:w[0],ok:w[1]})),ex:tru[2]};}
+}
+const SHOW_KINDS=["nummer","nummer","name","name","name","wort","wort","wort","wort2","wort2","projekt","projekt","aussage","aussage","aussage"];
+
+/* Töne: kurze, selbst erzeugte Signale */
+let actx=null;
+function tone(seq){
+  if(!$("#kgSound").checked) return;
+  try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    let t=actx.currentTime;
+    seq.forEach(([f,d,type="sine",vol=.18])=>{const o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;
+      g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(actx.destination);o.start(t);o.stop(t+d);t+=d*.85;});
+  }catch(e){}
+}
+const SND={lock:()=>tone([[220,.35,"triangle"]]),right:()=>tone([[523,.16],[659,.16],[784,.3]]),wrong:()=>tone([[180,.5,"sawtooth",.12]]),tick:()=>tone([[880,.05,"square",.05]]),win:()=>tone([[523,.15],[659,.15],[784,.15],[1047,.5]])};
+
+function openShow(){
+  const el=$("#show"); el.hidden=false;
+  try{document.documentElement.requestFullscreen?.().catch(()=>{});}catch(e){}
+  document.body.style.overflow="hidden";
+}
+function closeShow(){
+  clearInterval(KG.timer); $("#show").hidden=true; document.body.style.overflow="";
+  if(document.fullscreenElement) document.exitFullscreen?.().catch(()=>{});
+  $("#kgStart").focus();
+}
+function shTop(title){
+  return `<div class="sh-top"><div class="sh-title">Frei<span>day</span> · ${title}</div>
+    <div class="bar"><button class="sh-btn" type="button" data-act="fs">Vollbild</button><button class="sh-btn" type="button" data-act="close">Beenden</button></div></div>`;
+}
+$("#show").addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]"); if(!b) return;
+  const a=b.dataset.act;
+  if(a==="close"){
+    if(KG.state==="end"||KG.confirmClose){KG.confirmClose=false;closeShow();}
+    else{KG.confirmClose=true;b.textContent="Wirklich beenden?";setTimeout(()=>{KG.confirmClose=false;if(b.isConnected)b.textContent="Beenden";},3000);}
+    return;}
+  if(a==="fs"){try{if(document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});else document.documentElement.requestFullscreen?.().catch(()=>{});}catch(e){}return;}
+  KG.mode==="show"?showAct(a,b):teamAct(a,b);
+});
+document.addEventListener("keydown",e=>{
+  if($("#show").hidden||e.target.closest("input,textarea,select")) return;
+  const k=e.key.toLowerCase();
+  const idx="abcd".indexOf(k)>=0?"abcd".indexOf(k):"1234".indexOf(k);
+  if(idx>=0){const btn=$("#show").querySelectorAll(".sh-a")[idx];if(btn&&!btn.disabled)btn.click();return;}
+  if(e.key==="Enter"){const b=$("#show").querySelector("[data-primary]");if(b&&!b.disabled){e.preventDefault();b.click();}}
+});
+
+/* --- Zukunfts-Show --- */
+function startShow(){
+  KG.mode="show";KG.state="q";KG.i=0;KG.lock=null;KG.jok={fifty:true,klasse:true,freund:true};KG.pop="";
+  KG.qs=SHOW_KINDS.map(k=>mkQ(k));
+  openShow(); renderShow();
+}
+function renderShow(){
+  const el=$("#show");
+  if(KG.state==="end"){
+    const won=KG.result;
+    el.innerHTML=shTop("Zukunfts-Show")+`<div class="sh-end"><h2>${KG.endTitle}</h2><div class="pts">${fmt(won)}</div><p style="font-size:clamp(17px,2vw,24px);margin:0">Zukunftspunkte</p>
+      <div class="bar" style="justify-content:center"><button class="sh-btn gold" type="button" data-act="again" data-primary>Neues Spiel</button></div></div>`;
+    return;}
+  const q=KG.qs[KG.i], st=KG.state;
+  const ladder=LADDER.map((v,i)=>`<div class="${i===KG.i?"cur":i<KG.i?"done":""} ${SAFE.includes(i)?"safe":""}"><span>${i+1}</span><span>${fmt(v)}</span></div>`).join("");
+  el.innerHTML=shTop("Zukunfts-Show")+`<div class="sh-main"><div class="sh-play">
+    <div class="sh-meta"><span>Frage ${KG.i+1} von 15</span><span>um ${fmt(LADDER[KG.i])} Zukunftspunkte</span></div>
+    <div class="sh-q">${q.sub?`<small>${esc(q.sub)}</small>`:""}${esc(q.q)}</div>
+    <div class="sh-ans">${q.a.map((a,i)=>`<button class="sh-a ${a.gone?"gone":""} ${KG.lock===i?"lock":""} ${st!=="q"&&a.ok?"right":""} ${st==="wrong"&&KG.lock===i?"wrong":""}" type="button" data-act="pick" data-i="${i}" ${st!=="q"?"disabled":""}><b>${"ABCD"[i]}</b><span>${esc(a.t)}</span></button>`).join("")}</div>
+    ${KG.pop?`<div class="sh-pop">${KG.pop}</div>`:""}
+    <div class="sh-ctrl">${
+      st==="q"?`<button class="sh-btn gold" type="button" data-act="reveal" data-primary ${KG.lock===null?"disabled":""}>Auflösen</button><button class="sh-btn" type="button" data-act="quit">Aussteigen mit ${fmt(KG.i?LADDER[KG.i-1]:0)}</button>`
+      :st==="right"?`<button class="sh-btn gold" type="button" data-act="next" data-primary>${KG.i===14?"Zum Ergebnis":"Nächste Frage"}</button>`
+      :`<button class="sh-btn gold" type="button" data-act="toend" data-primary>Weiter</button>`}</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;justify-content:center">
+      <div class="sh-jokers"><button type="button" data-act="fifty" title="Zwei falsche Antworten verschwinden" ${KG.jok.fifty&&st==="q"?"":"disabled"}>50:50</button><button type="button" data-act="klasse" title="Die Klasse stimmt ab" ${KG.jok.klasse&&st==="q"?"":"disabled"}>Klasse</button><button type="button" data-act="freund" title="Ein Kind darf helfen" ${KG.jok.freund&&st==="q"?"":"disabled"}>Freund</button></div>
+      <div class="sh-ladder">${ladder}</div></div></div>`;
+}
+function showAct(a,b){
+  const q=KG.qs[KG.i];
+  if(a==="pick"&&KG.state==="q"){const i=+b.dataset.i;if(q.a[i].gone)return;KG.lock=i;SND.lock();renderShow();return;}
+  if(a==="reveal"&&KG.lock!==null){clearInterval(KG.timer);const ok=q.a[KG.lock].ok;KG.state=ok?"right":"wrong";KG.pop=ok?(q.ex?`<b>Richtig!</b> ${esc(q.ex)}`:"<b>Richtig!</b>"):`<b>Leider falsch.</b>${q.ex?" "+esc(q.ex):""}`;ok?SND.right():SND.wrong();renderShow();return;}
+  if(a==="next"){if(KG.i===14){KG.state="end";KG.result=LADDER[14];KG.endTitle="Gewonnen! Alle 15 Fragen richtig!";SND.win();}else{KG.i++;KG.state="q";KG.lock=null;KG.pop="";}renderShow();return;}
+  if(a==="toend"){const safe=SAFE.filter(s=>s<KG.i).pop();KG.state="end";KG.result=safe===undefined?0:LADDER[safe];KG.endTitle=KG.result?"Gesichert bleiben":"Schade – nächstes Mal!";renderShow();return;}
+  if(a==="quit"){KG.state="end";KG.result=KG.i?LADDER[KG.i-1]:0;KG.endTitle="Klug ausgestiegen!";renderShow();return;}
+  if(a==="again"){startShow();return;}
+  if(a==="fifty"){KG.jok.fifty=false;shuffle(q.a.map((x,i)=>i).filter(i=>!q.a[i].ok)).slice(0,2).forEach(i=>q.a[i].gone=true);if(KG.lock!==null&&q.a[KG.lock].gone)KG.lock=null;renderShow();return;}
+  if(a==="klasse"){KG.jok.klasse=false;KG.pop="<b>Klassen-Joker:</b> Alle stimmen ab! Hand hoch für A … B … C … D. Die Kandidatin oder der Kandidat entscheidet dann selbst.";renderShow();return;}
+  if(a==="freund"){KG.jok.freund=false;let t=30;KG.pop=`<b>Freundes-Joker:</b> Such dir ein Kind aus. Ihr habt <b id="frT">30</b> Sekunden.`;renderShow();
+    clearInterval(KG.timer);KG.timer=setInterval(()=>{t--;const x=document.getElementById("frT");if(x)x.textContent=t;if(t<=5&&t>0)SND.tick();if(t<=0){clearInterval(KG.timer);if(x)x.textContent="0 – Zeit ist um!";}},1000);return;}
+}
+
+/* --- Team-Quiz --- */
+const TEAMCOL=["#d33a31","#1e88cf","#e3b10f","#52ab3d","#9b2242"];
+function renderTeamNames(){
+  const n=+$("#kgTeams").value, old=[...document.querySelectorAll("#kgNames input")].map(i=>i.value);
+  const def=["Team Sonne","Team Wasser","Team Wind","Team Wald","Team Erde"];
+  $("#kgNames").innerHTML=Array.from({length:n},(_,i)=>`<input id="kgN${i}" type="text" value="${esc(old[i]||def[i])}" aria-label="Name Team ${i+1}" style="border-color:${TEAMCOL[i]}">`).join("");
+}
+$("#kgTeams").addEventListener("change",renderTeamNames);
+function startTeam(){
+  KG.mode="team"; const n=+$("#kgTeams").value, cnt=+$("#kgCount").value, src=+$("#kgSrc").value;
+  KG.teams=Array.from({length:n},(_,i)=>({name:($(`#kgN${i}`)?.value||"Team "+(i+1)).trim()||"Team "+(i+1),c:TEAMCOL[i],s:0}));
+  const kinds=src?["wort2","wort2","aussage","projekt","wort2"]:["nummer","name","wort","wort2","projekt","aussage"];
+  const seen=new Set(); KG.qs=[];
+  for(let k=0;KG.qs.length<cnt&&k<cnt*20;k++){const q=mkQ(kinds[KG.qs.length%kinds.length],src||0);if(seen.has(q.q))continue;seen.add(q.q);KG.qs.push(q);}
+  KG.i=0;KG.state="q";KG.award=new Set();KG.time=+$("#kgTime").value;
+  openShow(); renderTeam(); startTimer();
+}
+function startTimer(){
+  clearInterval(KG.timer); if(!KG.time) return;
+  KG.left=KG.time;
+  KG.timer=setInterval(()=>{KG.left--;const t=document.getElementById("shT");if(t){t.textContent=KG.left;t.classList.toggle("low",KG.left<=5);}
+    if(KG.left<=5&&KG.left>0)SND.tick();if(KG.left<=0){clearInterval(KG.timer);SND.wrong();}},1000);
+}
+function renderTeam(){
+  const el=$("#show");
+  const board=`<div class="sh-teams">${[...KG.teams].map(t=>`<div class="sh-team" style="background:${t.c}"><span>${esc(t.name)}</span><span class="sc">${t.s}</span></div>`).join("")}</div>`;
+  if(KG.state==="end"){
+    const r=[...KG.teams].sort((a,b)=>b.s-a.s), top=r[0].s, winners=r.filter(t=>t.s===top);
+    const pod=[r[1],r[0],r[2]].filter(Boolean), hts={0:"62%",1:"100%",2:"42%"};
+    el.innerHTML=shTop("Team-Quiz")+`<div class="sh-end"><h2>${winners.length>1?"Unentschieden!":"Gewonnen hat "+esc(r[0].name)+"!"}</h2>
+      <div class="podium" style="height:clamp(160px,30vh,280px)">${pod.map(t=>{const place=r.indexOf(t);return `<div style="background:${t.c};height:${hts[place===0?1:place===1?0:2]}"><span>${t.s}</span>${esc(t.name)}</div>`;}).join("")}</div>
+      ${r.length>3?`<p style="margin:0">${r.slice(3).map(t=>`${esc(t.name)}: ${t.s}`).join(" · ")}</p>`:""}
+      <div class="bar" style="justify-content:center"><button class="sh-btn gold" type="button" data-act="again" data-primary>Neues Spiel</button></div></div>`;
+    SND.win(); return;}
+  const q=KG.qs[KG.i], rev=KG.state==="rev";
+  el.innerHTML=shTop("Team-Quiz")+`<div class="sh-main"><div class="sh-play">
+    <div class="sh-meta"><span>Frage ${KG.i+1} von ${KG.qs.length}</span>${KG.time?`<span class="sh-timer" id="shT">${rev?"":KG.left??KG.time}</span>`:""}</div>
+    <div class="sh-q">${q.sub?`<small>${esc(q.sub)}</small>`:""}${esc(q.q)}</div>
+    <div class="sh-ans">${q.a.map((a,i)=>`<button class="sh-a ${rev&&a.ok?"right":""}" type="button" disabled tabindex="-1"><b>${"ABCD"[i]}</b><span>${esc(a.t)}</span></button>`).join("")}</div>
+    ${rev&&q.ex?`<div class="sh-pop">${esc(q.ex)}</div>`:""}
+    ${rev?`<div class="sh-pop" style="border-style:solid">Welche Teams hatten recht? <div class="sh-award" style="margin-top:10px">${KG.teams.map((t,i)=>`<button type="button" data-act="award" data-i="${i}" aria-pressed="${KG.award.has(i)}" style="background:${t.c}">${esc(t.name)}${KG.award.has(i)?" +1":""}</button>`).join("")}</div></div>`:""}
+    <div class="sh-ctrl">${rev?`<button class="sh-btn gold" type="button" data-act="tnext" data-primary>${KG.i+1<KG.qs.length?"Nächste Frage":"Zum Ergebnis"}</button>`:`<button class="sh-btn gold" type="button" data-act="trev" data-primary>Lösung zeigen</button>`}</div>
+    </div>${board}</div>`;
+}
+function teamAct(a,b){
+  if(a==="trev"){clearInterval(KG.timer);KG.state="rev";KG.award=new Set();SND.right();renderTeam();return;}
+  if(a==="award"){const i=+b.dataset.i;if(KG.award.has(i)){KG.award.delete(i);KG.teams[i].s--;}else{KG.award.add(i);KG.teams[i].s++;}renderTeam();return;}
+  if(a==="tnext"){if(KG.i+1>=KG.qs.length){KG.state="end";renderTeam();return;}KG.i++;KG.state="q";KG.left=KG.time;renderTeam();startTimer();return;}
+  if(a==="again"){startTeam();return;}
+}
+$("#kgPick").addEventListener("click",e=>{const b=e.target.closest(".ex-card");if(!b)return;KG.mode=b.dataset.m;
+  $("#kgPick").querySelectorAll(".ex-card").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  $("#kgShowSet").hidden=KG.mode!=="show";$("#kgTeamSet").hidden=KG.mode!=="team";});
+$("#kgStart").addEventListener("click",()=>{KG.mode==="show"?startShow():startTeam();});
+$("#kgSrc").innerHTML+=G.map(g=>`<option value="${g.n}">nur Ziel ${g.n} – ${esc(g.name)}</option>`).join("");
+renderTeamNames();
+
+/* ================= Digital ausfüllen ================= */
+const DS=[
+ {id:"steckbrief",t:"Projektsteckbrief",grp:"Projektarbeit",goal:true,sub:"Plant euer Projekt gemeinsam.",f:[
+  {k:"titel",ty:"text",l:"Unser Projekt heißt"},
+  {row:[{k:"team",ty:"area",l:"Unser Team",r:3},{k:"problem",ty:"area",l:"Das Problem",h:"Was stört uns? Was wollen wir ändern?",r:3}]},
+  {k:"idee",ty:"area",l:"Unsere Idee",h:"Was machen wir genau?",r:3},
+  {k:"erfolg",ty:"area",l:"Daran merken wir, dass es geklappt hat",r:2},
+  {k:"schritte",ty:"table",l:"Unsere Schritte",cols:["Was?","Wer?","Bis wann?"],check:"erledigt",rows:6},
+  {row:[{k:"material",ty:"area",l:"Material",h:"Was brauchen wir?",r:3},{k:"hilfe",ty:"area",l:"Hilfe von",h:"Wer kann uns unterstützen?",r:3}]},
+  {k:"zeigen",ty:"checks",l:"So zeigen wir unser Ergebnis",o:["Plakat","Präsentation","Video","Ausstellung","Aktion in der Schule","Zeitungsartikel"]}]},
+ {id:"ideen",t:"Ideenfinder",grp:"Projektarbeit",goal:true,sub:"Sammelt so viele Ideen wie möglich.",f:[
+  {k:"ideen",ty:"list",l:"Unsere Ideen",n:6},
+  {k:"stoert",ty:"area",l:"Das stört uns in der Schule oder Gemeinde",r:2},
+  {k:"beste",ty:"table",l:"Unsere drei besten Ideen",cols:["Idee","Punkte"],rows:3},
+  {k:"gewinner",ty:"area",l:"Gewonnen hat – und warum diese Idee gut ist",r:3}]},
+ {id:"recherche",t:"Recherche-Blatt",grp:"Projektarbeit",goal:true,sub:"Forscht nach und schreibt auf, woher eure Infos kommen.",f:[
+  {ty:"fragen"},
+  {k:"frage",ty:"text",l:"Unsere eigene Forscherfrage"},
+  {row:[{k:"weiss",ty:"area",l:"Das wissen wir schon",r:4},{k:"wollen",ty:"area",l:"Das wollen wir wissen",r:4}]},
+  {k:"gefunden",ty:"area",l:"Das haben wir herausgefunden",r:4},
+  {k:"zahl",ty:"area",l:"Die wichtigste Zahl oder Tatsache",r:2},
+  {k:"quellen",ty:"table",l:"Unsere Quellen",h:"Buch, Webseite, Interview …",cols:["Quelle","Datum"],check:"geprüft",rows:4}]},
+ {id:"logbuch",t:"Logbuch",grp:"Projektarbeit",goal:true,sub:"Füll das Logbuch am Anfang und am Ende des Freidays aus.",f:[
+  {k:"projekt",ty:"text",l:"Unser Projekt"},
+  {row:[{k:"plan",ty:"area",l:"Heute wollen wir …",r:3},{k:"done",ty:"area",l:"Geschafft haben wir …",r:3}]},
+  {row:[{k:"hard",ty:"area",l:"Schwierig war …",r:2},{k:"next",ty:"area",l:"Nächstes Mal …",r:2}]},
+  {k:"mood",ty:"faces",l:"So war der Freiday heute"}]},
+ {id:"reflexion",t:"Reflexionskarte",grp:"Projektarbeit",goal:true,sub:"Schau zurück auf dein Projekt.",f:[
+  {k:"beitrag",ty:"area",l:"Mein Beitrag zum Projekt",r:3},
+  {row:[{k:"stolz",ty:"area",l:"Darauf bin ich stolz",r:3},{k:"gelernt",ty:"area",l:"Das habe ich gelernt",r:3}]},
+  {row:[{k:"team",ty:"scale",l:"Unsere Teamarbeit",h:"1 = gar nicht gut, 5 = super"},{k:"bewirkt",ty:"scale",l:"Wie viel haben wir bewirkt?",h:"1 = wenig, 5 = sehr viel"}]}]},
+ {id:"lesen",t:"Lesen & verstehen",grp:"Stillarbeit",goal:true,sub:"Lies den Text zweimal. Dann löse die Aufgaben.",f:[
+  {ty:"lesetext"},
+  {k:"rf",ty:"rf",l:"1 · Richtig oder falsch?"},
+  {k:"wort",ty:"pick",l:"2 · Welches Wort passt?"},
+  {k:"selbst",ty:"area",l:"3 · Was kannst du selbst tun?",h:"Schreibe zwei Ideen auf.",r:3},
+  {k:"bild",ty:"draw",l:"4 · Zeichne",h:"So sieht es aus, wenn das Ziel erreicht ist."},
+  {k:"bonus",ty:"area",l:"Bonus · Forscherfrage",hq:true,r:2}]},
+ {id:"plakat",t:"Mein Ziel-Plakat",grp:"Stillarbeit",goal:true,sub:"Gestalte ein Plakat zu deinem Ziel.",f:[
+  {k:"bedeutet",ty:"area",l:"Das bedeutet das Ziel",h:"in deinen eigenen Worten",r:3},
+  {k:"symbol",ty:"draw",l:"Mein Symbol für das Ziel"},
+  {k:"fakten",ty:"list",l:"Drei wichtige Tatsachen",n:3},
+  {row:[{k:"helfen",ty:"area",l:"So kann ich helfen",r:3},{k:"projekt",ty:"area",l:"Ein Projekt, das ich gern machen würde",r:3}]}]},
+ {id:"brief",t:"Brief an mich im Jahr 2030",grp:"Stillarbeit",goal:false,sub:"Wie alt bist du 2030? Wie soll die Welt aussehen? Was willst du dafür tun?",f:[
+  {k:"an",ty:"text",l:"Liebe / Lieber …"},
+  {k:"brief",ty:"area",l:"Mein Brief",r:12},
+  {k:"gruss",ty:"text",l:"Dein / Deine …"},
+  {k:"bild",ty:"draw",l:"Meine Zeichnung: Ich im Jahr 2030"}]},
+ {id:"comic",t:"Comic: Held:in der Zukunft",grp:"Stillarbeit",goal:true,sub:"Erfinde eine Figur, die ein Problem löst. Zeichne sechs Bilder und schreib einen Satz darunter.",f:[
+  {k:"titel",ty:"text",l:"Mein Comic heißt"},
+  {k:"comic",ty:"comic",l:"Meine Bilder",caps:["Wer ist die Figur?","Wo ist sie?","Das Problem","Die Idee","Die Lösung","So ist es jetzt"]}]},
+ {id:"erfinder",t:"Erfinder-Skizze",grp:"Stillarbeit",goal:true,sub:"Erfinde etwas, das ein Problem löst.",f:[
+  {k:"name",ty:"text",l:"Name meiner Erfindung"},
+  {k:"problem",ty:"area",l:"Welches Problem löst sie?",r:2},
+  {k:"skizze",ty:"draw",l:"Meine Skizze",h:"Zeichne deine Erfindung groß.",big:true},
+  {k:"teile",ty:"table",l:"Die Teile",cols:["Teil","Wofür ist es da?"],rows:4}]},
+ {id:"check",t:"Mein Nachhaltigkeits-Check",grp:"Stillarbeit",goal:false,sub:"Denk an gestern. Sei ehrlich – niemand bewertet deine Antworten.",f:[
+  {k:"tag",ty:"checkrows",l:"So war mein Tag",rows:[["Wasser","Wie lange habe ich geduscht? Habe ich den Hahn zugedreht?"],["Energie","Habe ich Licht und Geräte ausgeschaltet?"],["Müll","Was habe ich weggeworfen? Habe ich getrennt?"],["Weg","Wie bin ich in die Schule gekommen?"],["Essen","Was war in meiner Jause?"],["Miteinander","Habe ich jemandem geholfen oder etwas geteilt?"]]},
+  {row:[{k:"stolz",ty:"area",l:"Darauf bin ich stolz",r:3},{k:"schwer",ty:"area",l:"Das fällt mir schwer",r:3}]},
+  {k:"vorsatz",ty:"area",l:"Mein Vorsatz für die nächsten zwei Wochen",h:"Klein und machbar!",r:3}]}
+];
+const DG={id:"logbuch",goal:13,v:{},locked:false};
+const FACES=["😀","😐","🙁"];
+const dgKey=()=>`fd-dig-${DG.id}-${DS.find(x=>x.id===DG.id).goal?DG.goal:0}`;
+function dgLoad(){DG.curKey=dgKey();try{DG.v=JSON.parse(localStorage.getItem(DG.curKey)||"{}");}catch(e){DG.v={};}}
+function dgFlush(){if(dgT&&DG.curKey){clearTimeout(dgT);dgT=null;try{localStorage.setItem(DG.curKey,JSON.stringify(DG.v));}catch(e){}}}
+let dgT=null;
+function dgSave(){clearTimeout(dgT);dgT=setTimeout(()=>{dgT=null;try{localStorage.setItem(DG.curKey,JSON.stringify(DG.v));const s=$("#dgSaved");if(s)s.textContent="Automatisch gespeichert um "+new Date().toLocaleTimeString("de-AT",{hour:"2-digit",minute:"2-digit"});}catch(e){const s=$("#dgSaved");if(s)s.textContent="Zwischenspeichern ist hier nicht möglich – bitte am Ende abgeben.";}},400);}
+const dgLink=()=>PAGES_URL+"#schueler-blatt-"+DG.id+(DS.find(x=>x.id===DG.id).goal?"-"+DG.goal:"");
+function dgField(f,ds,g){
+  if(f.row) return `<div class="dg-row2">${f.row.map(x=>dgField(x,ds,g)).join("")}</div>`;
+  const v=DG.v[f.k], id="dg_"+f.k, H=f.h?` <span class="hint">${esc(f.h)}</span>`:f.hq?` <span class="hint">${esc(g.f[0])}</span>`:"";
+  switch(f.ty){
+   case "text": return `<div class="dg-f"><label for="${id}">${esc(f.l)}${H}</label><input type="text" id="${id}" data-k="${f.k}" value="${esc(v||"")}"></div>`;
+   case "area": return `<div class="dg-f"><label for="${id}">${esc(f.l)}${H}</label><textarea id="${id}" data-k="${f.k}" rows="${f.r||3}">${esc(v||"")}</textarea></div>`;
+   case "list": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}${H}</div>${Array.from({length:f.n},(_,i)=>`<input type="text" id="${id}_${i}" aria-label="${esc(f.l)} ${i+1}" data-k="${f.k}" data-i="${i}" placeholder="${i+1}." value="${esc((v||[])[i]||"")}">`).join("")}</div>`;
+   case "table": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}${H}</div><div class="dg-tblw"><table class="dg-tbl"><tr>${f.cols.map(c=>`<th>${esc(c)}</th>`).join("")}${f.check?`<th>${esc(f.check)}</th>`:""}</tr>${Array.from({length:f.rows},(_,r)=>`<tr>${f.cols.map((c,ci)=>`<td><input type="text" aria-label="${esc(c)} ${r+1}" data-k="${f.k}" data-r="${r}" data-c="${ci}" value="${esc(((v||[])[r]||[])[ci]||"")}"></td>`).join("")}${f.check?`<td class="cb"><input type="checkbox" aria-label="${esc(f.check)} ${r+1}" data-k="${f.k}" data-r="${r}" data-c="x" ${((v||[])[r]||[]).x?"checked":""}></td>`:""}</tr>`).join("")}</table></div></div>`;
+   case "checks": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}${H}</div><div class="dg-checks">${f.o.map((o,i)=>`<label><input type="checkbox" data-k="${f.k}" data-o="${esc(o)}" ${(v||[]).includes(o)?"checked":""}> ${esc(o)}</label>`).join("")}</div></div>`;
+   case "faces": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}${H}</div><div class="dg-faces">${FACES.map((x,i)=>`<button type="button" data-k="${f.k}" data-set="${i}" aria-pressed="${v===i}" aria-label="${["gut","mittel","nicht gut"][i]}">${x}</button>`).join("")}</div></div>`;
+   case "scale": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}${H}</div><div class="dg-scale">${[1,2,3,4,5].map(n=>`<button type="button" data-k="${f.k}" data-set="${n}" aria-pressed="${v===n}">${n}</button>`).join("")}</div></div>`;
+   case "fragen": return `<div class="dg-f"><div class="dg-l">Forscherfragen zum Ziel</div><div class="dg-info" style="font-size:17px">${g.f.map(q=>"? "+esc(q)).join("<br>")}</div></div>`;
+   case "lesetext": return `<div class="dg-f"><div class="dg-l">Ziel ${g.n}: ${esc(g.name)} <button class="btn sun" type="button" id="dgRead" style="margin-left:8px;font-size:14px;padding:4px 12px">🔊 Vorlesen</button></div><div class="dg-info">${esc(L[g.n])}</div></div>`;
+   case "rf": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}</div><div class="dg-rf">${g.w.map((w,i)=>`<div class="it" data-rf="${i}"><span>${esc(w[0])}</span><div class="dg-pill">${["richtig","falsch"].map((t,j)=>`<button type="button" data-k="${f.k}" data-i="${i}" data-set="${j}" aria-pressed="${(v||[])[i]===j}">${t}</button>`).join("")}</div></div>`).join("")}</div></div>`;
+   case "pick": {const ws=W[g.n].slice(0,4), order=[2,0,3,1], bank=ws.map(x=>x[0]).sort();
+     return `<div class="dg-f"><div class="dg-l">${esc(f.l)} <span class="hint">Wähle aus: ${bank.join(" · ")}</span></div><div class="dg-rf">${order.map(i=>`<div class="it" data-pk="${i}"><span>${esc(ws[i][1])}</span><select aria-label="Wort" data-k="${f.k}" data-i="${i}" style="flex:0 0 200px;width:auto"><option value="">– wählen –</option>${bank.map(b=>`<option${(v||{})[i]===b?" selected":""}>${b}</option>`).join("")}</select></div>`).join("")}</div>
+       <div class="bar"><button class="btn" type="button" id="dgCheck">Aufgaben 1 und 2 überprüfen</button><span class="dg-saved" id="dgCheckMsg"></span></div></div>`;}
+   case "draw": return `<div class="dg-f dg-draw"><div class="dg-l">${esc(f.l)}${H}</div>${penBar(f.k)}<canvas data-draw="${f.k}" height="${f.big?380:240}"></canvas></div>`;
+   case "comic": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}${H}</div>${penBar(f.k+"_all")}<div class="dg-comic">${f.caps.map((c,i)=>`<div class="dg-draw"><div class="hint"><b>${i+1}</b> · ${esc(c)}</div><canvas data-draw="${f.k}_${i}" height="200"></canvas><input type="text" aria-label="Satz zu Bild ${i+1}" data-k="${f.k}_t" data-i="${i}" placeholder="Satz zu Bild ${i+1}" value="${esc((DG.v[f.k+"_t"]||[])[i]||"")}"></div>`).join("")}</div></div>`;
+   case "checkrows": return `<div class="dg-f"><div class="dg-l">${esc(f.l)}</div><div class="dg-rf">${f.rows.map((r,i)=>`<div class="it" style="flex-direction:column;align-items:stretch"><div><b>${r[0]}</b> <span class="hint">${esc(r[1])}</span></div><input type="text" aria-label="${r[0]}" data-k="${f.k}" data-i="${i}" value="${esc(((v||[])[i]||{}).t||"")}"><div class="dg-faces">${FACES.map((x,j)=>`<button type="button" data-k="${f.k}" data-i="${i}" data-face="${j}" aria-pressed="${((v||[])[i]||{}).f===j}" aria-label="${["gut","mittel","nicht gut"][j]}" style="font-size:26px;padding:4px 10px">${x}</button>`).join("")}</div></div>`).join("")}</div></div>`;
+  }
+  return "";
+}
+const PENS=["#1a1a1a","#1f5fd1","#d33a31","#2e8b57","#e3a20f","#8a4fd1"];
+function penBar(k){return `<div class="dg-pen" data-pen="${k}">${PENS.map((c,i)=>`<button type="button" class="c" data-col="${c}" aria-label="Farbe" aria-pressed="${i===0}" style="background:${c}"></button>`).join("")}<button type="button" class="btn" data-thick style="padding:4px 12px;font-size:14px">Dick</button><button type="button" class="btn" data-clear style="padding:4px 12px;font-size:14px">Löschen</button></div>`;}
+function renderDigital(){
+  dgFlush();
+  const ds=DS.find(x=>x.id===DG.id), g=goal(DG.goal);
+  $("#dgSheet").innerHTML=["Projektarbeit","Stillarbeit"].map(gr=>`<optgroup label="${gr}">${DS.filter(x=>x.grp===gr).map(x=>`<option value="${x.id}"${x.id===DG.id?" selected":""}>${esc(x.t)}</option>`).join("")}</optgroup>`).join("");
+  $("#dgGoal").innerHTML=G.map(x=>`<option value="${x.n}"${x.n===DG.goal?" selected":""}>${x.n} – ${esc(x.name)}</option>`).join("");
+  $("#dgGoalF").hidden=!ds.goal; $("#dgBar").hidden=DG.locked;
+  $("#dgUrl").textContent=dgLink(); drawQR($("#dgQr"),320,dgLink());
+  dgLoad();
+  $("#dgForm").innerHTML=`<div class="dg-head"><div><h2>${esc(ds.t)}</h2><p class="dg-sub">${esc(ds.sub)}</p></div>${ds.goal?`<span class="gbadge" style="background:${g.c}">Ziel ${g.n} · ${esc(g.name)}</span>`:""}</div>
+    <div class="dg-row2"><div class="dg-f"><label for="dg_name">Name</label><input type="text" id="dg_name" data-k="_name" value="${esc(DG.v._name||"")}" autocomplete="given-name"></div>
+    <div class="dg-f"><label for="dg_team">Team / Klasse <span class="hint">(optional)</span></label><input type="text" id="dg_team" data-k="_team" value="${esc(DG.v._team||"")}"></div></div>
+    ${ds.f.map(f=>dgField(f,ds,g)).join("")}
+    <div class="dg-actions"><button class="btn primary" type="button" id="dgDone" style="font-size:17px;padding:10px 22px">Fertig – abgeben</button><button class="btn" type="button" id="dgReset">Neu beginnen</button><span class="dg-saved" id="dgSaved"></span></div>
+    <div id="dgConfirm"></div><p class="msg" id="dgMsg"></p>`;
+  initCanvases();
+  const rb=$("#dgRead"); if(rb){ if(!("speechSynthesis" in window)) rb.hidden=true; else rb.onclick=()=>{if(speechSynthesis.speaking){speechSynthesis.cancel();rb.textContent="🔊 Vorlesen";return;}const u=new SpeechSynthesisUtterance(L[g.n]);u.lang="de-AT";u.rate=.9;const vv=speechSynthesis.getVoices().find(x=>/^de/i.test(x.lang));if(vv)u.voice=vv;u.onend=u.onerror=()=>{rb.textContent="🔊 Vorlesen";};speechSynthesis.speak(u);rb.textContent="⏹ Stopp";};}
+  const ck=$("#dgCheck"); if(ck) ck.onclick=dgCheck;
+}
+function dgCheck(){
+  const g=goal(DG.goal), rf=DG.v.rf||[], wv=DG.v.wort||{}, ws=W[g.n].slice(0,4); let ok=0,n=0,open=0;
+  document.querySelectorAll("[data-rf]").forEach(it=>{const i=+it.dataset.rf;n++;it.classList.remove("ok","no");if(rf[i]==null){open++;return;}const r=(rf[i]===0)===g.w[i][1];it.classList.add(r?"ok":"no");if(r)ok++;});
+  document.querySelectorAll("[data-pk]").forEach(it=>{const i=+it.dataset.pk;n++;it.classList.remove("ok","no");if(!wv[i]){open++;return;}const r=wv[i]===ws[i][0];it.classList.add(r?"ok":"no");if(r)ok++;});
+  $("#dgCheckMsg").textContent=`${ok} von ${n} richtig${open?`, ${open} noch offen`:""}.`+(ok===n?" Super!":" Schau dir die rot markierten noch einmal an.");
+}
+/* Eingaben merken */
+$("#dgForm").addEventListener("input",e=>{
+  const t=e.target, k=t.dataset.k; if(!k) return;
+  if(t.closest(".dg-tbl")){const r=+t.dataset.r,c=t.dataset.c;DG.v[k]=DG.v[k]||[];DG.v[k][r]=DG.v[k][r]||{};DG.v[k][r][c]=t.type==="checkbox"?t.checked:t.value;}
+  else if(t.dataset.o!==undefined){const set=new Set(DG.v[k]||[]);t.checked?set.add(t.dataset.o):set.delete(t.dataset.o);DG.v[k]=[...set];}
+  else if(k==="tag"){const i=+t.dataset.i;DG.v.tag=DG.v.tag||[];DG.v.tag[i]={...(DG.v.tag[i]||{}),t:t.value};}
+  else if(k==="wort"){DG.v.wort={...(DG.v.wort||{}),[t.dataset.i]:t.value};}
+  else if(t.dataset.i!==undefined){DG.v[k]=DG.v[k]||[];DG.v[k][+t.dataset.i]=t.value;}
+  else DG.v[k]=t.value;
+  dgSave();
+});
+$("#dgForm").addEventListener("change",e=>{if(e.target.type==="checkbox")e.target.dispatchEvent(new Event("input",{bubbles:true}));});
+$("#dgForm").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  if(b.dataset.set!==undefined){const k=b.dataset.k,val=+b.dataset.set;
+    if(b.dataset.i!==undefined){DG.v[k]=DG.v[k]||[];DG.v[k][+b.dataset.i]=val;}else DG.v[k]=val;
+    b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));dgSave();return;}
+  if(b.dataset.face!==undefined){const i=+b.dataset.i;DG.v.tag=DG.v.tag||[];DG.v.tag[i]={...(DG.v.tag[i]||{}),f:+b.dataset.face};b.parentElement.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));dgSave();return;}
+  if(b.id==="dgDone"){dgDeliver();return;}
+  if(b.id==="dgReset"){$("#dgConfirm").innerHTML=`<div class="dg-confirm"><span>Wirklich alles löschen und neu beginnen?</span><button class="btn" type="button" id="dgYes" style="border-color:var(--bad)">Ja, alles löschen</button><button class="btn" type="button" id="dgNo">Nein</button></div>`;return;}
+  if(b.id==="dgYes"){clearTimeout(dgT);dgT=null;DG.v={};try{localStorage.removeItem(DG.curKey)}catch(e){}renderDigital();return;}
+  if(b.id==="dgNo"){$("#dgConfirm").innerHTML="";return;}
+});
+/* Zeichenflächen */
+function initCanvases(){
+  document.querySelectorAll("#dgForm canvas[data-draw]").forEach(cv=>{
+    const k=cv.dataset.draw, H=+cv.getAttribute("height"), dpr=Math.min(2,window.devicePixelRatio||1);
+    const W0=cv.clientWidth||600; cv.width=W0*dpr; cv.height=H*dpr; cv.style.height=H+"px";
+    const ctx=cv.getContext("2d"); ctx.scale(dpr,dpr); ctx.lineCap="round"; ctx.lineJoin="round";
+    ctx.fillStyle="#fff"; ctx.fillRect(0,0,W0,H);
+    if(DG.v["img_"+k]){const im=new Image();im.onload=()=>ctx.drawImage(im,0,0,W0,H);im.src=DG.v["img_"+k];}
+    const bar=cv.parentElement.querySelector("[data-pen]")||cv.closest(".dg-f").querySelector("[data-pen]");
+    const st=()=>bar?._pen||{c:"#1a1a1a",w:3};
+    let drawing=false,last=null;
+    const pos=e=>{const r=cv.getBoundingClientRect();return [(e.clientX-r.left)*(W0/r.width),(e.clientY-r.top)*(H/r.height)];};
+    cv.addEventListener("pointerdown",e=>{drawing=true;cv.setPointerCapture(e.pointerId);last=pos(e);const p=st();ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(last[0],last[1],p.w/2,0,7);ctx.fill();});
+    cv.addEventListener("pointermove",e=>{if(!drawing)return;const p=st(),q=pos(e);ctx.strokeStyle=p.c;ctx.lineWidth=p.w;ctx.beginPath();ctx.moveTo(last[0],last[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();last=q;});
+    const end=()=>{if(!drawing)return;drawing=false;DG.v["img_"+k]=cv.toDataURL("image/jpeg",.8);dgSave();};
+    cv.addEventListener("pointerup",end);cv.addEventListener("pointercancel",end);
+    cv._clear=()=>{ctx.fillStyle="#fff";ctx.fillRect(0,0,W0,H);delete DG.v["img_"+k];dgSave();};
+  });
+  document.querySelectorAll("#dgForm [data-pen]").forEach(bar=>{
+    bar._pen={c:"#1a1a1a",w:3};
+    bar.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+      if(b.dataset.col){bar._pen.c=b.dataset.col;bar.querySelectorAll(".c").forEach(x=>x.setAttribute("aria-pressed",x===b));}
+      if(b.hasAttribute("data-thick")){bar._pen.w=bar._pen.w===3?9:3;b.textContent=bar._pen.w===3?"Dick":"Dünn";}
+      if(b.hasAttribute("data-clear")){const scope=bar.closest(".dg-f");scope.querySelectorAll("canvas").forEach(c=>c._clear&&c._clear());}
+    });
+  });
+}
+/* Abgabe als A4-Datei */
+function dgPaper(){
+  const ds=DS.find(x=>x.id===DG.id), g=goal(DG.goal), v=DG.v, ink="color:#1f3fa8";
+  const val=x=>x?`<div style="${ink};white-space:pre-wrap;font-size:11.5pt;line-height:1.45">${esc(x)}</div>`:`<div style="color:#999;font-size:9.5pt">– leer –</div>`;
+  const B=(l,inner)=>`<div class="box" style="break-inside:avoid"><h4>${esc(l)}</h4>${inner}</div>`;
+  const one=f=>{
+    if(f.row) return `<div class="row">${f.row.map(one).join("")}</div>`;
+    switch(f.ty){
+      case "text": case "area": return B(f.l,val(v[f.k]));
+      case "list": return B(f.l,(v[f.k]||[]).filter(Boolean).map((x,i)=>`<div style="${ink};font-size:11.5pt">${i+1}. ${esc(x)}</div>`).join("")||val(""));
+      case "table": return B(f.l,`<table class="t"><tr>${f.cols.map(c=>`<th>${esc(c)}</th>`).join("")}${f.check?`<th style="width:14%">${esc(f.check)}</th>`:""}</tr>${(v[f.k]||[]).filter(r=>r&&(Object.values(r).some(Boolean))).map(r=>`<tr>${f.cols.map((c,ci)=>`<td style="${ink};height:auto;padding:1.2mm 2mm">${esc(r[ci]||"")}</td>`).join("")}${f.check?`<td style="text-align:center">${r.x?"✓":""}</td>`:""}</tr>`).join("")||`<tr><td colspan="${f.cols.length+(f.check?1:0)}" style="color:#999">– leer –</td></tr>`}</table>`);
+      case "checks": return B(f.l,`<div class="cbs">${f.o.map(o=>`<span style="${(v[f.k]||[]).includes(o)?"font-weight:700;"+ink:"color:#888"}">${(v[f.k]||[]).includes(o)?"☑":"☐"} ${esc(o)}</span>`).join("")}</div>`.replace(/<span style/g,'<span class="nobox" style'));
+      case "faces": return B(f.l,`<div style="font-size:20pt">${v[f.k]!=null?FACES[v[f.k]]:"–"}</div>`);
+      case "scale": return B(f.l,`<div class="scale">${[1,2,3,4,5].map(n=>`<span style="${v[f.k]===n?"background:#1f3fa8;color:#fff;border-color:#1f3fa8":""}">${n}</span>`).join("")}</div>`);
+      case "fragen": return B("Forscherfragen",g.f.map(q=>`<div class="q">${esc(q)}</div>`).join(""));
+      case "lesetext": return B("Text: Ziel "+g.n,`<div style="font-size:9.5pt;color:#444">${esc(L[g.n])}</div>`);
+      case "rf": return B(f.l,`<table class="t"><tr><th>Aussage</th><th style="width:18%">Antwort</th><th style="width:12%">✓/✗</th></tr>${g.w.map((w,i)=>{const a=(v.rf||[])[i];return `<tr><td style="height:auto;padding:1.2mm 2mm">${esc(w[0])}</td><td style="${ink}">${a==null?"":a===0?"richtig":"falsch"}</td><td>${a==null?"":((a===0)===w[1]?"✓":"✗")}</td></tr>`;}).join("")}</table>`);
+      case "pick": {const ws=W[g.n].slice(0,4);return B(f.l,`<table class="t">${[2,0,3,1].map(i=>{const a=(v.wort||{})[i];return `<tr><td style="height:auto;padding:1.2mm 2mm">${esc(ws[i][1])}</td><td style="${ink};width:30%">${esc(a||"")}</td><td style="width:12%">${a?(a===ws[i][0]?"✓":"✗"):""}</td></tr>`;}).join("")}</table>`);}
+      case "draw": return B(f.l,v["img_"+f.k]?`<img src="${v["img_"+f.k]}" style="width:100%;max-height:95mm;object-fit:contain;border:1px solid #ccc;border-radius:2mm">`:val(""));
+      case "comic": return B(f.l,`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm">${f.caps.map((c,i)=>`<div><div style="font-size:8pt;color:#555">${i+1} · ${esc(c)}</div>${v[`img_${f.k}_${i}`]?`<img src="${v[`img_${f.k}_${i}`]}" style="width:100%;border:1px solid #ccc;border-radius:2mm">`:`<div style="height:30mm;border:1px dashed #bbb;border-radius:2mm"></div>`}<div style="${ink};font-size:10pt">${esc((v[f.k+"_t"]||[])[i]||"")}</div></div>`).join("")}</div>`);
+      case "checkrows": return B(f.l,`<table class="t"><tr><th style="width:22%">Bereich</th><th>Was habe ich gemacht?</th><th style="width:12%"></th></tr>${f.rows.map((r,i)=>{const x=(v.tag||[])[i]||{};return `<tr><td style="height:auto;padding:1.2mm 2mm"><b>${r[0]}</b></td><td style="${ink};height:auto;padding:1.2mm 2mm">${esc(x.t||"")}</td><td style="text-align:center;font-size:14pt">${x.f!=null?FACES[x.f]:""}</td></tr>`;}).join("")}</table>`);
+    }return "";};
+  const today=new Date().toLocaleDateString("de-AT");
+  return `<div class="ws" style="gap:3mm">${wsHead(esc(ds.t),"Digital ausgefüllt am "+today,ds.goal?g:null,false)}
+    <div style="display:flex;gap:6mm;font-size:11pt"><span>Name: <b style="${ink}">${esc(v._name||"")}</b></span>${v._team?`<span>Team/Klasse: <b style="${ink}">${esc(v._team)}</b></span>`:""}</div>
+    ${ds.f.map(one).join("")}
+    <div class="foot"><span>Freiday-Werkstatt</span><span>${esc(ds.t)}</span></div></div>`;
+}
+async function dgDeliver(){
+  const ds=DS.find(x=>x.id===DG.id), msg=$("#dgMsg");
+  if(!(DG.v._name||"").trim()){msg.textContent="Bitte trag zuerst deinen Namen ein.";$("#dg_name").focus();return;}
+  const nm=`${DG.v._name.trim()}_${ds.t}${ds.goal?"_Ziel"+DG.goal:""}`;
+  const doc=makeDoc(dgPaper(),nm.replace(/_/g," ")).replace('<div class="paper">','<div class="paper" style="height:auto;min-height:297mm;overflow:visible">').replace(".paper{break-after:page}",".nobox::before{display:none!important}.paper{break-after:page}");
+  const fname=fileName(nm);
+  if(STANDALONE){
+    try{const file=new File([doc],fname,{type:"text/html"});
+      if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:ds.t});msg.textContent="Abgegeben! Danke.";return;}
+    }catch(e){if(e&&e.name==="AbortError"){msg.textContent="Abgeben abgebrochen.";return;}}
+  }
+  saveDoc(doc,fname,msg);
+}
+$("#dgSheet").addEventListener("change",()=>{DG.id=$("#dgSheet").value;renderDigital();});
+$("#dgGoal").addEventListener("change",()=>{DG.goal=+$("#dgGoal").value;renderDigital();});
+$("#dgCopy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(dgLink());$("#dgCopy").textContent="Kopiert ✓";}catch(e){const r=document.createRange();r.selectNodeContents($("#dgUrl"));const s=getSelection();s.removeAllRanges();s.addRange(r);}});
+$("#dgBig").addEventListener("click",()=>{$("#qrOverlay").hidden=false;drawQR($("#qrBigCode"),640,dgLink());const ds=DS.find(x=>x.id===DG.id);$("#qrBigLabel").textContent=ds.t+(ds.goal?` – Ziel ${DG.goal}`:"");$("#qrClose").focus();});
+
 /* ================= Ablauf ================= */
 $("#flow").innerHTML=PHASES.map((p,i)=>`<div class="ph"><span class="no">${i+1}</span><h3>${p[0]}</h3><p>${p[1]}</p><span class="tool">Werkzeug: ${p[2]}</span></div>`).join("");
 
@@ -1616,14 +2158,23 @@ function setMode(m){
   $("#wfGoalBar").hidden=m!=="wf";
 }
 function applyView(){
-  const m=location.hash.slice(1).match(/^schueler(?:-(detektiv|nummer|wf|kreuz|wort|lesen)(?:-(\d{1,2}))?)?$/);
-  const st=!!m;
+  const h=location.hash.slice(1);
+  const bl=h.match(/^schueler-blatt-([a-z]+)(?:-(\d{1,2}))?$/);
+  const m=bl?null:h.match(/^schueler(?:-(detektiv|nummer|wf|kreuz|wort|lesen)(?:-(\d{1,2}))?)?$/);
+  const st=!!(m||bl);
+  DG.locked=false;
   document.body.classList.toggle("student",st);
   document.querySelector(".student-only").hidden=!st;
   $("#viewToggle").textContent=st?"Zurück zur Lehrer-Ansicht":"Schüleransicht";
+  if(bl&&DS.some(x=>x.id===bl[1])){
+    document.body.classList.add("student"); document.querySelector(".student-only").hidden=false;
+    $("#viewToggle").textContent="Zurück zur Lehrer-Ansicht";
+    DG.id=bl[1]; const n=+bl[2]; if(n>=1&&n<=17) DG.goal=n; DG.locked=true;
+    setTab("digital"); return;
+  }
   if(st){
     setTab("uebungen");
-    if(m[1]){
+    if(m&&m[1]){
       const n=+m[2], okN=n>=1&&n<=17;
       if(m[1]==="lesen"){
         if(okN){S.goal=S.wfGoal=n;}
@@ -1653,6 +2204,7 @@ function renderAll(){
   renderRead();
   if(S.tab==="spiele") gmRender();
   if(S.tab==="still") renderLessons();
+  if(!DG.locked&&DG.goal!==S.goal){DG.goal=S.goal;if(S.tab==="digital")renderDigital();}
   if(!RZ.puz||RZ.puz.goal!==S.goal) newPuzzle();
   renderTypes();
   if(S.tab==="blaetter") renderSheet();

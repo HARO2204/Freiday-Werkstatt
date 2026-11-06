@@ -7,6 +7,8 @@ Eine Unterrichtssammlung für den **Freiday** an der Mittelschule (Österreich):
 
 Direkt zu einer Übung: `#schueler-detektiv`, `#schueler-nummer`, `#schueler-wf-13` (Wahr oder falsch zu Ziel 13), `#schueler-kreuz-13` (Kreuzworträtsel) oder `#schueler-wort-13` (Wortsuche) oder `#schueler-lesen-13` (Lesetext mit Vorlesefunktion).
 
+Digitale Arbeitsblätter: `#schueler-blatt-logbuch-13` – statt `logbuch` geht auch `steckbrief`, `ideen`, `recherche`, `reflexion`, `lesen`, `plakat`, `brief`, `comic`, `erfinder` oder `check` (bei `brief` und `check` ohne Zielnummer).
+
 ## Inhalt
 
 | Bereich | Was es gibt |
@@ -17,6 +19,8 @@ Direkt zu einer Übung: `#schueler-detektiv`, `#schueler-nummer`, `#schueler-wf-
 | Rätsel | Kreuzworträtsel und Wortsuche (leicht, mittel, schwer) zu jedem Ziel; am iPad lösbar, druckbar mit Lösungsblatt, Wortsuche auch 2× pro A4 |
 | Spiele | zum Ausdrucken und Laminieren: Memory, Domino, Ziele-Bingo (mit Rufkarten), Quizkarten mit Lösung, Erklärkarten; mit Rückseiten und Spielregel-Karten |
 | Stillarbeit | 7 Stundenbilder à 50 Minuten mit Arbeitsblatt (Lesen & verstehen, Ziel-Plakat, Brief an mich 2030, Comic, Erfinder-Skizze, Nachhaltigkeits-Check, Rätselstunde); Lesetexte zu allen 17 Zielen, am iPad mit Vorlesefunktion |
+| Digital ausfüllen | 11 Arbeitsblätter als iPad-Formulare mit Zeichenflächen, automatischem Zwischenspeichern, Selbstkontrolle und Abgabe als A4-Datei; QR-Code je Blatt |
+| Klassenspiel | Zukunfts-Show (15 Stufen, 3 Joker, Sicherheitsstufen) und Team-Quiz (2–5 Teams, Timer, Siegerpodest) für den Beamer |
 | Ablauf & Planung | fünf Projektphasen und ein Vorschlag für einen Freiday-Vormittag |
 
 ## Hinweise
