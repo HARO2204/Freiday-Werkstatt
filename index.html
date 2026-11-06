@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Projektideen, Arbeitsblätter und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
+<meta name="description" content="Projektideen, Arbeitsblätter, Rätsel und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
 <title>Freiday-Werkstatt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -156,6 +156,44 @@ button{cursor:pointer}
 #qrBigCode img,#qrBigCode canvas{width:min(70vh,80vw,520px)!important;height:min(70vh,80vw,520px)!important}
 .qr-card p{margin:0;font-size:18px;text-align:center}
 
+/* Rätsel */
+.rz-grid{display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:1060px){.rz-grid{grid-template-columns:minmax(0,1fr)}}
+.ctrl-sub{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.ctrl select{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:8px 10px;width:100%}
+.play{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.play-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
+.play-head h3{font-size:22px}
+.status{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.xw-wrap{overflow-x:auto;padding:2px}
+.xw{display:grid;gap:0;margin:0 auto;width:max-content}
+.xc{width:var(--cs);height:var(--cs);position:relative}
+.xc.on{background:#fff;outline:1.5px solid var(--ink);outline-offset:-.75px}
+.xc.on.hl{background:color-mix(in srgb,var(--sun) 35%,#fff)}
+.xc .num{position:absolute;top:1px;left:2px;font-size:calc(var(--cs) * .28);line-height:1;color:#333;pointer-events:none;font-weight:700}
+.xc input{width:100%;height:100%;border:0;background:transparent;text-align:center;font:700 calc(var(--cs) * .55)/1 var(--f-body);color:#111;text-transform:uppercase;padding:calc(var(--cs) * .12) 0 0;caret-color:var(--accent);border-radius:0}
+.xc input:focus{outline:2.5px solid var(--accent);outline-offset:-2.5px;background:color-mix(in srgb,var(--accent) 12%,#fff)}
+.xc.ok input{color:var(--good)}
+.xc.bad input{color:#c2412d;background:color-mix(in srgb,#c2412d 12%,#fff)}
+.clues{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 24px}
+.clues h4{margin:0 0 6px;font-family:var(--f-display);font-size:17px}
+.clues ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.clues li{display:flex;gap:8px;padding:4px 6px;border-radius:6px;cursor:pointer;font-size:15px}
+.clues li b{font-variant-numeric:tabular-nums;min-width:1.6em}
+.clues li.cur{background:color-mix(in srgb,var(--sun) 30%,transparent)}
+.clues li.done{color:var(--muted);text-decoration:line-through}
+.ws-play{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.wsg{display:grid;gap:2px;width:min(100%,480px);user-select:none;-webkit-user-select:none;touch-action:manipulation;flex:none}
+.wl{width:auto;aspect-ratio:1;display:grid;place-items:center;border:0;border-radius:6px;background:var(--surface-2);font:700 clamp(13px,2.6vw,20px)/1 var(--f-body);color:var(--ink);padding:0}
+.wl.sel{background:var(--sun);color:var(--sun-ink)}
+.wl.f0{background:#f6c9a8;color:#111}.wl.f1{background:#b9e3c6;color:#111}.wl.f2{background:#b8d8f2;color:#111}.wl.f3{background:#f2c2dc;color:#111}
+.wl.f4{background:#e7dc9b;color:#111}.wl.f5{background:#cfc4f2;color:#111}.wl.f6{background:#a9e2e2;color:#111}.wl.f7{background:#f2b8b0;color:#111}
+.wl.solv{box-shadow:inset 0 0 0 2px var(--accent)}
+.wlist{display:flex;flex-direction:column;gap:6px;min-width:160px;flex:1}
+.wlist span{font-weight:700;font-size:16px;letter-spacing:.04em}
+.wlist span.done{text-decoration:line-through;color:var(--muted)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+
 /* Ablauf */
 .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;counter-reset:ph}
 .ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
@@ -172,7 +210,7 @@ button{cursor:pointer}
 a{color:var(--accent)}
 
 /* Schüleransicht */
-body.student .shelf, body.student .tabs, body.student .teacher-only{display:none!important}
+body.student .shelf, body.student .teacher-only, body.student .tab:not([data-tab="uebungen"]):not([data-tab="raetsel"]){display:none!important}
 body.student .layout{grid-template-columns:minmax(0,1fr)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -247,6 +285,7 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
         <button class="tab" role="tab" data-tab="ideen" aria-selected="true">Projektideen</button>
         <button class="tab" role="tab" data-tab="blaetter" aria-selected="false">Arbeitsblätter</button>
         <button class="tab" role="tab" data-tab="uebungen" aria-selected="false">Online-Übungen</button>
+        <button class="tab" role="tab" data-tab="raetsel" aria-selected="false">Rätsel</button>
         <button class="tab" role="tab" data-tab="ablauf" aria-selected="false">Ablauf &amp; Planung</button>
       </div>
 
@@ -314,6 +353,8 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
                 <option value="schueler-detektiv">Ziel-Detektiv</option>
                 <option value="schueler-wf">Wahr oder falsch – gewähltes Ziel</option>
                 <option value="schueler-nummer">Nummern-Profi</option>
+                <option value="schueler-kreuz">Kreuzworträtsel – gewähltes Ziel</option>
+                <option value="schueler-wort">Wortsuche – gewähltes Ziel</option>
               </select></div>
             <div class="qr-url"><code id="qrUrl"></code><button class="btn" type="button" id="qrCopy">Link kopieren</button></div>
             <div class="bar">
@@ -332,6 +373,44 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
           </div>
         </div>
         <p class="note teacher-only">Der QR-Code führt immer zur GitHub-Seite der Werkstatt, weil die Kinder diese ohne Anmeldung öffnen können.</p>
+      </section>
+
+      <!-- Rätsel -->
+      <section class="panel" id="p-raetsel" hidden>
+        <div class="rz-grid">
+          <div class="ctrl">
+            <div class="field"><span class="lbl">Rätsel</span>
+              <div class="seg" id="rzType">
+                <button type="button" data-t="kreuz" aria-pressed="true">Kreuzworträtsel</button>
+                <button type="button" data-t="wort" aria-pressed="false">Wortsuche</button>
+              </div></div>
+            <div class="field"><label class="lbl" for="rzGoal">Ziel</label><select id="rzGoal"></select></div>
+            <div class="field" id="rzLevelF" hidden><span class="lbl">Schwierigkeit</span>
+              <div class="seg" id="rzLevel">
+                <button type="button" data-l="leicht" aria-pressed="false">Leicht</button>
+                <button type="button" data-l="mittel" aria-pressed="true">Mittel</button>
+                <button type="button" data-l="schwer" aria-pressed="false">Schwer</button>
+              </div>
+              <span class="note" id="rzLevelNote"></span></div>
+            <button class="btn sun" type="button" id="rzNew">Neues Rätsel</button>
+            <label class="check teacher-only"><input type="checkbox" id="rzSol"> Lösung zeigen</label>
+            <div class="teacher-only ctrl-sub">
+              <div class="field" id="rzCopiesF" hidden><span class="lbl">Pro A4-Blatt</span>
+                <div class="seg" id="rzCopies">
+                  <button type="button" data-c="1" aria-pressed="true">1×</button>
+                  <button type="button" data-c="2" aria-pressed="false">2×</button>
+                </div></div>
+              <label class="check"><input type="checkbox" id="rzName" checked> Name &amp; Datum</label>
+              <div class="bar">
+                <button class="btn primary" type="button" id="rzPrint" hidden>Drucken</button>
+                <button class="btn primary" type="button" id="rzSave">Speichern</button>
+              </div>
+              <p class="msg" id="rzMsg"></p>
+              <p class="note">Gedruckt wird genau das Rätsel, das du hier siehst. Für das Lösungsblatt „Lösung zeigen“ anhaken und noch einmal drucken.</p>
+            </div>
+          </div>
+          <div class="play" id="rzPlay"></div>
+        </div>
       </section>
 
       <!-- Ablauf -->
@@ -527,6 +606,27 @@ const SHEETS = [
  {id:"reflexion",name:"Reflexionskarte",size:"klein",small:true}
 ];
 
+/* Rätselwörter je Ziel: [Wort, Hinweis] – Umlaute bleiben ein Kästchen */
+const W={
+1:[["SPENDEN","Geld oder Dinge freiwillig hergeben, um zu helfen"],["TEILEN","Etwas gemeinsam mit anderen nutzen"],["WOHNUNG","Ein Zuhause, das jeder Mensch braucht"],["TAUSCHEN","Dinge gegeneinander wechseln statt neu kaufen"],["FLOHMARKT","Markt, auf dem gebrauchte Sachen verkauft werden"],["HILFE","Unterstützung für Menschen in Not"],["EINKOMMEN","Geld, das man mit Arbeit verdient"]],
+2:[["ERNTE","Wenn Obst und Gemüse eingesammelt werden"],["HOCHBEET","Erhöhtes Gartenbeet, gut für die Schule"],["JAUSE","Kleine Mahlzeit in der Pause"],["REGIONAL","Lebensmittel aus der Nähe sind …"],["KRÄUTER","Petersilie und Schnittlauch sind …"],["RESTE","Übrig gebliebenes Essen"],["SAATGUT","Samen zum Anpflanzen"]],
+3:[["BEWEGUNG","Laufen, Springen und Spielen sind …"],["SCHLAF","Braucht der Körper jede Nacht, um sich zu erholen"],["WASSER","Der beste Durstlöscher"],["OBST","Äpfel, Birnen und Marillen sind …"],["ARZT","Zu ihm geht man, wenn man krank ist"],["SPORT","Fußball, Schwimmen und Turnen"],["PAUSE","Kurze Erholung zwischen den Stunden"]],
+4:[["SCHULE","Ort, an dem Kinder gemeinsam lernen"],["LESEN","Das tust du gerade mit diesem Hinweis"],["LERNEN","Neues Wissen und Können erwerben"],["BUCH","Darin stehen Geschichten und Wissen"],["WISSEN","Alles, was man gelernt hat und weiß"],["BIBLIOTHEK","Hier kann man Bücher ausleihen"],["SCHULPFLICHT","In Österreich dauert sie neun Jahre"]],
+5:[["RECHTE","Was allen Menschen gleich zusteht"],["CHANCEN","Mädchen und Buben sollen die gleichen … haben"],["FAIR","Gerecht und anständig"],["KLISCHEE","Ein falsches, festes Bild, z. B. „Mädchen können nicht rechnen“"],["RESPEKT","Achtung vor anderen Menschen"],["BERUF","Arbeit, die man gelernt hat"],["GERECHT","Wenn alle gleich behandelt werden, ist es …"]],
+6:[["TRINKWASSER","Sauberes Wasser, das man trinken kann"],["FILTER","Hält Schmutz aus dem Wasser zurück"],["TROPFEN","Ein winziges bisschen Wasser"],["BACH","Kleiner Fluss"],["LEITUNG","Rohr, durch das Wasser ins Haus kommt"],["DUSCHEN","Spart meist Wasser im Vergleich zum Baden"],["QUELLE","Hier kommt Wasser aus der Erde"]],
+7:[["SONNE","Liefert Licht und Wärme für Solarzellen"],["WIND","Bewegt die Rotorblätter eines Windrads"],["STROM","Fließt durch das Kabel zum Gerät"],["SOLAR","Energie aus Sonnenlicht nennt man …energie"],["STANDBY","Bereitschaftsmodus, der heimlich Strom verbraucht"],["ENERGIE","Kraft, um etwas zu bewegen, zu wärmen oder zu leuchten"],["WASSERKRAFT","Energie aus fließendem Wasser"]],
+8:[["LOHN","Geld, das man für Arbeit bekommt"],["FAIRTRADE","Siegel für fairen Handel"],["FIRMA","Ein Betrieb, in dem Menschen arbeiten"],["KINDERARBEIT","Soll es nirgends auf der Welt geben"],["BETRIEB","Anderes Wort für Firma"],["GEWINN","Was übrig bleibt, wenn man mehr einnimmt als ausgibt"],["SIEGEL","Zeichen auf einer Verpackung, das etwas garantiert"]],
+9:[["ERFINDUNG","Eine ganz neue Idee, die etwas löst"],["REPARIEREN","Kaputtes wieder ganz machen"],["RADWEG","Sicherer Weg nur für Fahrräder"],["MODELL","Kleiner Nachbau einer Idee"],["IDEE","Ein Einfall im Kopf"],["BRÜCKE","Führt über einen Fluss"],["INTERNET","Weltweites Netz von Computern"]],
+10:[["RAMPE","Schräge Fläche statt Stufen"],["SPRACHE","Deutsch, Türkisch und Englisch sind …n"],["INKLUSION","Alle gehören dazu und machen mit"],["BARRIEREFREI","Ohne Hindernisse für alle erreichbar"],["WILLKOMMEN","So begrüßt man neue Kinder"],["VIELFALT","Viele verschiedene Menschen, Sprachen und Ideen"],["GLEICH","Alle Menschen sind an Rechten …"]],
+11:[["GEMEINDE","Kleiner Ort mit eigenem Gemeindeamt"],["PARK","Grünfläche in der Stadt"],["SPIELPLATZ","Hier spielen Kinder draußen"],["MÜLL","Gehört in die richtige Tonne"],["BUS","Öffentliches Verkehrsmittel auf der Straße"],["BÜRGERMEISTER","Leitet die Gemeinde"],["GEHSTEIG","Hier gehen Fußgänger neben der Straße"]],
+12:[["UPCYCLING","Aus Altem etwas Neues und Besseres machen"],["MÜLLTRENNUNG","Papier, Plastik und Glas getrennt sammeln"],["JAUSENBOX","Spart Verpackungsmüll in der Pause"],["VERPACKUNG","Hülle um ein Produkt, oft aus Plastik"],["RECYCLING","Alte Stoffe wieder verwerten"],["PFAND","Geld, das man für leere Flaschen zurückbekommt"],["SECONDHAND","Gebraucht gekauft"]],
+13:[["KLIMA","Das Wetter im Durchschnitt über viele Jahre"],["BAUM","Nimmt CO₂ auf und spendet Schatten"],["HITZE","Im Sommer gibt es immer mehr …tage"],["FAHRRAD","Klimafreundlich zur Schule"],["WETTER","Regen, Sonne, Wind – heute und morgen"],["TREIBHAUS","Ein Glashaus heißt auch …"],["ABGASE","Kommen aus dem Auspuff"]],
+14:[["MEER","Großes Salzwasser zwischen den Kontinenten"],["KORALLE","Baut mit vielen anderen ein Riff"],["FISCH","Tier mit Kiemen und Flossen"],["PLASTIK","Zersetzt sich im Meer erst nach Hunderten von Jahren"],["MIKROPLASTIK","Winzige Plastikteilchen"],["FLUSS","Fließt am Ende ins Meer"],["WAL","Größtes Tier im Meer"]],
+15:[["INSEKT","Tier mit sechs Beinen"],["BIENE","Bestäubt Blüten und macht Honig"],["WALD","Viele Bäume auf einer großen Fläche"],["WIESE","Hier blühen Blumen und wachsen Gräser"],["VOGEL","Tier mit Federn und Schnabel"],["ARTENVIELFALT","Viele verschiedene Tiere und Pflanzen"],["IGEL","Stacheliges Tier im Garten"]],
+16:[["FRIEDEN","Wenn Menschen ohne Krieg und Gewalt zusammenleben"],["STREIT","Wird in der Schlichter-Ecke gelöst"],["REGELN","Abmachungen, an die sich alle halten"],["KINDERRECHTE","Rechte, die nur für Kinder gelten"],["KLASSENRAT","Hier besprecht ihr Anliegen der Klasse"],["ZUHÖREN","Den anderen ausreden lassen und …"],["GEWALTFREI","Ohne Schlagen und Drohen"]],
+17:[["TEAM","Gruppe, die gemeinsam arbeitet"],["PARTNER","Jemand, der mit dir zusammenarbeitet"],["VEREIN","Zusammenschluss von Menschen mit gleichem Hobby"],["ZUSAMMEN","Gemeinsam, nicht allein"],["AGENDA","Der Plan der 17 Ziele heißt … 2030"],["BRIEF","Geschriebene Nachricht an jemanden"],["NETZWERK","Viele Menschen, die sich gegenseitig helfen"]]
+};
+
 /* ================= Zustand ================= */
 const S = {goal:13, tab:"ideen", size:"alle", sheet:"steckbrief", copies:3, mode:"detektiv", wfGoal:13};
 try{ const g=+localStorage.getItem("fd-goal"); if(g>=1&&g<=17){S.goal=g;S.wfGoal=g;} }catch(e){}
@@ -558,8 +658,9 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setT
 function setTab(id){
   S.tab=id;
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===id));
-  ["ideen","blaetter","uebungen","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
+  ["ideen","blaetter","uebungen","raetsel","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
   if(id==="blaetter") renderSheet();
+  if(id==="raetsel"&&RZ.puz&&!RZ.fitted) renderPuzzle();
 }
 
 /* ================= Projektideen ================= */
@@ -726,10 +827,10 @@ async function saveDoc(doc,fname,msgEl){
   catch(e){msgEl.textContent=e&&e.code==="declined"?"Speichern abgebrochen.":"Speichern hat nicht geklappt. Bitte noch einmal versuchen.";}
 }
 if(STANDALONE){
-  $("#printBtn").hidden=false; $("#qrPrint").hidden=false;
+  $("#printBtn").hidden=false; $("#qrPrint").hidden=false; $("#rzPrint").hidden=false;
   $("#saveHint").textContent="„Drucken“ öffnet das Blatt in einem neuen Fenster mit dem Druckdialog. Beim Drucken „Ränder: keine“ wählen, falls der Browser fragt.";
 }else{
-  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){$("#saveBtn").hidden=true;$("#qrSave").hidden=true;$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
+  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){$("#saveBtn").hidden=true;$("#qrSave").hidden=true;$("#rzSave").hidden=true;$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
 }
 $("#printBtn").addEventListener("click",()=>printDoc(buildDoc().doc,$("#saveMsg")));
 $("#saveBtn").addEventListener("click",()=>{const {doc,fname}=buildDoc();saveDoc(doc,fname,$("#saveMsg"));});
@@ -737,10 +838,11 @@ $("#saveBtn").addEventListener("click",()=>{const {doc,fname}=buildDoc();saveDoc
 /* ================= QR-Code ================= */
 const PAGES_URL="https://haro2204.github.io/Freiday-Werkstatt/";
 let qrCount=6;
-function qrHash(){const v=$("#qrTarget").value;return v==="schueler-wf"?`schueler-wf-${S.wfGoal}`:v;}
+function qrHash(){const v=$("#qrTarget").value;return v==="schueler-wf"?`schueler-wf-${S.wfGoal}`:(v==="schueler-kreuz"||v==="schueler-wort")?`${v}-${S.goal}`:v;}
 function qrLink(){return PAGES_URL+"#"+qrHash();}
 function qrLabel(){
   const v=$("#qrTarget").value;
+  if(v==="schueler-kreuz"||v==="schueler-wort") return `${v==="schueler-kreuz"?"Kreuzworträtsel":"Wortsuche"} – Ziel ${S.goal}: ${goal(S.goal).name}`;
   return v==="schueler-detektiv"?"Ziel-Detektiv":v==="schueler-nummer"?"Nummern-Profi":v==="schueler-wf"?`Wahr oder falsch – Ziel ${S.wfGoal}: ${goal(S.wfGoal).name}`:"Freiday-Übungen";
 }
 function drawQR(el,size){
@@ -833,6 +935,261 @@ $("#exPick").addEventListener("click",e=>{const b=e.target.closest(".ex-card");i
   $("#exPick").querySelectorAll(".ex-card").forEach(x=>x.setAttribute("aria-pressed",x===b));$("#wfGoalBar").hidden=S.mode!=="wf";buildQuiz();});
 $("#wfGoal").addEventListener("change",()=>{S.wfGoal=+$("#wfGoal").value;buildQuiz();renderQR();});
 
+/* ================= Rätsel ================= */
+const RZ={type:"kreuz",level:"mittel",copies:1,puz:null,dir:"A",found:new Set(),pick:null};
+
+function genCross(list){
+  let best=null;
+  for(let t=0;t<60;t++){
+    const ws=[...list].sort((a,b)=>b[0].length-a[0].length);
+    const rest=t?shuffle(ws.slice(1)):ws.slice(1), order=[ws[0],...rest];
+    const cells=new Map(), key=(r,c)=>r+","+c, placed=[];
+    const at=(r,c)=>cells.get(key(r,c));
+    const can=(w,r,c,d)=>{
+      const dr=d==="D"?1:0, dc=d==="A"?1:0, L=w.length;
+      if(at(r-dr,c-dc)||at(r+dr*L,c+dc*L)) return -1;
+      let inter=0;
+      for(let i=0;i<L;i++){
+        const rr=r+dr*i, cc=c+dc*i, x=at(rr,cc);
+        if(x){ if(x.ch!==w[i]||x.dirs.has(d)) return -1; inter++; }
+        else if(at(rr+dc,cc+dr)||at(rr-dc,cc-dr)) return -1;
+      }
+      return inter;
+    };
+    const put=(w,clue,r,c,d)=>{
+      const dr=d==="D"?1:0, dc=d==="A"?1:0;
+      for(let i=0;i<w.length;i++){const k=key(r+dr*i,c+dc*i);const x=cells.get(k)||{ch:w[i],dirs:new Set()};x.dirs.add(d);cells.set(k,x);}
+      placed.push({w,clue,r,c,d});
+    };
+    put(order[0][0],order[0][1],0,0,Math.random()<.5?"A":"D");
+    for(const [w,clue] of order.slice(1)){
+      let opts=[];
+      for(const [k,x] of cells){
+        const [r0,c0]=k.split(",").map(Number);
+        for(let i=0;i<w.length;i++){ if(w[i]!==x.ch) continue;
+          for(const d of ["A","D"]){ if(x.dirs.has(d)) continue;
+            const r=d==="D"?r0-i:r0, c=d==="A"?c0-i:c0, s=can(w,r,c,d);
+            if(s>0) opts.push({r,c,d,s:s+Math.random()*.5});
+          }}
+      }
+      if(opts.length){opts.sort((a,b)=>b.s-a.s);const o=opts[0];put(w,clue,o.r,o.c,o.d);}
+    }
+    let r1=1e9,c1=1e9,r2=-1e9,c2=-1e9;
+    for(const k of cells.keys()){const [r,c]=k.split(",").map(Number);r1=Math.min(r1,r);c1=Math.min(c1,c);r2=Math.max(r2,r);c2=Math.max(c2,c);}
+    const rows=r2-r1+1, cols=c2-c1+1, area=rows*cols, sq=Math.abs(rows-cols);
+    const score=placed.length*1000-area-sq*8;
+    if(!best||score>best.score) best={score,rows,cols,placed:placed.map(p=>({...p,r:p.r-r1,c:p.c-c1}))};
+  }
+  /* Nummern vergeben */
+  const starts=[...new Set(best.placed.map(p=>p.r*100+p.c))].sort((a,b)=>a-b);
+  best.placed.forEach(p=>p.num=starts.indexOf(p.r*100+p.c)+1);
+  best.letters={};
+  best.placed.forEach(p=>{for(let i=0;i<p.w.length;i++){const r=p.r+(p.d==="D"?i:0),c=p.c+(p.d==="A"?i:0);best.letters[r+","+c]=p.w[i];}});
+  best.missing=list.length-best.placed.length;
+  return best;
+}
+
+function genWord(list,level){
+  const D={leicht:[[0,1],[1,0]],mittel:[[0,1],[1,0],[1,1],[-1,1]],schwer:[[0,1],[1,0],[1,1],[-1,1],[0,-1],[-1,0],[-1,-1],[1,-1]]}[level];
+  const words=list.map(x=>x[0]).sort((a,b)=>b.length-a.length);
+  const N=Math.min(15,Math.max(10,words[0].length+1));
+  let best=null;
+  for(let t=0;t<40;t++){
+    const g=Array.from({length:N},()=>Array(N).fill(null)), placed=[];
+    for(const w of words){
+      for(let k=0;k<400;k++){
+        const [dr,dc]=D[Math.floor(Math.random()*D.length)];
+        const r=Math.floor(Math.random()*N), c=Math.floor(Math.random()*N);
+        const er=r+dr*(w.length-1), ec=c+dc*(w.length-1);
+        if(er<0||er>=N||ec<0||ec>=N) continue;
+        let ok=true;
+        for(let i=0;i<w.length;i++){const x=g[r+dr*i][c+dc*i];if(x&&x!==w[i]){ok=false;break;}}
+        if(!ok) continue;
+        for(let i=0;i<w.length;i++) g[r+dr*i][c+dc*i]=w[i];
+        placed.push({w,r,c,dr,dc}); break;
+      }
+    }
+    if(!best||placed.length>best.placed.length) best={N,g,placed};
+    if(placed.length===words.length) break;
+  }
+  const AB="AAABCDEEEEEFGHHIIIKLLMNNNNOPRRRSSSTTTUUVWZÄÖÜ";
+  best.g=best.g.map(row=>row.map(x=>x||AB[Math.floor(Math.random()*AB.length)]));
+  best.missing=words.length-best.placed.length;
+  return best;
+}
+
+function newPuzzle(){
+  const list=W[S.goal];
+  RZ.puz=RZ.type==="kreuz"?genCross(list):genWord(list,RZ.level);
+  RZ.puz.goal=S.goal; RZ.puz.type=RZ.type; RZ.puz.level=RZ.level;
+  RZ.found=new Set(); RZ.pick=null; RZ.dir="A";
+  renderPuzzle();
+}
+function rzControls(){
+  $("#rzType").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===RZ.type));
+  $("#rzLevel").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===RZ.level));
+  $("#rzLevelF").hidden=RZ.type!=="wort";
+  $("#rzCopiesF").hidden=RZ.type!=="wort";
+  $("#rzLevelNote").textContent={leicht:"Wörter nur → und ↓",mittel:"auch schräg",schwer:"in alle Richtungen, auch rückwärts"}[RZ.level];
+}
+function renderPuzzle(){
+  rzControls();
+  const p=RZ.puz, g=goal(p.goal), sol=$("#rzSol").checked, el=$("#rzPlay");
+  RZ.fitted=el.clientWidth>0;
+  const miss=p.missing?`<p class="note">${p.missing} Wort passte nicht hinein. „Neues Rätsel“ probiert eine andere Anordnung.</p>`:"";
+  if(p.type==="kreuz"){
+    const cs=Math.max(26,Math.min(42,Math.floor((Math.min(el.clientWidth||700,760)-40)/p.cols)));
+    const nums={}; p.placed.forEach(w=>nums[w.r+","+w.c]=w.num);
+    let cells="";
+    for(let r=0;r<p.rows;r++)for(let c=0;c<p.cols;c++){
+      const k=r+","+c, ch=p.letters[k];
+      cells+=ch?`<div class="xc on" data-k="${k}">${nums[k]?`<span class="num">${nums[k]}</span>`:""}<input maxlength="2" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Feld ${r+1}/${c+1}" ${sol?`value="${ch}" readonly`:""}></div>`:`<div class="xc"></div>`;
+    }
+    const cl=d=>p.placed.filter(w=>w.d===d).sort((a,b)=>a.num-b.num).map(w=>`<li data-num="${w.num}" data-d="${d}"><b>${w.num}</b><span>${esc(w.clue)} <span class="note">(${w.w.length})</span></span></li>`).join("");
+    el.innerHTML=`<div class="play-head"><h3>Kreuzworträtsel · Ziel ${g.n} ${esc(g.name)}</h3><span class="status" id="rzStatus"></span></div>${miss}
+      <div class="xw-wrap"><div class="xw" style="--cs:${cs}px;grid-template-columns:repeat(${p.cols},var(--cs))">${cells}</div></div>
+      <div class="btnrow"><button class="btn primary" type="button" id="xwCheck">Prüfen</button><button class="btn" type="button" id="xwClear">Leeren</button></div>
+      <div class="clues"><div><h4>Waagrecht →</h4><ol>${cl("A")}</ol></div><div><h4>Senkrecht ↓</h4><ol>${cl("D")}</ol></div></div>`;
+    wireCross();
+  }else{
+    const solved=new Set(); if(sol) p.placed.forEach(w=>{for(let i=0;i<w.w.length;i++)solved.add((w.r+w.dr*i)+","+(w.c+w.dc*i));});
+    let cells="";
+    for(let r=0;r<p.N;r++)for(let c=0;c<p.N;c++) cells+=`<button type="button" class="wl${solved.has(r+","+c)?" solv":""}" data-r="${r}" data-c="${c}">${p.g[r][c]}</button>`;
+    el.innerHTML=`<div class="play-head"><h3>Wortsuche · Ziel ${g.n} ${esc(g.name)}</h3><span class="status" id="rzStatus"></span></div>${miss}
+      <p class="note" style="margin:0">Tippe auf den ersten und dann auf den letzten Buchstaben eines Wortes.</p>
+      <div class="ws-play"><div class="wsg" id="wsg" style="grid-template-columns:repeat(${p.N},1fr)">${cells}</div>
+      <div class="wlist" id="wlist">${p.placed.map(w=>`<span data-w="${w.w}">${w.w}</span>`).join("")}</div></div>`;
+    wireWord();
+  }
+  updateStatus();
+}
+function updateStatus(){
+  const p=RZ.puz, s=$("#rzStatus"); if(!s) return;
+  if(p.type==="wort"){
+    s.textContent=RZ.found.size===p.placed.length?`Alle ${p.placed.length} gefunden! 🎉`:`${RZ.found.size} von ${p.placed.length} gefunden`;
+  }
+}
+
+/* Kreuzworträtsel bedienen */
+function xwWordAt(k,d){
+  const [r,c]=k.split(",").map(Number);
+  return RZ.puz.placed.find(w=>w.d===d&&(d==="A"?(w.r===r&&c>=w.c&&c<w.c+w.w.length):(w.c===c&&r>=w.r&&r<w.r+w.w.length)));
+}
+function xwCells(w){return Array.from({length:w.w.length},(_,i)=>(w.r+(w.d==="D"?i:0))+","+(w.c+(w.d==="A"?i:0)));}
+function xwHighlight(k){
+  document.querySelectorAll(".xc.hl").forEach(x=>x.classList.remove("hl"));
+  document.querySelectorAll(".clues li.cur").forEach(x=>x.classList.remove("cur"));
+  let w=xwWordAt(k,RZ.dir); if(!w){RZ.dir=RZ.dir==="A"?"D":"A";w=xwWordAt(k,RZ.dir);} if(!w) return;
+  xwCells(w).forEach(c=>document.querySelector(`.xc[data-k="${c}"]`)?.classList.add("hl"));
+  document.querySelector(`.clues li[data-num="${w.num}"][data-d="${w.d}"]`)?.classList.add("cur");
+}
+function xwFocus(k){const i=document.querySelector(`.xc[data-k="${k}"] input`);if(i){i.focus();i.select();}}
+function wireCross(){
+  const box=document.querySelector(".xw");
+  let last=null;
+  box.addEventListener("pointerdown",e=>{const c=e.target.closest(".xc.on");if(!c)return;if(last===c.dataset.k&&xwWordAt(c.dataset.k,"A")&&xwWordAt(c.dataset.k,"D"))RZ.dir=RZ.dir==="A"?"D":"A";});
+  box.addEventListener("focusin",e=>{const c=e.target.closest(".xc.on");if(!c)return;last=c.dataset.k;xwHighlight(c.dataset.k);});
+  box.addEventListener("input",e=>{
+    const inp=e.target, c=inp.closest(".xc"); c.classList.remove("ok","bad");
+    inp.value=(inp.value.slice(-1)||"").toUpperCase().replace("ß","SS").slice(0,1);
+    if(!inp.value) return;
+    const w=xwWordAt(c.dataset.k,RZ.dir); if(!w) return;
+    const cs=xwCells(w), i=cs.indexOf(c.dataset.k); if(i<cs.length-1) xwFocus(cs[i+1]);
+  });
+  box.addEventListener("keydown",e=>{
+    const c=e.target.closest(".xc.on"); if(!c) return;
+    const [r,col]=c.dataset.k.split(",").map(Number);
+    const mv={ArrowRight:[0,1,"A"],ArrowLeft:[0,-1,"A"],ArrowDown:[1,0,"D"],ArrowUp:[-1,0,"D"]}[e.key];
+    if(mv){e.preventDefault();RZ.dir=mv[2];const k=(r+mv[0])+","+(col+mv[1]);if(RZ.puz.letters[k])xwFocus(k);else xwHighlight(c.dataset.k);return;}
+    if(e.key==="Backspace"&&!e.target.value){const w=xwWordAt(c.dataset.k,RZ.dir);if(!w)return;const cs=xwCells(w),i=cs.indexOf(c.dataset.k);if(i>0){e.preventDefault();xwFocus(cs[i-1]);const p=document.querySelector(`.xc[data-k="${cs[i-1]}"] input`);if(p)p.value="";}}
+  });
+  document.querySelectorAll(".clues li").forEach(li=>li.addEventListener("click",()=>{
+    const w=RZ.puz.placed.find(x=>x.num===+li.dataset.num&&x.d===li.dataset.d); RZ.dir=w.d; xwFocus(w.r+","+w.c);
+  }));
+  $("#xwCheck").onclick=()=>{
+    let right=0,total=0,empty=0;
+    document.querySelectorAll(".xc.on").forEach(c=>{
+      const v=c.querySelector("input").value, ch=RZ.puz.letters[c.dataset.k]; total++;
+      c.classList.remove("ok","bad");
+      if(!v){empty++;return;} if(v===ch){right++;c.classList.add("ok");}else c.classList.add("bad");
+    });
+    RZ.puz.placed.forEach(w=>{const done=xwCells(w).every(k=>document.querySelector(`.xc[data-k="${k}"] input`).value===RZ.puz.letters[k]);
+      document.querySelector(`.clues li[data-num="${w.num}"][data-d="${w.d}"]`)?.classList.toggle("done",done);});
+    $("#rzStatus").textContent=right===total?"Alles richtig! 🎉":`${right} von ${total} Buchstaben richtig${empty?`, ${empty} noch leer`:""}`;
+  };
+  $("#xwClear").onclick=()=>{document.querySelectorAll(".xc.on").forEach(c=>{c.classList.remove("ok","bad");c.querySelector("input").value="";});document.querySelectorAll(".clues li.done").forEach(x=>x.classList.remove("done"));$("#rzStatus").textContent="";};
+}
+
+/* Wortsuche bedienen */
+function wireWord(){
+  const p=RZ.puz;
+  $("#wsg").addEventListener("click",e=>{
+    const b=e.target.closest(".wl"); if(!b) return;
+    const r=+b.dataset.r, c=+b.dataset.c;
+    if(!RZ.pick){RZ.pick=[r,c];b.classList.add("sel");return;}
+    const [r0,c0]=RZ.pick; RZ.pick=null;
+    document.querySelectorAll(".wl.sel").forEach(x=>x.classList.remove("sel"));
+    if(r0===r&&c0===c) return;
+    const dr=Math.sign(r-r0), dc=Math.sign(c-c0), n=Math.max(Math.abs(r-r0),Math.abs(c-c0))+1;
+    if(!(r0===r||c0===c||Math.abs(r-r0)===Math.abs(c-c0))) return;
+    const hit=p.placed.find((w,i)=>!RZ.found.has(i)&&w.w.length===n&&(
+      (w.r===r0&&w.c===c0&&w.dr===dr&&w.dc===dc)||(w.r===r&&w.c===c&&w.dr===-dr&&w.dc===-dc)));
+    if(!hit) return;
+    const idx=p.placed.indexOf(hit); RZ.found.add(idx);
+    for(let i=0;i<n;i++){const x=document.querySelector(`.wl[data-r="${r0+dr*i}"][data-c="${c0+dc*i}"]`);x.className=x.className.replace(/ f\d/,"")+" f"+(idx%8);}
+    document.querySelector(`#wlist [data-w="${hit.w}"]`)?.classList.add("done");
+    updateStatus();
+  });
+}
+
+/* Druckblatt */
+function rzSheet(){
+  const p=RZ.puz, g=goal(p.goal), sol=$("#rzSol").checked;
+  const nd=$("#rzName").checked?`<div class="nd">Name: <span></span> Datum: <span style="min-width:20mm"></span></div>`:"";
+  const badge=`<span class="badge" style="background:${g.c}"><b>${g.n}</b> ${esc(g.name)}</span>`;
+  const head=(t,sub,small)=>`<div class="ws-head"${small?' style="padding-bottom:1.2mm"':""}><div><div class="ws-title"${small?' style="font-size:15pt"':""}>${t}</div><div class="ws-sub">${sub}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:1.5mm">${badge}${nd}</div></div>`;
+  const foot=`<div class="foot"><span>Freiday</span><span>${sol?"Lösung":"Ziel "+g.n+": "+esc(g.name)}</span></div>`;
+  if(p.type==="kreuz"){
+    const cs=Math.min(13,186/p.cols,170/p.rows).toFixed(2);
+    const nums={}; p.placed.forEach(w=>nums[w.r+","+w.c]=w.num);
+    let rows="";
+    for(let r=0;r<p.rows;r++){rows+="<tr>";for(let c=0;c<p.cols;c++){const k=r+","+c,ch=p.letters[k];
+      rows+=ch?`<td style="width:${cs}mm;height:${cs}mm;padding:0;border:1.2px solid #222;position:relative;text-align:center;vertical-align:middle;font-weight:700;font-size:${(cs*1.7).toFixed(1)}pt">${nums[k]?`<span style="position:absolute;top:.3mm;left:.6mm;font-size:6pt;font-weight:700">${nums[k]}</span>`:""}${sol?ch:""}</td>`:`<td style="width:${cs}mm;height:${cs}mm;padding:0"></td>`;}
+      rows+="</tr>";}
+    const cl=d=>p.placed.filter(w=>w.d===d).sort((a,b)=>a.num-b.num).map(w=>`<div style="display:flex;gap:2mm;padding:.6mm 0"><b style="min-width:5mm">${w.num}</b><span>${esc(w.clue)} (${w.w.length})${sol?` – <b>${w.w}</b>`:""}</span></div>`).join("");
+    return `<div class="ws">${head(sol?"Kreuzworträtsel – Lösung":"Kreuzworträtsel","Trage die Wörter ein. Ä, Ö und Ü bekommen je ein eigenes Kästchen.")}
+      <div style="flex:1;display:grid;place-items:center;min-height:0"><table style="border-collapse:collapse;table-layout:fixed">${rows}</table></div>
+      <div class="row" style="font-size:10pt"><div class="box"><h4>Waagrecht →</h4>${cl("A")}</div><div class="box"><h4>Senkrecht ↓</h4>${cl("D")}</div></div>
+      ${foot}</div>`;
+  }
+  const solved=new Set(); if(sol) p.placed.forEach(w=>{for(let i=0;i<w.w.length;i++)solved.add((w.r+w.dr*i)+","+(w.c+w.dc*i));});
+  const half=RZ.copies===2;
+  const cs=half?Math.min(9.5,110/p.N):Math.min(12,180/p.N);
+  const grid=r=>p.g.map((row,ri)=>`<tr>${row.map((ch,ci)=>`<td style="width:${cs}mm;height:${cs}mm;text-align:center;vertical-align:middle;font-weight:700;font-size:${(cs*1.55).toFixed(1)}pt;${solved.has(ri+","+ci)?"background:#d9d9d9;border-radius:1mm;":""}">${ch}</td>`).join("")}</tr>`).join("");
+  const words=p.placed.map(w=>`<span style="display:block;padding:.6mm 0;font-weight:700;letter-spacing:.3mm"><span style="display:inline-block;width:3.4mm;height:3.4mm;border:1.2px solid #333;border-radius:.6mm;margin-right:2mm;vertical-align:-.5mm"></span>${w.w}</span>`).join("");
+  const sub={leicht:"Die Wörter stehen waagrecht → und senkrecht ↓.",mittel:"Die Wörter stehen waagrecht, senkrecht und schräg.",schwer:"Die Wörter stehen in alle Richtungen, auch rückwärts."}[p.level];
+  const tbl=`<table style="border-collapse:separate;border-spacing:.4mm;font-family:'Atkinson Hyperlegible',Arial,sans-serif">${grid()}</table>`;
+  const one=h=>half
+    ? `<div class="ws part" style="height:${h}">${head(sol?"Wortsuche – Lösung":"Wortsuche",sub,true)}<div class="row grow" style="align-items:center">${tbl}<div style="flex:0 0 52mm;font-size:10pt">${words}</div></div></div>`
+    : `<div class="ws">${head(sol?"Wortsuche – Lösung":"Wortsuche",sub)}<div style="flex:1;display:grid;place-items:center;min-height:0">${tbl}</div>
+       <div class="box"><h4>Diese ${p.placed.length} Wörter sind versteckt <em>Hake ab, was du gefunden hast.</em></h4><div style="columns:3;font-size:11pt">${words}</div></div>${foot}</div>`;
+  if(!half) return one();
+  const h=((275-5.5)/2).toFixed(1)+"mm";
+  return one(h)+`<div class="cut"></div>`+one(h);
+}
+function rzDoc(){
+  const p=RZ.puz, nm=(p.type==="kreuz"?"Kreuzwortraetsel":"Wortsuche")+"_Ziel"+p.goal+($("#rzSol").checked?"_Loesung":"");
+  return {doc:makeDoc(rzSheet(),nm.replace(/_/g," ")),fname:fileName(nm)};
+}
+$("#rzPrint").addEventListener("click",()=>printDoc(rzDoc().doc,$("#rzMsg")));
+$("#rzSave").addEventListener("click",()=>{const {doc,fname}=rzDoc();saveDoc(doc,fname,$("#rzMsg"));});
+$("#rzType").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;RZ.type=b.dataset.t;newPuzzle();});
+$("#rzLevel").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;RZ.level=b.dataset.l;newPuzzle();});
+$("#rzCopies").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;RZ.copies=+b.dataset.c;$("#rzCopies").querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));});
+$("#rzNew").addEventListener("click",newPuzzle);
+$("#rzSol").addEventListener("change",renderPuzzle);
+$("#rzGoal").addEventListener("change",()=>{S.goal=S.wfGoal=+$("#rzGoal").value;try{localStorage.setItem("fd-goal",S.goal)}catch(e){}renderAll();});
+
 /* ================= Ablauf ================= */
 $("#flow").innerHTML=PHASES.map((p,i)=>`<div class="ph"><span class="no">${i+1}</span><h3>${p[0]}</h3><p>${p[1]}</p><span class="tool">Werkzeug: ${p[2]}</span></div>`).join("");
 
@@ -843,7 +1200,7 @@ function setMode(m){
   $("#wfGoalBar").hidden=m!=="wf";
 }
 function applyView(){
-  const m=location.hash.slice(1).match(/^schueler(?:-(detektiv|nummer|wf)(?:-(\d{1,2}))?)?$/);
+  const m=location.hash.slice(1).match(/^schueler(?:-(detektiv|nummer|wf|kreuz|wort)(?:-(\d{1,2}))?)?$/);
   const st=!!m;
   document.body.classList.toggle("student",st);
   document.querySelector(".student-only").hidden=!st;
@@ -851,8 +1208,14 @@ function applyView(){
   if(st){
     setTab("uebungen");
     if(m[1]){
-      const n=+m[2]; if(m[1]==="wf"&&n>=1&&n<=17){S.wfGoal=n;$("#wfGoal").value=n;}
-      setMode(m[1]); buildQuiz();
+      const n=+m[2], okN=n>=1&&n<=17;
+      if(m[1]==="kreuz"||m[1]==="wort"){
+        if(okN){S.goal=S.wfGoal=n;}
+        RZ.type=m[1]; RZ.puz=null; renderAll(); setTab("raetsel");
+      }else{
+        if(m[1]==="wf"&&okN){S.wfGoal=n;$("#wfGoal").value=n;}
+        setMode(m[1]); buildQuiz();
+      }
     }
   }
 }
@@ -865,6 +1228,8 @@ function renderAll(){
   const opts=G.map(g=>`<option value="${g.n}">${g.n} – ${esc(g.name)}</option>`).join("");
   $("#wsGoal").innerHTML=opts; $("#wsGoal").value=S.goal;
   $("#wfGoal").innerHTML=opts; $("#wfGoal").value=S.wfGoal;
+  $("#rzGoal").innerHTML=opts; $("#rzGoal").value=S.goal;
+  if(!RZ.puz||RZ.puz.goal!==S.goal) newPuzzle();
   renderTypes();
   if(S.tab==="blaetter") renderSheet();
   if(S.mode==="wf") buildQuiz();
