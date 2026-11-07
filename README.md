@@ -16,7 +16,7 @@ Escape-Rooms: `#schueler-escape-meer`, `#schueler-escape-klima`, `#schueler-esca
 | Bereich | Was es gibt |
 |---|---|
 | Projektideen | je Ziel vier Projektideen (klein, mittel, groß), Ideen-Würfel über alle Ziele |
-| Arbeitsblätter | Projektsteckbrief, Ideenfinder, Recherche-Blatt, Team-Vertrag (je 1 Seite A4); Logbuch und Reflexionskarte (1×, 2× oder 3× pro A4) |
+| Arbeitsblätter | Projektsteckbrief, Ideenfinder, Recherche-Blatt, Team-Vertrag, Ziel-Poster, Ziele-Übersicht, Bilder-Rätsel (je 1 Seite A4); Logbuch und Reflexionskarte (1×, 2× oder 3× pro A4); alle mit Ziel-Bild |
 | Online-Übungen | Ziel-Detektiv, Wahr oder falsch, Nummern-Profi – für das iPad, mit QR-Code (Beamer oder Druckblatt mit 1 oder 6 Codes) |
 | Rätsel | Kreuzworträtsel und Wortsuche (leicht, mittel, schwer) zu jedem Ziel; am iPad lösbar, druckbar mit Lösungsblatt, Wortsuche auch 2× pro A4 |
 | Spiele | zum Ausdrucken und Laminieren: Memory, Domino, Ziele-Bingo (mit Rufkarten), Quizkarten mit Lösung, Erklärkarten; mit Rückseiten und Spielregel-Karten |
@@ -31,3 +31,7 @@ Escape-Rooms: `#schueler-escape-meer`, `#schueler-escape-klima`, `#schueler-esca
 - Alle Texte und Aufgaben sind selbst formuliert. Fremde Inhalte werden nur verlinkt (z. B. [frei-day.at](https://www.frei-day.at/)).
 - Die ganze Werkstatt steckt in einer einzigen Datei: `index.html`. Es braucht keine Installation.
 - Arbeitsblätter lassen sich direkt aus dem Browser drucken oder als Datei speichern.
+
+## Bilder
+
+Der Ordner `bilder/` enthält die Symbole der 17 Ziele (`ziel-01.png` bis `ziel-17.png`). Sie sind auch direkt in `index.html` eingebettet.
