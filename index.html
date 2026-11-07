@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Projektideen, Arbeitsblätter (auch digital am iPad), Rätsel, Spiele, Klassenspiele, Stillarbeit und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
+<meta name="description" content="Projektideen, Arbeitsblätter (auch digital am iPad), Rätsel, Spiele, Escape-Rooms, Klassenspiele, Stillarbeit und Online-Übungen zu den 17 Nachhaltigkeitszielen für den Freiday an der Mittelschule.">
 <title>Freiday-Werkstatt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -335,6 +335,92 @@ body:not(.student) .read-card{order:2}
 .podium div{width:clamp(90px,14vw,170px);border-radius:12px 12px 0 0;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding-top:10px;color:#fff;font-weight:800;text-align:center}
 .podium div span{font-family:var(--f-display);font-size:clamp(24px,3vw,40px)}
 
+/* Escape-Rooms – Auswahl */
+.esc-rooms{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.esc-room{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:0;text-align:left;overflow:hidden;display:flex;flex-direction:column}
+.esc-room .band{height:62px;display:flex;align-items:flex-end;padding:8px 14px;color:#fff;font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;position:relative}
+.esc-room .band::after{content:"";position:absolute;right:14px;top:12px;width:22px;height:18px;border:3px solid rgba(255,255,255,.85);border-radius:4px}
+.esc-room .band::before{content:"";position:absolute;right:18px;top:2px;width:14px;height:14px;border:3px solid rgba(255,255,255,.85);border-bottom:0;border-radius:9px 9px 0 0}
+.esc-room .bd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.esc-room b{font-family:var(--f-display);font-size:20px;line-height:1.15}
+.esc-room span{color:var(--muted);font-size:14px}
+.esc-room .gl{display:flex;gap:4px;flex-wrap:wrap;margin-top:auto}
+.esc-room .gl i{font-style:normal;color:#fff;border-radius:5px;padding:1px 7px;font-size:12px;font-weight:700}
+.esc-room[aria-pressed="true"]{box-shadow:0 0 0 3px var(--accent)}
+.esc-detail{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+@media (max-width:900px){.esc-detail{grid-template-columns:minmax(0,1fr)}}
+.esc-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.esc-card h3{font-size:22px}
+.esc-card .story{font-size:16.5px;line-height:1.6;margin:0}
+.esc-card .field input,.esc-card .field select{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:9px 10px;font:inherit;width:100%}
+.esc-print{display:flex;flex-direction:column;gap:12px}
+
+/* Escape-Room – Spielbühne (bewusst eigener, dunkler Look) */
+.esc-stage{--rc:#1e88cf;position:fixed;inset:0;z-index:60;color:#eef4f8;overflow:auto;color-scheme:dark;font-family:var(--f-body);
+  background:radial-gradient(ellipse at 20% -10%,color-mix(in srgb,var(--rc) 55%,#0b1620) 0%,#0b1620 55%,#070e15 100%);
+  padding:max(12px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.ez-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.ez-ttl{font-family:var(--f-display);font-weight:800;font-size:clamp(18px,2.4vw,26px)}
+.ez-ttl small{display:block;font-family:var(--f-body);font-weight:400;font-size:13px;opacity:.75}
+.ez-slots{display:flex;gap:6px}
+.ez-slots span{width:40px;height:46px;border:2px dashed rgba(255,255,255,.35);border-radius:8px;display:grid;place-items:center;font:800 24px var(--f-display)}
+.ez-slots span.on{border:2px solid #ffd166;background:rgba(255,209,102,.15);color:#ffd166}
+.ez-time{font:800 clamp(22px,2.6vw,30px) var(--f-display);font-variant-numeric:tabular-nums;color:#ffd166;min-width:4.2ch;text-align:right}
+.ez-time.over{color:#ff8a7a}
+.ez-btn{border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#eef4f8;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15px}
+.ez-btn:hover{background:rgba(255,255,255,.16)}
+.ez-btn.gold{background:#ffd166;color:#2a1f00;border-color:#ffd166}
+.ez-btn:disabled{opacity:.35;cursor:default}
+.ez-wrap{max-width:980px;margin:18px auto 0;display:flex;flex-direction:column;gap:16px}
+.ez-story{background:rgba(255,255,255,.06);border-radius:16px;padding:16px 20px;font-size:clamp(16px,1.7vw,19px);line-height:1.6}
+.ez-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.ez-tile{border:2px solid rgba(255,255,255,.22);background:rgba(255,255,255,.05);color:#eef4f8;border-radius:18px;padding:16px 18px;text-align:left;min-height:132px;display:flex;flex-direction:column;gap:6px}
+.ez-tile:hover:not(:disabled){border-color:#ffd166}
+.ez-tile .no{font:800 13px var(--f-body);letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.ez-tile b{font-family:var(--f-display);font-size:21px;line-height:1.2}
+.ez-tile .st{margin-top:auto;font-weight:700;font-size:14px;color:#ffd166}
+.ez-tile.ok{border-color:#5fe39a;background:rgba(95,227,154,.1)}
+.ez-tile.ok .st{color:#5fe39a}
+.ez-tile.chest{border-style:dashed;border-color:#ffd166}
+.ez-tile:disabled{opacity:.45;cursor:default}
+.ez-puz{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:clamp(16px,2.6vw,28px);display:flex;flex-direction:column;gap:16px}
+.ez-puz h2{font-size:clamp(24px,3vw,34px)}
+.ez-txt{margin:0;font-size:clamp(16px,1.8vw,19px);line-height:1.6}
+.ez-big{font:800 clamp(28px,5vw,52px)/1.2 var(--f-display);letter-spacing:.16em;text-align:center;color:#ffd166;padding:14px;background:rgba(0,0,0,.28);border-radius:14px;overflow-wrap:anywhere}
+.ez-key{font-weight:700;color:#cfe3f0}
+.ez-alw{overflow-x:auto}
+.ez-alpha{border-collapse:collapse;margin:0 auto}
+.ez-alpha td{border:1px solid rgba(255,255,255,.3);min-width:30px;height:32px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;padding:0 3px}
+.ez-alpha tr+tr td{color:#ffd166}
+.ez-list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.ez-list li{display:flex;gap:12px;align-items:center;background:rgba(0,0,0,.2);border-radius:12px;padding:10px 14px;font-size:clamp(16px,1.7vw,19px)}
+.ez-list .lt{flex:none;width:36px;height:36px;border-radius:50%;background:var(--rc);color:#fff;display:grid;place-items:center;font:800 18px var(--f-display)}
+.ez-list .nm{flex:none;min-width:36px;height:36px;border-radius:9px;background:#ffd166;color:#2a1f00;display:grid;place-items:center;font:800 18px var(--f-display);padding:0 6px}
+.ez-bank{display:flex;flex-wrap:wrap;gap:8px}
+.ez-bank span{border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:4px 14px;font-weight:700;letter-spacing:.05em}
+.ez-gap{display:inline-block;min-width:120px;border-bottom:2px solid rgba(255,255,255,.6);height:1.1em;vertical-align:-2px;position:relative}
+.ez-gap::before{content:"";position:absolute;left:0;bottom:-2px;width:22px;height:1.3em;border:2px solid #ffd166;border-bottom:0;border-radius:4px 4px 0 0}
+.ez-tbl{border-collapse:collapse;font-size:clamp(16px,1.7vw,19px)}
+.ez-tbl th,.ez-tbl td{border:1px solid rgba(255,255,255,.3);padding:7px 14px;text-align:left}
+.ez-tbl td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.ez-q{font-weight:700;font-size:clamp(17px,1.9vw,21px);color:#ffd166;margin:0}
+.ez-opts{display:flex;flex-wrap:wrap;gap:8px}
+.ez-opts span{border-radius:9px;padding:4px 10px;font-weight:700;color:#fff;font-size:15px}
+.ez-lock{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:rgba(0,0,0,.3);border-radius:16px;padding:14px}
+.ez-lock label{font-weight:700}
+.ez-lock input{font:800 clamp(22px,3vw,30px) var(--f-display);letter-spacing:.3em;text-transform:uppercase;background:#0b1620;color:#ffd166;border:2px solid rgba(255,255,255,.4);border-radius:12px;padding:8px 14px;width:min(100%,calc(var(--len) * 1.4em + 40px));min-width:0}
+.ez-lock input:focus{border-color:#ffd166;outline:none}
+.ez-fb{font-weight:700;min-height:1.4em}
+.ez-fb.no{color:#ff8a7a}.ez-fb.ok{color:#5fe39a}
+.ez-hints{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ez-hint{background:rgba(255,209,102,.12);border-left:4px solid #ffd166;border-radius:8px;padding:10px 14px;font-size:clamp(15px,1.6vw,18px)}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.ez-win{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;padding:20px 0}
+.ez-win h2{font-size:clamp(34px,6vw,64px);color:#ffd166}
+.ez-win .word{font:800 clamp(40px,8vw,90px) var(--f-display);letter-spacing:.2em}
+@media (prefers-reduced-motion:reduce){.shake{animation:none}}
+
 /* Ablauf */
 .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;counter-reset:ph}
 .ph{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px}
@@ -351,7 +437,7 @@ body:not(.student) .read-card{order:2}
 a{color:var(--accent)}
 
 /* Schüleransicht */
-body.student .shelf, body.student .teacher-only, body.student .tab:not([data-tab="uebungen"]):not([data-tab="raetsel"]):not([data-tab="still"]):not([data-tab="digital"]){display:none!important}
+body.student .shelf, body.student .teacher-only, body.student .tab:not([data-tab="uebungen"]):not([data-tab="raetsel"]):not([data-tab="still"]):not([data-tab="digital"]):not([data-tab="escape"]){display:none!important}
 body.student .layout{grid-template-columns:minmax(0,1fr)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -433,6 +519,32 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
 .panel6>div{border:1.4px solid #222;border-radius:2mm;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5mm}
 .panel6>div span{border-top:1px solid #9a9a9a;height:7mm}
 .chk td{height:13mm}
+.paper .ez-txt{margin:0;font-size:11pt;line-height:1.5}
+.paper .ez-big{font:800 26pt/1.2 "Bricolage Grotesque",Arial,sans-serif;letter-spacing:4mm;text-align:center;border:1.5px solid #222;border-radius:3mm;padding:4mm}
+.paper .ez-key{font-weight:700;font-size:10.5pt}
+.paper .ez-alpha{border-collapse:collapse;margin:0 auto}
+.paper .ez-alpha td{border:1px solid #444;width:6.6mm;height:7mm;text-align:center;font-weight:700;font-size:9.5pt;padding:0}
+.paper .ez-alpha tr+tr td{background:#eee}
+.paper .ez-list{display:flex;flex-direction:column;gap:2mm;margin:0;padding:0;list-style:none}
+.paper .ez-list li{display:flex;gap:3mm;align-items:center;border:1px solid #888;border-radius:2mm;padding:2mm 3mm;font-size:11pt}
+.paper .ez-list .lt{flex:none;width:8mm;height:8mm;border-radius:50%;border:1.5px solid #222;display:grid;place-items:center;font-weight:800;font-size:12pt}
+.paper .ez-list .nm{flex:none;min-width:8mm;height:8mm;border-radius:1.5mm;background:#222;color:#fff;display:grid;place-items:center;font-weight:800;font-size:12pt;padding:0 1.5mm}
+.paper .ez-list .rf{margin-left:auto;font-size:9pt;white-space:nowrap;color:#444}
+.paper .ez-bank{display:flex;flex-wrap:wrap;gap:2mm}
+.paper .ez-bank span{border:1.2px solid #444;border-radius:4mm;padding:.8mm 3mm;font-weight:700;font-size:10pt}
+.paper .ez-gap{display:inline-block;width:42mm;border-bottom:1.2px solid #333;height:5mm;vertical-align:-1mm;position:relative}
+.paper .ez-gap::before{content:"";position:absolute;left:0;bottom:-.6mm;width:5mm;height:6mm;border:1.5px solid #222;border-bottom:0}
+.paper .ez-tbl{border-collapse:collapse;font-size:11pt}
+.paper .ez-tbl th,.paper .ez-tbl td{border:1px solid #444;padding:1.6mm 4mm;text-align:left}
+.paper .ez-tbl th{background:#eee}
+.paper .ez-tbl td.n{text-align:right;font-weight:700}
+.paper .ez-q{font-weight:700;font-size:11.5pt;margin:0}
+.paper .ez-opts{display:flex;flex-wrap:wrap;gap:2mm}
+.paper .ez-opts span{border:1.2px solid #444;border-radius:1.5mm;padding:.6mm 2.5mm;font-weight:700;font-size:10pt}
+.codebox{display:flex;gap:1.5mm}
+.codebox span{width:10mm;height:12mm;border:1.6px solid #222;border-radius:1.5mm;display:grid;place-items:center;font:800 16pt "Bricolage Grotesque",Arial,sans-serif}
+.esc-badge{display:inline-flex;gap:1.5mm;flex-wrap:wrap;justify-content:flex-end}
+.esc-badge span{color:#fff;border-radius:1.5mm;padding:.5mm 2mm;font-size:8.5pt;font-weight:700}
 .plan td{height:auto;padding:1.5mm 2mm;vertical-align:top}
 </style>
 
@@ -468,6 +580,7 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
         <button class="tab" role="tab" data-tab="still" aria-selected="false">Stillarbeit</button>
         <button class="tab" role="tab" data-tab="digital" aria-selected="false">Digital ausfüllen</button>
         <button class="tab" role="tab" data-tab="klasse" aria-selected="false">Klassenspiel</button>
+        <button class="tab" role="tab" data-tab="escape" aria-selected="false">Escape-Rooms</button>
         <button class="tab" role="tab" data-tab="ablauf" aria-selected="false">Ablauf &amp; Planung</button>
       </div>
 
@@ -685,6 +798,33 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
         <p class="note">Tipp: Im Spiel geht auch alles mit der Tastatur – <b>A</b>–<b>D</b> wählen, <b>Enter</b> auflösen und weiter.</p>
       </section>
 
+      <!-- Escape-Rooms -->
+      <section class="panel" id="p-escape" hidden>
+        <div class="esc-rooms" id="escRooms"></div>
+        <div class="esc-detail" id="escDetail"></div>
+        <div class="teacher-only esc-print">
+          <h2 style="font-size:22px">Zum Ausdrucken</h2>
+          <div class="ws-grid">
+            <div class="ctrl">
+              <div class="field"><span class="lbl">Was soll gedruckt werden?</span>
+                <label class="check"><input type="checkbox" id="ezpTeacher" checked> Lehrerblatt mit Lösungen</label>
+                <label class="check"><input type="checkbox" id="ezpStory" checked> Geschichte &amp; Lösungsbogen (pro Team)</label>
+                <label class="check"><input type="checkbox" id="ezpPuz" checked> 5 Rätselblätter (pro Team)</label>
+                <label class="check"><input type="checkbox" id="ezpCards" checked> Tipp- &amp; Buchstabenkarten (pro Team)</label>
+                <label class="check"><input type="checkbox" id="ezpCert"> Urkunde (zum Ausfüllen)</label>
+              </div>
+              <div class="bar">
+                <button class="btn primary" type="button" id="ezPrint" hidden>Drucken</button>
+                <button class="btn primary" type="button" id="ezSave">Speichern</button>
+              </div>
+              <p class="msg" id="ezMsg"></p>
+              <div class="rules-box"><b>So geht's auf Papier</b><p>Jedes Rätselblatt in ein eigenes Kuvert stecken. Hat ein Team einen Code, prüfst du ihn (oder ein echtes Zahlen- oder Buchstabenschloss) und gibst die passende Buchstabenkarte aus. Mit allen fünf Buchstaben knackt das Team das Passwort. Tippkarten legst du verdeckt auf dein Pult, jedes Team darf sich höchstens drei holen.</p></div>
+            </div>
+            <div class="stage"><div class="pages" id="ezPages"></div></div>
+          </div>
+        </div>
+      </section>
+
       <!-- Ablauf -->
       <section class="panel" id="p-ablauf" hidden>
         <div class="facts">
@@ -709,6 +849,8 @@ table.t td{border:1px solid #444;height:8.5mm;padding:0 2mm}
     </main>
   </div>
 </div>
+
+<div class="esc-stage" id="esc" hidden role="dialog" aria-label="Escape-Room"></div>
 
 <div class="stage-show" id="show" hidden role="dialog" aria-label="Klassenspiel"></div>
 
@@ -932,12 +1074,13 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setT
 function setTab(id){
   S.tab=id;
   document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===id));
-  ["ideen","blaetter","uebungen","raetsel","spiele","still","digital","klasse","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
+  ["ideen","blaetter","uebungen","raetsel","spiele","still","digital","klasse","escape","ablauf"].forEach(p=>$("#p-"+p).hidden=p!==id);
   if(id==="blaetter") renderSheet();
   if(id==="raetsel"&&RZ.puz&&!RZ.fitted) renderPuzzle();
   if(id==="spiele") gmRender();
   if(id==="still") renderLessons();
   if(id==="digital") renderDigital();
+  if(id==="escape") renderEscape();
   if(id!=="still"&&speaking){speechSynthesis.cancel();speaking=false;}
 }
 
@@ -1106,10 +1249,10 @@ async function saveDoc(doc,fname,msgEl){
   catch(e){msgEl.textContent=e&&e.code==="declined"?"Speichern abgebrochen.":"Speichern hat nicht geklappt. Bitte noch einmal versuchen.";}
 }
 if(STANDALONE){
-  ["#printBtn","#qrPrint","#rzPrint","#gmPrint","#lsPrint","#lpPrint"].forEach(id=>$(id).hidden=false);
+  ["#printBtn","#qrPrint","#rzPrint","#gmPrint","#lsPrint","#lpPrint","#ezPrint"].forEach(id=>$(id).hidden=false);
   $("#saveHint").textContent="„Drucken“ öffnet das Blatt in einem neuen Fenster mit dem Druckdialog. Beim Drucken „Ränder: keine“ wählen, falls der Browser fragt.";
 }else{
-  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){["#saveBtn","#qrSave","#rzSave","#gmSave","#lsSave","#lpSave"].forEach(id=>$(id).hidden=true);$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
+  (async()=>{try{dl=await window.claude.use("downloads");}catch(e){dl=null;} if(!dl){["#saveBtn","#qrSave","#rzSave","#gmSave","#lsSave","#lpSave","#ezSave"].forEach(id=>$(id).hidden=true);$("#saveMsg").textContent="Speichern ist in dieser Ansicht nicht möglich.";}})();
 }
 $("#printBtn").addEventListener("click",()=>printDoc(buildDoc().doc,$("#saveMsg")));
 $("#saveBtn").addEventListener("click",()=>{const {doc,fname}=buildDoc();saveDoc(doc,fname,$("#saveMsg"));});
@@ -2148,6 +2291,319 @@ $("#dgGoal").addEventListener("change",()=>{DG.goal=+$("#dgGoal").value;renderDi
 $("#dgCopy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(dgLink());$("#dgCopy").textContent="Kopiert ✓";}catch(e){const r=document.createRange();r.selectNodeContents($("#dgUrl"));const s=getSelection();s.removeAllRanges();s.addRange(r);}});
 $("#dgBig").addEventListener("click",()=>{$("#qrOverlay").hidden=false;drawQR($("#qrBigCode"),640,dgLink());const ds=DS.find(x=>x.id===DG.id);$("#qrBigLabel").textContent=ds.t+(ds.goal?` – Ziel ${DG.goal}`:"");$("#qrClose").focus();});
 
+/* ================= Escape-Rooms: Inhalte ================= */
+const ESC=[
+ {id:"meer",t:"SOS im Ozean",goals:[14,6,12],c:"#1e88cf",min:45,final:"OZEAN",fh:"Ein anderes Wort für ein riesiges Meer.",
+  story:"Alarm im Forschungs-U-Boot „Seestern“! Professorin Flossmann erkundet gerade den Meeresboden, da sperrt sich plötzlich der Bordcomputer. Fünf Schlösser sichern die Ausstiegsluke. Die Codes sind in Rätseln rund ums Wasser versteckt. Jedes geöffnete Schloss verrät euch einen Buchstaben. Zusammen ergeben sie das Passwort für die Luke.",
+  win:"Die Luke springt auf und das U-Boot taucht auf! Professorin Flossmann bedankt sich: Ihr habt gezeigt, wie wichtig saubere Meere und sauberes Wasser sind.",
+  p:[
+   {ty:"caesar",t:"Die Funkmeldung",intro:"Über Funk kommt eine verschlüsselte Nachricht. Sie verrät, was dem Meer am meisten schadet.",enc:"SODVWLN",shift:3,code:"PLASTIK",rw:"N",
+    h:["Geht bei jedem Buchstaben 3 Stellen im Alphabet zurück. Aus D wird A.","S wird zu P, O wird zu L. Das Wort ist etwas, das nicht ins Meer gehört."]},
+   {ty:"rechnen",t:"Der Strandputz",intro:"Eine Schulklasse hat einen Strand geputzt und alles notiert, was sie gefunden hat.",cols:["Fundstück","Anzahl"],rows:[["Plastikflaschen",124],["Glasflaschen",37],["Getränkedosen",58],["Plastiksackerl",89],["Strohhalme aus Plastik",215]],q:"Wie viele Teile aus Plastik hat die Klasse gefunden?",code:"428",rw:"A",
+    h:["Zählt nur die Plastikflaschen, die Plastiksackerl und die Strohhalme aus Plastik.","124 + 89 + 215 = ?"]},
+   {ty:"wf",t:"Das Meeres-Quiz",intro:"Der Bordcomputer stellt euch sechs Aussagen. Nur die richtigen zählen. Ihre Buchstaben ergeben von oben nach unten das Codewort.",st:[["Das Meer bedeckt den größten Teil der Erde.",1,"W"],["Plastik löst sich im Meer nach ein paar Tagen auf.",0,"K"],["Der Blauwal ist das größte Tier der Welt.",1,"A"],["Fische atmen mit Lungen.",0,"R"],["Müll aus Flüssen kann bis ins Meer gelangen.",1,"L"],["Österreich hat eine Küste am Meer.",0,"E"]],code:"WAL",rw:"Z",
+    h:["Drei Aussagen sind richtig.","Fische atmen mit Kiemen, und Österreich hat kein Meer. Das gesuchte Tier ist riesig."]},
+   {ty:"reihe",t:"Die Reise der Flasche",intro:"Wie kommt eine Plastikflasche aus dem Park ins Meer? Bringt die Schritte in die richtige Reihenfolge. Die Zahlen in dieser Reihenfolge sind der Code.",steps:[[4,"Der Wind weht die Flasche in einen Bach."],[1,"Der Bach fließt in einen Fluss, und der Fluss mündet ins Meer."],[2,"Jemand lässt eine leere Plastikflasche im Park liegen."],[3,"Im Meer zerfällt die Flasche langsam in winzige Teilchen."]],code:"2413",rw:"E",
+    h:["Am Anfang liegt die Flasche im Park, am Ende ist sie im Meer zerfallen.","Die erste Zahl ist 2."]},
+   {ty:"luecken",t:"Das Logbuch",intro:"Im Logbuch fehlen Wörter. Setzt die Wörter ein. Die Anfangsbuchstaben ergeben von oben nach unten das Codewort.",s:[["Aus alten Plastikflaschen macht man durch","neue Dinge.","RECYCLING"],["Eine","ist Land, das rundherum von Wasser umgeben ist.","INSEL"],["Ein","hält Schmutz aus dem Wasser zurück.","FILTER"],["Ein","fließt am Ende ins Meer.","FLUSS"]],code:"RIFF",rw:"O",
+    h:["Das Codewort hat 4 Buchstaben. Dort leben Korallen.","R – I – F – F"]}
+  ]},
+ {id:"klima",t:"Mission Klima-Code",goals:[13,7,11],c:"#3f7e44",min:45,final:"SONNE",fh:"Sie schenkt uns Licht und Wärme.",
+  story:"Morgen beginnt die große Klimakonferenz der Schule. Doch der Klima-Computer von Professor Sonnenschein ist gesperrt, und darin sind alle Ideen der Kinder gespeichert! Fünf Schlösser schützen den Computer. Löst die Rätsel zu Klima, Energie und eurer Gemeinde. Jedes geöffnete Schloss verrät einen Buchstaben für das Passwort.",
+  win:"Der Klima-Computer fährt hoch! Alle Ideen sind gerettet, und die Klimakonferenz kann beginnen. Professor Sonnenschein ist begeistert.",
+  p:[
+   {ty:"rechnen",t:"Die Schulweg-Umfrage",intro:"Professor Sonnenschein hat alle 300 Kinder der Schule gefragt, wie sie zur Schule kommen.",cols:["So kommen die Kinder","Anzahl"],rows:[["zu Fuß",96],["mit dem Rad",58],["mit dem Bus",109],["mit dem Auto",37]],q:"Wie viele Kinder kommen klimafreundlich zur Schule, also zu Fuß, mit dem Rad oder mit dem Bus?",code:"263",rw:"N",
+    h:["Das Auto zählt nicht dazu.","96 + 58 + 109 = ?"]},
+   {ty:"a1z26",t:"Der Zahlen-Code",intro:"Auf einem Zettel am Computer stehen nur Zahlen. Jede Zahl steht für einen Buchstaben im Alphabet.",nums:[23,9,14,4],code:"WIND",rw:"E",
+    h:["A ist 1, B ist 2, C ist 3 …","23 ist W. Das Wort bewegt die Rotorblätter eines Windrads."]},
+   {ty:"wf",t:"Das Klima-Quiz",intro:"Sechs Aussagen – nur die richtigen zählen. Ihre Buchstaben ergeben von oben nach unten das Codewort.",st:[["Klima ist das Wetter im Durchschnitt über viele Jahre.",1,"E"],["Kohle und Erdöl wachsen schnell wieder nach.",0,"T"],["Sonne und Wind sind erneuerbare Energiequellen.",1,"I"],["Geräte im Stand-by verbrauchen keinen Strom.",0,"O"],["Bäume nehmen CO₂ aus der Luft auf.",1,"S"],["Wetter und Klima sind dasselbe.",0,"U"]],code:"EIS",rw:"S",
+    h:["Drei Aussagen sind richtig.","Das Codewort schmilzt, wenn es warm wird."]},
+   {ty:"rechnen",t:"Die Stromfresser",intro:"Am Wochenende sind in der Schule Geräte eingeschaltet geblieben. Der Computer will wissen, wie viele Energiepunkte verschwendet wurden.",cols:["Gerät","Stunden","Punkte pro Stunde"],rows:[["Beamer",3,20],["Lampen",4,15],["Computer",5,8],["Ladegerät",10,1]],q:"Rechnet für jedes Gerät Stunden × Punkte pro Stunde und zählt alles zusammen.",code:"170",rw:"N",
+    h:["Beamer: 3 × 20 = 60.","60 + 60 + 40 + 10 = ?"]},
+   {ty:"luecken",t:"Der Klima-Brief",intro:"Im Brief an die Gemeinde fehlen Wörter. Die Anfangsbuchstaben ergeben von oben nach unten das Codewort.",s:[["Mit dem","fahren viele Kinder gemeinsam zur Schule.","BUS"],["Aus dem Auspuff eines Autos kommen","","ABGASE"],["Wer die","schützt, schützt Tiere, Pflanzen und Menschen.","UMWELT"],["Eine","flasche kann man viele Male verwenden.","MEHRWEG"]],code:"BAUM",rw:"O",
+    h:["Das Codewort hat 4 Buchstaben und nimmt CO₂ auf.","B – A – U – M"]}
+  ]},
+ {id:"garten",t:"Das Rätsel im Schulgarten",goals:[15,2,3],c:"#52ab3d",min:40,final:"BIENE",fh:"Sie summt und macht Honig.",
+  story:"Gärtner Gustl hat im Winter alle Blumensamen in seinem Samen-Tresor eingeschlossen. Jetzt ist Frühling, und die Bienen warten auf Blüten – aber Gustl hat den Code vergessen! Zum Glück hat er fünf Rätsel im Schulgarten versteckt. Jedes gelöste Rätsel verrät einen Buchstaben für das Passwort des Tresors.",
+  win:"Der Tresor geht auf! Gemeinsam sät ihr eine bunte Blumenwiese, und schon bald summen die ersten Bienen. Gärtner Gustl sagt: „Ohne euch wäre der Garten leer geblieben!“",
+  p:[
+   {ty:"rechnen",t:"Das Hochbeet",intro:"Im Hochbeet wachsen 6 Reihen mit je 12 Radieschen. Leider haben die Schnecken 9 Radieschen angeknabbert.",q:"Wie viele Radieschen könnt ihr ernten?",code:"63",rw:"E",
+    h:["Rechnet zuerst, wie viele Radieschen es insgesamt sind: 6 × 12.","72 − 9 = ?"]},
+   {ty:"wf",t:"Das Tier-Quiz",intro:"Sieben Aussagen über Tiere im Garten – nur die richtigen zählen. Ihre Buchstaben ergeben von oben nach unten das Codewort.",st:[["Insekten haben sechs Beine.",1,"I"],["Spinnen sind Insekten.",0,"A"],["Bienen bestäuben Blüten.",1,"G"],["Ein kurz gemähter Rasen bietet Insekten viel Futter.",0,"R"],["Bäume nehmen CO₂ aus der Luft auf.",1,"E"],["Igel halten im Winter Winterschlaf.",1,"L"],["Vögel haben Schuppen statt Federn.",0,"T"]],code:"IGEL",rw:"N",
+    h:["Vier Aussagen sind richtig.","Spinnen haben acht Beine. Das Codewort ist ein Tier mit Stacheln."]},
+   {ty:"rueck",t:"Das verdrehte Schild",intro:"Neben der Regentonne hängt ein Schild mit einem seltsamen Wort. Gustl hat es verdreht aufgeschrieben.",enc:"TSOPMOK",code:"KOMPOST",rw:"B",
+    h:["Lest das Wort einmal von hinten nach vorne.","Das Wort beginnt mit K. Dort werden Gartenabfälle zu Erde."]},
+   {ty:"reihe",t:"Vom Samen zur Frucht",intro:"Bringt die Schritte in die richtige Reihenfolge. Die Zahlen in dieser Reihenfolge sind der Code.",steps:[[1,"Aus dem Samen wächst ein kleiner Keimling."],[2,"Eine Biene bestäubt die Blüte, und eine Frucht mit neuen Samen wächst."],[3,"Wir legen einen Samen in die Erde und gießen ihn."],[4,"Die Pflanze wird groß und bekommt Blüten."]],code:"3142",rw:"I",
+    h:["Am Anfang kommt der Samen in die Erde.","Die erste Zahl ist 3."]},
+   {ty:"luecken",t:"Gustls Notizbuch",intro:"In Gustls Notizbuch fehlen Wörter. Die Anfangsbuchstaben ergeben von oben nach unten das Codewort.",s:[["Ein","ist ein erhöhtes Gartenbeet.","HOCHBEET"],["Äpfel, Birnen und Marillen sind","","OBST"],["Vögel bauen ein","für ihre Eier.","NEST"],["Ein","hat Stacheln und frisst gern Schnecken.","IGEL"],["Mit der","gießen wir die Pflanzen.","GIESSKANNE"]],code:"HONIG",rw:"E",
+    h:["Das Codewort machen die Bienen.","H – O – N – I – G"]}
+  ]},
+ {id:"agenda",t:"Die verschwundene Agenda 2030",goals:[17,16,4],c:"#1e406b",min:45,final:"ZIELE",fh:"Davon gibt es 17.",
+  story:"Im Jahr 2015 haben alle Länder der Vereinten Nationen 17 Ziele beschlossen. Eine Kopie der Urkunde soll heute in eurer Schule ausgestellt werden. Doch sie liegt in einem Tresor, und der Code ist in fünf Rätseln versteckt! Jedes gelöste Rätsel verrät einen Buchstaben für das Passwort.",
+  win:"Der Tresor öffnet sich, und die Urkunde der Agenda 2030 ist gerettet! Ab heute seid ihr offizielle Ziel-Botschafterinnen und Ziel-Botschafter eurer Schule.",
+  p:[
+   {ty:"nummern",t:"Die Ziel-Rechnung",intro:"Auf dem Tresor stehen vier Ziele.",names:[2,4,13,17],q:"Zählt die Nummern dieser vier Ziele zusammen.",code:"36",rw:"L",
+    h:["Ziel 1 heißt Keine Armut, Ziel 17 heißt Partnerschaften.","Kein Hunger = 2, Gute Bildung = 4, Klimaschutz = 13."]},
+   {ty:"projekte",t:"Die Projekt-Detektive",intro:"Drei Schulen haben Projekte gemacht. Zu welchem Ziel passt jedes Projekt? Schreibt die drei Zielnummern ohne Abstand hintereinander.",items:[["Ein Insektenhotel bauen",[15,7]],["Lernbuddys für jüngere Kinder",[11,4]],["Einen Wasserfilter bauen",[6,16]]],code:"1546",rw:"E",
+    h:["Der Code hat vier Ziffern, weil eine Zielnummer zweistellig ist.","Das Insektenhotel gehört zu Ziel 15."]},
+   {ty:"a1z26",t:"Die Geheimbotschaft",intro:"In einem Kuvert steckt eine Botschaft aus Zahlen. Jede Zahl steht für einen Buchstaben im Alphabet.",nums:[6,18,9,5,4,5,14],code:"FRIEDEN",rw:"Z",
+    h:["A = 1, B = 2, C = 3 …","Das Wort steckt im Namen von Ziel 16: … und Gerechtigkeit."]},
+   {ty:"wf",t:"Das große Ziele-Quiz",intro:"Fünf Aussagen – nur die richtigen zählen. Ihre Buchstaben ergeben von oben nach unten das Codewort.",st:[["Die 17 Ziele sollen bis 2030 erreicht werden.",1,"U"],["Die Ziele gelten nur für arme Länder.",0,"A"],["Kinder haben eigene Rechte.",1,"N"],["Ein Land kann alle Ziele allein schaffen.",0,"X"],["Mädchen und Buben sollen die gleichen Chancen haben.",1,"O"]],code:"UNO",rw:"E",
+    h:["Drei Aussagen sind richtig.","Die Ziele gelten für alle Länder. Das Codewort ist eine Abkürzung für die Vereinten Nationen."]},
+   {ty:"luecken",t:"Der Brief der Botschafterin",intro:"Im Brief fehlen Wörter. Die Anfangsbuchstaben ergeben von oben nach unten das Codewort.",s:[["Statt Spielsachen wegzuwerfen, kann man sie","","TAUSCHEN"],["Sonne und Wind liefern saubere","","ENERGIE"],["Ziel 1 heißt: Keine","","ARMUT"],["Wale und Korallen leben im","","MEER"]],code:"TEAM",rw:"I",
+    h:["Das Codewort hat 4 Buchstaben. Zusammen seid ihr eines!","T – E – A – M"]}
+  ]}
+];
+
+/* ================= Escape-Rooms: Spiel ================= */
+const AZ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const ezNorm=s=>String(s).toUpperCase().replace(/ß/g,"SS").replace(/Ä/g,"AE").replace(/Ö/g,"OE").replace(/Ü/g,"UE").replace(/[^A-Z0-9]/g,"");
+const isNum=c=>/^\d+$/.test(c);
+/* Rätselinhalt – gleiches HTML für Bildschirm und Papier */
+function ezBody(p,paper){
+  let h=`<p class="ez-txt">${esc(p.intro)}</p>`;
+  switch(p.ty){
+  case "caesar":
+    h+=`<div class="ez-big">${p.enc}</div><div class="ez-key">Schlüssel: Jeder Buchstabe wurde um ${p.shift} Stellen im Alphabet nach hinten verschoben (aus A wurde ${AZ[p.shift]}).</div>
+      <div class="ez-alw"><table class="ez-alpha"><tr>${[...AZ].map(c=>`<td>${c}</td>`).join("")}</tr></table></div>`;break;
+  case "a1z26":
+    h+=`<div class="ez-big" style="letter-spacing:.06em">${p.nums.join(" – ")}</div>
+      <div class="ez-alw"><table class="ez-alpha"><tr>${[...AZ].slice(0,13).map(c=>`<td>${c}</td>`).join("")}</tr><tr>${[...AZ].slice(0,13).map((c,i)=>`<td>${i+1}</td>`).join("")}</tr></table></div>
+      <div class="ez-alw"><table class="ez-alpha"><tr>${[...AZ].slice(13).map(c=>`<td>${c}</td>`).join("")}</tr><tr>${[...AZ].slice(13).map((c,i)=>`<td>${i+14}</td>`).join("")}</tr></table></div>`;break;
+  case "rueck":
+    h+=`<div class="ez-big">${p.enc.split("").join(" ")}</div>`;break;
+  case "wf":
+    h+=`<ol class="ez-list">${p.st.map(x=>`<li><span class="lt">${x[2]}</span><span>${esc(x[0])}</span>${paper?`<span class="rf">☐ richtig&nbsp;&nbsp;☐ falsch</span>`:""}</li>`).join("")}</ol>`;break;
+  case "reihe":
+    h+=`<ol class="ez-list">${p.steps.map(x=>`<li><span class="nm">${x[0]}</span><span>${esc(x[1])}</span></li>`).join("")}</ol>`;break;
+  case "luecken":
+    h+=`<div class="ez-bank">${[...p.s.map(x=>x[2])].sort().map(w=>`<span>${w}</span>`).join("")}</div>
+      <ol class="ez-list">${p.s.map((x,i)=>`<li><span class="nm">${i+1}</span><span>${esc(x[0])} <span class="ez-gap"></span> ${x[1]?esc(x[1]):"."}</span></li>`).join("")}</ol>
+      <div class="ez-key">Das Kästchen am Anfang jeder Lücke ist der Buchstabe für den Code.</div>`;break;
+  case "rechnen":
+    if(p.rows) h+=`<div class="ez-alw"><table class="ez-tbl"><tr>${p.cols.map(c=>`<th>${esc(c)}</th>`).join("")}</tr>${p.rows.map(r=>`<tr>${r.map((v,i)=>`<td class="${i?"n":""}">${typeof v==="number"?v.toLocaleString("de-AT"):esc(v)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+    h+=`<p class="ez-q">${esc(p.q)}</p>`;break;
+  case "nummern":
+    h+=`<ol class="ez-list">${p.names.map(n=>`<li><span class="nm">?</span><span>${esc(goal(n).name)}</span></li>`).join("")}</ol><p class="ez-q">${esc(p.q)}</p>`;break;
+  case "projekte":
+    h+=`<ol class="ez-list">${p.items.map((x,i)=>`<li style="flex-wrap:wrap"><span class="nm">${i+1}</span><span style="flex:1 1 180px">${esc(x[0])}</span><span class="ez-opts">${x[1].map(n=>`<span style="${paper?"":`background:${goal(n).c}`}">Ziel ${n} · ${esc(goal(n).name)}</span>`).join("")}</span></li>`).join("")}</ol>`;break;
+  }
+  return h;
+}
+
+/* Spielstand */
+const EZ={room:"meer",st:null,view:"map",timer:null,hintOpen:{}};
+const ezRoom=()=>ESC.find(r=>r.id===EZ.room);
+const ezKey=id=>"fd-esc-"+id;
+function ezLoad(id){try{return JSON.parse(localStorage.getItem(ezKey(id))||"null");}catch(e){return null;}}
+function ezStore(){try{localStorage.setItem(ezKey(EZ.room),JSON.stringify(EZ.st));}catch(e){}}
+function ezClear(id){try{localStorage.removeItem(ezKey(id));}catch(e){}}
+const mmss=ms=>{const t=Math.max(0,Math.round(ms/1000));return `${Math.floor(t/60)}:${String(t%60).padStart(2,"0")}`;};
+function ezElapsed(){return (EZ.st.end||Date.now())-EZ.st.start;}
+
+/* Auswahl + Detail */
+function renderEscape(){
+  $("#escRooms").innerHTML=ESC.map(r=>`<button class="esc-room" type="button" data-r="${r.id}" aria-pressed="${r.id===EZ.room}">
+    <div class="band" style="background:${r.c}">Escape-Room</div>
+    <div class="bd"><b>${esc(r.t)}</b><span>5 Schlösser · ca. ${r.min} Minuten</span><div class="gl">${r.goals.map(n=>`<i style="background:${goal(n).c}">${n}</i>`).join("")}</div></div></button>`).join("");
+  const r=ezRoom(), saved=ezLoad(r.id), link=PAGES_URL+"#schueler-escape-"+r.id;
+  const prog=saved&&!saved.end?saved.solved.filter(Boolean).length:null;
+  $("#escDetail").innerHTML=`<div class="esc-card"><span class="lbl">Die Geschichte</span><h3>${esc(r.t)}</h3><p class="story">${esc(r.story)}</p>
+      <div class="bar"><button class="btn" type="button" id="ezReadStory">🔊 Vorlesen</button></div></div>
+    <div class="esc-card"><span class="lbl">Am iPad spielen</span>
+      <div class="field"><label class="lbl" for="ezTeam">Teamname</label><input id="ezTeam" type="text" value="${esc(saved?.team||"")}" placeholder="z. B. Die Meeresretter"></div>
+      <div class="field"><label class="lbl" for="ezMin">Zeit</label><select id="ezMin"><option value="0">ohne Zeitlimit</option>${[30,40,45,50,60].map(m=>`<option value="${m}"${m===r.min?" selected":""}>${m} Minuten</option>`).join("")}</select></div>
+      ${prog!==null?`<div class="bar"><button class="btn primary" type="button" id="ezGo" style="font-size:17px;padding:10px 22px">Weiterspielen (${prog} von 5 gelöst)</button><button class="btn" type="button" id="ezNewAsk">Neu starten</button></div><div id="ezNewConfirm"></div>`
+        :`<div class="bar"><button class="btn primary" type="button" id="ezStart" style="font-size:17px;padding:10px 22px">Escape-Room starten</button></div>`}
+      <div class="teacher-only" style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px">
+        <div class="qr-code" id="ezQr" style="width:150px;height:150px"></div>
+        <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:8px"><b>QR-Code für die Teams</b><span class="note">Jedes Team spielt auf einem iPad. Der Fortschritt bleibt gespeichert, auch wenn die Seite geschlossen wird.</span>
+          <div class="qr-url"><code>${esc(link)}</code></div><div class="bar"><button class="btn" type="button" id="ezQrBig">Groß zeigen</button></div></div>
+      </div></div>`;
+  drawQR($("#ezQr"),300,link);
+  $("#ezReadStory").onclick=()=>speakToggle(r.story,$("#ezReadStory"));
+  if(!("speechSynthesis" in window)) $("#ezReadStory").hidden=true;
+  $("#ezQrBig").onclick=()=>{$("#qrOverlay").hidden=false;drawQR($("#qrBigCode"),640,link);$("#qrBigLabel").textContent="Escape-Room: "+r.t;$("#qrClose").focus();};
+  const st=$("#ezStart"); if(st) st.onclick=ezNew;
+  const go=$("#ezGo"); if(go) go.onclick=()=>{EZ.st=saved;EZ.view="map";ezOpen();};
+  const na=$("#ezNewAsk"); if(na) na.onclick=()=>{$("#ezNewConfirm").innerHTML=`<div class="dg-confirm"><span>Den bisherigen Fortschritt löschen?</span><button class="btn" type="button" id="ezNewYes" style="border-color:var(--bad)">Ja, neu starten</button><button class="btn" type="button" id="ezNewNo">Nein</button></div>`;
+    $("#ezNewYes").onclick=ezNew;$("#ezNewNo").onclick=()=>$("#ezNewConfirm").innerHTML="";};
+  ezPreview();
+}
+function speakToggle(text,btn){
+  if(!window.speechSynthesis) return;
+  if(speechSynthesis.speaking){speechSynthesis.cancel();btn.textContent="🔊 Vorlesen";return;}
+  const u=new SpeechSynthesisUtterance(text);u.lang="de-AT";u.rate=.9;const v=speechSynthesis.getVoices().find(x=>/^de/i.test(x.lang));if(v)u.voice=v;
+  u.onend=u.onerror=()=>{btn.textContent="🔊 Vorlesen";};speechSynthesis.speak(u);btn.textContent="⏹ Stopp";
+}
+$("#escRooms").addEventListener("click",e=>{const b=e.target.closest(".esc-room");if(!b)return;EZ.room=b.dataset.r;renderEscape();});
+function ezNew(){
+  const r=ezRoom();
+  EZ.st={team:($("#ezTeam").value||"").trim()||"Unser Team",min:+$("#ezMin").value,start:Date.now(),solved:[0,0,0,0,0],hints:[0,0,0,0,0],fhint:0,end:0};
+  ezStore(); EZ.view="map"; EZ.hintOpen={}; ezOpen();
+}
+function ezOpen(){
+  const el=$("#esc"); el.style.setProperty("--rc",ezRoom().c); el.hidden=false; document.body.style.overflow="hidden";
+  clearInterval(EZ.timer); EZ.timer=setInterval(ezTick,1000); ezRender();
+}
+function ezClose(){clearInterval(EZ.timer);$("#esc").hidden=true;document.body.style.overflow="";if(window.speechSynthesis?.speaking)speechSynthesis.cancel();renderEscape();}
+function ezTick(){
+  const t=$("#ezTime"); if(!t||!EZ.st) return;
+  if(EZ.st.min){const left=EZ.st.min*60000-ezElapsed();t.textContent=left>=0?mmss(left):"+"+mmss(-left);t.classList.toggle("over",left<0);t.title=left<0?"Die Zeit ist abgelaufen – ihr dürft weiterspielen.":"";}
+  else t.textContent=mmss(ezElapsed());
+}
+function ezRender(){
+  const r=ezRoom(), st=EZ.st, el=$("#esc");
+  const slots=r.p.map((p,i)=>`<span class="${st.solved[i]?"on":""}" title="Schloss ${i+1}">${st.solved[i]?p.rw:""}</span>`).join("");
+  const top=`<div class="ez-top"><div class="ez-ttl">${esc(r.t)}<small>${esc(st.team)}</small></div>
+    <div class="ez-slots" aria-label="Gesammelte Buchstaben">${slots}</div>
+    <div class="bar"><span class="ez-time" id="ezTime"></span>${EZ.view!=="map"&&EZ.view!=="win"?`<button class="ez-btn" type="button" data-ez="map">Zur Übersicht</button>`:""}<button class="ez-btn" type="button" data-ez="close">${EZ.view==="win"?"Schließen":"Pause"}</button></div></div>`;
+  let main="";
+  if(EZ.view==="map"){
+    const all=st.solved.every(Boolean);
+    main=`<div class="ez-story">${esc(r.story)}</div>
+      <div class="ez-map">${r.p.map((p,i)=>`<button class="ez-tile ${st.solved[i]?"ok":""}" type="button" data-ez="open" data-i="${i}"><span class="no">Schloss ${i+1}</span><b>${esc(p.t)}</b><span class="st">${st.solved[i]?"Geöffnet · Buchstabe "+p.rw:"Verschlossen"}</span></button>`).join("")}
+      <button class="ez-tile chest" type="button" data-ez="final" ${all?"":"disabled"}><span class="no">Endschloss</span><b>Das Passwort</b><span class="st">${all?"Bereit zum Öffnen!":"Erst alle 5 Schlösser öffnen"}</span></button></div>`;
+  }else if(EZ.view==="final"){
+    const letters=r.p.map(p=>p.rw);
+    main=`<div class="ez-puz"><span class="no" style="opacity:.7;font-weight:700">ENDSCHLOSS</span><h2>Das Passwort</h2>
+      <p class="ez-txt">Ihr habt alle fünf Buchstaben gesammelt: <b style="color:#ffd166;letter-spacing:.2em">${letters.join(" ")}</b>. Bringt sie in die richtige Reihenfolge – dann habt ihr das Passwort.</p>
+      ${ezLockHTML(r.final)}
+      <div class="ez-hints"><button class="ez-btn" type="button" data-ez="fhint" ${st.fhint?"disabled":""}>Tipp anzeigen</button></div>
+      ${st.fhint?`<div class="ez-hint"><b>Tipp:</b> ${esc(r.fh)}</div>`:""}</div>`;
+  }else if(EZ.view==="win"){
+    const used=st.hints.reduce((a,b)=>a+b,0)+st.fhint;
+    main=`<div class="ez-win"><h2>Geschafft!</h2><div class="word">${r.final}</div><p class="ez-txt" style="max-width:60ch">${esc(r.win)}</p>
+      <p class="ez-txt"><b>${esc(st.team)}</b> · Zeit: <b>${mmss(st.end-st.start)}</b> · Tipps: <b>${used}</b></p>
+      <div class="bar" style="justify-content:center"><button class="ez-btn gold" type="button" data-ez="cert">Urkunde ${STANDALONE?"drucken":"speichern"}</button>${STANDALONE?`<button class="ez-btn" type="button" data-ez="certsave">Urkunde speichern</button>`:""}<button class="ez-btn" type="button" data-ez="close">Schließen</button></div><p class="ez-fb" id="ezCertMsg"></p></div>`;
+  }else{
+    const i=EZ.view, p=r.p[i], solved=st.solved[i], hn=st.hints[i];
+    main=`<div class="ez-puz"><span class="no" style="opacity:.7;font-weight:700">SCHLOSS ${i+1}</span><h2>${esc(p.t)}</h2>${ezBody(p,false)}
+      ${solved?`<div class="ez-lock"><span class="ez-fb ok">Geöffnet! Code: ${p.code} · Euer Buchstabe: <b style="font-size:1.4em">${p.rw}</b></span><button class="ez-btn gold" type="button" data-ez="map">Zur Übersicht</button></div>`:ezLockHTML(p.code)}
+      ${solved?"":`<div class="ez-hints"><button class="ez-btn" type="button" data-ez="hint" ${hn>=2?"disabled":""}>${hn===0?"Tipp 1 anzeigen":hn===1?"Tipp 2 anzeigen":"Keine Tipps mehr"}</button></div>`}
+      ${p.h.slice(0,solved?0:hn).map((t,k)=>`<div class="ez-hint"><b>Tipp ${k+1}:</b> ${esc(t)}</div>`).join("")}</div>`;
+  }
+  el.innerHTML=top+`<div class="ez-wrap">${main}</div>`;
+  ezTick();
+  const inp=$("#ezIn"); if(inp) setTimeout(()=>inp.focus({preventScroll:true}),50);
+}
+function ezLockHTML(code){
+  const num=isNum(code);
+  return `<form class="ez-lock" id="ezForm" novalidate><label for="ezIn">Code (${code.length} ${num?"Ziffern":"Buchstaben"})</label>
+    <input id="ezIn" type="text" ${num?'inputmode="numeric"':'autocapitalize="characters"'} autocomplete="off" spellcheck="false" maxlength="${code.length+4}" style="--len:${code.length}">
+    <button class="ez-btn gold" type="submit">Öffnen</button><span class="ez-fb" id="ezFb" aria-live="polite"></span></form>`;
+}
+$("#esc").addEventListener("submit",e=>{
+  e.preventDefault(); const r=ezRoom(), st=EZ.st, v=ezNorm($("#ezIn").value); if(!v) return;
+  const target=EZ.view==="final"?r.final:r.p[EZ.view].code;
+  if(v===target){
+    SND.right();
+    if(EZ.view==="final"){st.end=Date.now();ezStore();EZ.view="win";setTimeout(()=>SND.win(),400);}
+    else{st.solved[EZ.view]=1;ezStore();}
+    ezRender();
+  }else{
+    SND.wrong(); const f=$("#ezForm"); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
+    $("#ezFb").className="ez-fb no"; $("#ezFb").textContent="Das Schloss bleibt zu. Versucht es noch einmal!"; $("#ezIn").select();
+  }
+});
+$("#esc").addEventListener("click",e=>{
+  const b=e.target.closest("[data-ez]"); if(!b) return; const a=b.dataset.ez, st=EZ.st;
+  if(a==="close"){ezClose();return;}
+  if(a==="map"){EZ.view="map";ezRender();return;}
+  if(a==="open"){EZ.view=+b.dataset.i;ezRender();return;}
+  if(a==="final"){EZ.view="final";ezRender();return;}
+  if(a==="hint"){if(st.hints[EZ.view]<2){st.hints[EZ.view]++;ezStore();}ezRender();return;}
+  if(a==="fhint"){st.fhint=1;ezStore();ezRender();return;}
+  if(a==="cert"||a==="certsave"){const r=ezRoom();const doc=makeDoc(ezCert(r,st),"Urkunde "+r.t);const fn=fileName("Urkunde_"+r.t+"_"+st.team);
+    if(a==="cert"&&STANDALONE) printDoc(doc,$("#ezCertMsg")); else saveDoc(doc,fn,$("#ezCertMsg"));return;}
+});
+
+/* ================= Escape-Rooms: Druckpaket ================= */
+function ezBadges(r){return `<div class="esc-badge">${r.goals.map(n=>`<span style="background:${goal(n).c}">${n} ${esc(goal(n).name)}</span>`).join("")}</div>`;}
+function ezHead(title,sub,r){return `<div class="ws-head"><div><div class="ws-title">${title}</div><div class="ws-sub">${sub}</div></div>${ezBadges(r)}</div>`;}
+const codeBoxes=(n,fill)=>`<div class="codebox">${Array.from({length:n},(_,i)=>`<span>${fill?fill[i]:""}</span>`).join("")}</div>`;
+const lockType=c=>isNum(c)?`Zahlenschloss, ${c.length} Stellen`:`Buchstabenschloss, ${c.length} Buchstaben`;
+function ezTeacherSheet(r){
+  return `<div class="ws">${ezHead("Lehrerblatt: "+esc(r.t),`Escape-Room · 5 Schlösser + Endschloss · ca. ${r.min} Minuten · 3–5 Kinder pro Team`,r)}
+    ${BOX("Geschichte zum Vorlesen","",`<div class="text-box" style="font-size:10.5pt">${esc(r.story)}</div>`)}
+    ${BOX("Lösungen","",`<table class="t plan"><tr><th style="width:8%">Nr.</th><th>Rätsel</th><th style="width:20%">Code</th><th style="width:30%">für ein echtes Schloss</th><th style="width:12%">Buchstabe</th></tr>
+      ${r.p.map((p,i)=>`<tr><td><b>${i+1}</b></td><td>${esc(p.t)}</td><td><b style="font-size:12pt;letter-spacing:.5mm">${p.code}</b></td><td style="font-size:9pt">${lockType(p.code)}</td><td style="text-align:center;font-size:13pt"><b>${p.rw}</b></td></tr>`).join("")}
+      <tr><td><b>★</b></td><td>Endschloss: Buchstaben ordnen</td><td><b style="font-size:12pt;letter-spacing:.5mm">${r.final}</b></td><td style="font-size:9pt">${lockType(r.final)}</td><td></td></tr></table>`)}
+    ${BOX("Vorbereitung","",`<ul style="margin:0;padding-left:5mm;font-size:10pt;line-height:1.5">
+      <li>Pro Team drucken: Geschichte &amp; Lösungsbogen, die 5 Rätselblätter und eine Kartenseite.</li>
+      <li>Rätselblätter einzeln in Kuverts stecken (1 bis 5) und im Raum verstecken oder offen hinlegen.</li>
+      <li>Buchstaben- und Tippkarten ausschneiden. Die Buchstabenkarten gibst du nur gegen den richtigen Code aus.</li>
+      <li>Mit echten Schlössern: Box oder Kuvert mit dem Schloss sichern und die Buchstabenkarte hineinlegen.</li>
+      <li>Digital geht es ohne Vorbereitung: QR-Code zeigen, jedes Team spielt auf einem iPad.</li></ul>`)}
+    ${BOX("Ablauf","",`<table class="t plan"><tr><td style="width:18%"><b>5 min</b></td><td>Geschichte vorlesen, Teams bilden, Regeln: leise arbeiten, höchstens 3 Tippkarten pro Team.</td></tr>
+      <tr><td><b>${r.min-15} min</b></td><td>Die Teams lösen die Rätsel in beliebiger Reihenfolge und sammeln die Buchstaben.</td></tr>
+      <tr><td><b>10 min</b></td><td>Auflösung: Welches Team war am schnellsten? Was haben wir über die Ziele ${r.goals.join(", ")} gelernt? Urkunden verteilen.</td></tr></table>`)}
+    ${BOX("Notizen","",`<div class="lines grow"></div>`,"flex:1")}
+    <div class="foot"><span>Freiday-Werkstatt · Escape-Room</span><span>Lehrerblatt – nicht an die Kinder geben</span></div></div>`;
+}
+function ezStorySheet(r){
+  return `<div class="ws">${ezHead(esc(r.t),"Escape-Room · Geschichte &amp; Lösungsbogen",r)}
+    ${BOX("Eure Mission","",`<div class="text-box" style="font-size:11.5pt">${esc(r.story)}</div>`)}
+    <div class="row" style="flex:none;font-size:11pt;gap:4mm;align-items:flex-end"><span style="flex:1">Unser Team: <span style="display:inline-block;border-bottom:1px solid #555;width:75%"></span></span></div>
+    ${BOX("Unsere Codes","Habt ihr einen Code? Zeigt ihn eurer Lehrkraft – dann bekommt ihr einen Buchstaben.",`<table class="t"><tr><th style="width:9%">Nr.</th><th>Rätsel</th><th style="width:38%">Code</th><th style="width:15%">Buchstabe</th></tr>
+      ${r.p.map((p,i)=>`<tr style="height:14mm"><td><b>${i+1}</b></td><td>${esc(p.t)}</td><td>${codeBoxes(p.code.length)}</td><td><div class="codebox"><span></span></div></td></tr>`).join("")}</table>`)}
+    ${BOX("Endschloss: das Passwort","Bringt eure fünf Buchstaben in die richtige Reihenfolge.",`<div style="display:flex;justify-content:center;padding:2mm 0">${codeBoxes(r.final.length)}</div>`)}
+    ${BOX("Wie viele Tippkarten habt ihr gebraucht?","",`<div class="cbs"><span>0</span><span>1</span><span>2</span><span>3</span></div>`)}
+    ${BOX("Das haben wir gelernt","",`<div class="lines grow"></div>`,"flex:1")}
+    <div class="foot"><span>Freiday-Werkstatt · Escape-Room</span><span>${esc(r.t)}</span></div></div>`;
+}
+function ezPuzSheet(r,i){
+  const p=r.p[i];
+  return `<div class="ws" style="gap:4mm">${ezHead(`Schloss ${i+1}: ${esc(p.t)}`,"Escape-Room · "+esc(r.t),r)}
+    <div style="display:flex;flex-direction:column;gap:4mm;flex:none">${ezBody(p,true)}</div>
+    ${p.ty==="reihe"?BOX("Richtige Reihenfolge der Zahlen","",codeBoxes(p.code.length)):""}
+    ${p.ty==="a1z26"?BOX("Die Buchstaben","",codeBoxes(p.nums.length)):""}
+    ${BOX("Notizen","",`<div class="lines grow" style="min-height:16mm"></div>`,"flex:1")}
+    <div class="box" style="flex-direction:row;align-items:center;justify-content:space-between;border-width:2px"><h4 style="font-size:13pt">Unser Code für Schloss ${i+1}:</h4>${codeBoxes(p.code.length)}</div>
+    <div class="foot"><span>Freiday-Werkstatt · Escape-Room</span><span>${esc(r.t)} · Schloss ${i+1}</span></div></div>`;
+}
+function ezCardsSheet(r){
+  const cards=[];
+  r.p.forEach((p,i)=>cards.push(`<div class="cd" style="background:${r.c};color:#fff;border-color:${r.c}"><div class="lab">Schloss ${i+1} geöffnet!</div><div class="big" style="font-size:44pt">${p.rw}</div><div class="s" style="color:#fff">Euer Buchstabe</div></div>`));
+  r.p.forEach((p,i)=>p.h.forEach((t,k)=>cards.push(`<div class="cd" style="justify-content:flex-start;text-align:left;align-items:stretch"><div class="lab" style="color:${r.c}">Tipp ${k+1} · Schloss ${i+1}</div><div class="t">${esc(t)}</div></div>`)));
+  cards.push(`<div class="cd" style="justify-content:flex-start;text-align:left;align-items:stretch;border-style:dashed"><div class="lab" style="color:${r.c}">Tipp · Passwort</div><div class="t">${esc(r.fh)}</div></div>`);
+  return cardGrid(cards,4,4);
+}
+function ezCert(r,st){
+  const team=st?esc(st.team):"", time=st?mmss(st.end-st.start):"", date=st?new Date(st.end).toLocaleDateString("de-AT"):"";
+  const line=(l,v)=>`<div style="display:flex;gap:4mm;align-items:flex-end;font-size:14pt;width:140mm"><span style="flex:none">${l}</span><span style="flex:1;border-bottom:1.2px solid #444;text-align:center;font-weight:700;font-size:16pt;min-height:9mm">${v}</span></div>`;
+  return `<div style="flex:1;border:3mm solid ${r.c};outline:1px solid ${r.c};outline-offset:-6mm;border-radius:4mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8mm;text-align:center;padding:14mm">
+    <div class="ws-title" style="font-size:16pt;letter-spacing:2mm;text-transform:uppercase;color:${r.c}">Urkunde</div>
+    <div class="ws-title" style="font-size:40pt;line-height:1.05">Ausbruch<br>geschafft!</div>
+    <div style="font-size:14pt;max-width:150mm">hat den Escape-Room <b>„${esc(r.t)}“</b> gelöst und das Passwort <b style="letter-spacing:1mm">${r.final}</b> geknackt.</div>
+    ${line("Team:",team)}${line("Zeit:",time)}${line("Datum:",date)}
+    ${ezBadges(r)}
+    <div style="display:flex;gap:30mm;margin-top:10mm;font-size:10pt;color:#555"><div style="border-top:1px solid #555;width:55mm;padding-top:1mm">Spielleitung</div><div style="border-top:1px solid #555;width:55mm;padding-top:1mm">Freiday-Werkstatt</div></div></div>`;
+}
+function ezPagesFor(r){
+  const pages=[];
+  if($("#ezpTeacher").checked) pages.push({html:ezTeacherSheet(r)});
+  if($("#ezpStory").checked) pages.push({html:ezStorySheet(r)});
+  if($("#ezpPuz").checked) r.p.forEach((p,i)=>pages.push({html:ezPuzSheet(r,i)}));
+  if($("#ezpCards").checked) pages.push({html:ezCardsSheet(r),cls:"cardpage"});
+  if($("#ezpCert").checked) pages.push({html:ezCert(r,null)});
+  return pages;
+}
+function ezPreview(){
+  if(document.body.classList.contains("student")) return;
+  const pages=ezPagesFor(ezRoom());
+  if(!pages.length){$("#ezPages").innerHTML=`<p class="note">Wähle links aus, was gedruckt werden soll.</p>`;return;}
+  showPages($("#ezPages"),pages,`${pages.length} ${pages.length===1?"Blatt":"Blätter"} A4`);
+}
+["#ezpTeacher","#ezpStory","#ezpPuz","#ezpCards","#ezpCert"].forEach(id=>$(id).addEventListener("change",ezPreview));
+function ezDoc(){const r=ezRoom();const pages=ezPagesFor(r);
+  let doc=makeDoc(pages.map(p=>p.html),"Escape-Room "+r.t);
+  /* Kartenseite mit eigenem Rand */
+  if($("#ezpCards").checked){let n=0;const idx=pages.findIndex(p=>p.cls==="cardpage");doc=doc.replace(/<div class="paper">/g,m=>(n++===idx?'<div class="paper cardpage">':m));}
+  return {doc,fname:fileName("Escape-Room_"+r.t)};}
+$("#ezPrint").addEventListener("click",()=>{if(!ezPagesFor(ezRoom()).length)return;printDoc(ezDoc().doc,$("#ezMsg"));});
+$("#ezSave").addEventListener("click",()=>{if(!ezPagesFor(ezRoom()).length)return;const {doc,fname}=ezDoc();saveDoc(doc,fname,$("#ezMsg"));});
+
 /* ================= Ablauf ================= */
 $("#flow").innerHTML=PHASES.map((p,i)=>`<div class="ph"><span class="no">${i+1}</span><h3>${p[0]}</h3><p>${p[1]}</p><span class="tool">Werkzeug: ${p[2]}</span></div>`).join("");
 
@@ -2160,6 +2616,12 @@ function setMode(m){
 function applyView(){
   const h=location.hash.slice(1);
   const bl=h.match(/^schueler-blatt-([a-z]+)(?:-(\d{1,2}))?$/);
+  const ex=h.match(/^schueler-escape-([a-z]+)$/);
+  if(ex&&ESC.some(r=>r.id===ex[1])){
+    document.body.classList.add("student"); document.querySelector(".student-only").hidden=false;
+    $("#viewToggle").textContent="Zurück zur Lehrer-Ansicht"; DG.locked=false;
+    EZ.room=ex[1]; setTab("escape"); return;
+  }
   const m=bl?null:h.match(/^schueler(?:-(detektiv|nummer|wf|kreuz|wort|lesen)(?:-(\d{1,2}))?)?$/);
   const st=!!(m||bl);
   DG.locked=false;
