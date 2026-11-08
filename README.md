@@ -9,7 +9,7 @@ Direkt zu einer Übung: `#schueler-detektiv`, `#schueler-nummer`, `#schueler-wf-
 
 Digitale Arbeitsblätter: `#schueler-blatt-logbuch-13` – statt `logbuch` geht auch `steckbrief`, `ideen`, `recherche`, `reflexion`, `lesen`, `plakat`, `brief`, `comic`, `erfinder` oder `check` (bei `brief` und `check` ohne Zielnummer).
 
-Escape-Rooms: `#schueler-escape-meer`, `#schueler-escape-klima`, `#schueler-escape-garten`, `#schueler-escape-agenda`.
+Escape-Rooms: `#schueler-escape-meer`, `#schueler-escape-klima`, `#schueler-escape-garten`, `#schueler-escape-agenda`, `#schueler-escape-fair`, `#schueler-escape-gesund`, `#schueler-escape-erfinder`.
 
 ## Inhalt
 
@@ -23,7 +23,7 @@ Escape-Rooms: `#schueler-escape-meer`, `#schueler-escape-klima`, `#schueler-esca
 | Stillarbeit | 7 Stundenbilder à 50 Minuten mit Arbeitsblatt (Lesen & verstehen, Ziel-Plakat, Brief an mich 2030, Comic, Erfinder-Skizze, Nachhaltigkeits-Check, Rätselstunde); Lesetexte zu allen 17 Zielen, am iPad mit Vorlesefunktion |
 | Digital ausfüllen | 11 Arbeitsblätter als iPad-Formulare mit Zeichenflächen, automatischem Zwischenspeichern, Selbstkontrolle und Abgabe als A4-Datei; QR-Code je Blatt |
 | Klassenspiel | Zukunfts-Show (15 Stufen, 3 Joker, Sicherheitsstufen) und Team-Quiz (2–5 Teams, Timer, Siegerpodest) für den Beamer |
-| Escape-Rooms | 4 Räume (SOS im Ozean, Mission Klima-Code, Das Rätsel im Schulgarten, Die verschwundene Agenda 2030) mit je 5 Schlössern und Endschloss; am iPad spielbar (Timer, Tipps, Fortschritt bleibt gespeichert, Urkunde) oder als Druckpaket (Lehrerblatt, Lösungsbogen, Rätselblätter, Tipp- und Buchstabenkarten, Urkunde) |
+| Escape-Rooms | 7 Räume (SOS im Ozean, Mission Klima-Code, Das Rätsel im Schulgarten, Die verschwundene Agenda 2030, Die Fair-Detektive, Gesund durch den Tag, Die Erfinder-Werkstatt) mit je 5 Schlössern und Endschloss; am iPad spielbar (Timer, Tipps, Fortschritt bleibt gespeichert, Urkunde) oder als Druckpaket (Lehrerblatt, Lösungsbogen, Rätselblätter, Tipp- und Buchstabenkarten, Urkunde) |
 | Ablauf & Planung | fünf Projektphasen und ein Vorschlag für einen Freiday-Vormittag |
 
 ## Hinweise

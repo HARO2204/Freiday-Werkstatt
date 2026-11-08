@@ -2402,6 +2402,51 @@ const ESC=[
     h:["Drei Aussagen sind richtig.","Die Ziele gelten für alle Länder. Das Codewort ist eine Abkürzung für die Vereinten Nationen."]},
    {ty:"luecken",t:"Der Brief der Botschafterin",intro:"Im Brief fehlen Wörter. Die Anfangsbuchstaben ergeben von oben nach unten das Codewort.",s:[["Statt Spielsachen wegzuwerfen, kann man sie","","TAUSCHEN"],["Sonne und Wind liefern saubere","","ENERGIE"],["Ziel 1 heißt: Keine","","ARMUT"],["Wale und Korallen leben im","","MEER"]],code:"TEAM",rw:"I",
     h:["Das Codewort hat 4 Buchstaben. Zusammen seid ihr eines!","T – E – A – M"]}
+  ]},
+ {id:"fair",t:"Die Fair-Detektive",goals:[1,5,8,10],c:"#9b2242",min:45,final:"RECHT",fh:"Das haben alle Menschen: ein … auf Bildung, auf Schutz und auf faire Arbeit.",
+  story:"Detektivin Fairy Fuchs braucht eure Hilfe! Die Schulkantine möchte ab morgen nur noch faire Produkte kaufen. Die Liste mit den fairen Lieferanten liegt in Fairys Aktenkoffer – und der hat fünf Schlösser. Löst die Fälle rund um Armut, Gleichberechtigung und faire Arbeit. Jedes geöffnete Schloss verrät euch einen Buchstaben für das Passwort.",
+  win:"Der Aktenkoffer springt auf! Fairy Fuchs übergibt die Liste der Kantine. Ab morgen gibt es faire Schokolade und fairen Kakao. Ihr seid jetzt echte Fair-Detektivinnen und Fair-Detektive!",
+  p:[
+   {ty:"rechnen",t:"Der Schokoladen-Fall",intro:"In diesem Fall bekommt die Kakaobäuerin für jede faire Tafel Schokolade 30 Cent. Die Schulkantine verkauft in einer Woche 140 Tafeln.",q:"Wie viele Cent bekommt die Kakaobäuerin für alle Tafeln zusammen?",code:"4200",rw:"C",
+    h:["Rechnet 140 × 30.","14 × 3 = 42. Jetzt noch zwei Nullen dazu."]},
+   {ty:"caesar",t:"Die Geheimnachricht",intro:"Fairy hat eine verschlüsselte Notiz gefunden. Sie verrät, woran man faire Produkte im Geschäft erkennt.",enc:"UKGIGN",shift:2,code:"SIEGEL",rw:"T",
+    h:["Geht bei jedem Buchstaben 2 Stellen im Alphabet zurück. Aus C wird A.","U wird zu S, K wird zu I. Das Wort ist ein Zeichen auf der Verpackung."]},
+   {ty:"wf",t:"Das Verhör",intro:"Sieben Aussagen – nur die richtigen zählen. Ihre Buchstaben ergeben von oben nach unten das Codewort.",st:[["Mädchen und Buben dürfen jeden Beruf lernen.",1,"L"],["Kinderarbeit gibt es heute nirgends mehr auf der Welt.",0,"A"],["Alle Menschen haben die gleichen Rechte.",1,"O"],["Für die gleiche Arbeit sollen alle den gleichen Lohn bekommen.",1,"H"],["Armut gibt es nur in fernen Ländern.",0,"E"],["Eine Rampe hilft Menschen im Rollstuhl.",1,"N"],["Nur Frauen sollen kochen und putzen.",0,"T"]],code:"LOHN",rw:"R",
+    h:["Vier Aussagen sind richtig.","Das Codewort ist Geld, das man für seine Arbeit bekommt."]},
+   {ty:"projekte",t:"Die Akten-Sortierung",intro:"Drei Akten müssen zum richtigen Ziel. Schreibt die drei Zielnummern ohne Abstand hintereinander.",items:[["Ein Flohmarkt, dessen Geld an Familien in Not geht",[1,13]],["Ein Berufe-Check gegen Klischees",[7,5]],["Fairtrade-Produkte im Supermarkt suchen",[8,15]]],code:"158",rw:"H",
+    h:["Der Code hat drei Ziffern.","Der Flohmarkt gehört zu Ziel 1: Keine Armut."]},
+   {ty:"reihe",t:"Die Spur der Kakaobohne",intro:"Wie kommt der Kakao in die Schokolade? Bringt die Schritte in die richtige Reihenfolge. Die Zahlen in dieser Reihenfolge sind der Code.",steps:[[3,"In der Fabrik wird aus den Bohnen Schokolade gemacht."],[4,"Die Kakaobäuerin erntet die Kakaofrüchte."],[1,"Die Schokolade liegt im Geschäft im Regal."],[2,"Die Bohnen werden getrocknet und mit dem Schiff verschickt."]],code:"4231",rw:"E",
+    h:["Am Anfang steht die Ernte, am Ende das Geschäft.","Die erste Zahl ist 4."]}
+  ]},
+ {id:"gesund",t:"Gesund durch den Tag",goals:[3,2,6],c:"#4a9a43",min:40,final:"APFEL",fh:"Ein Obst, das auch in Österreich wächst – rot, gelb oder grün.",
+  story:"Heute ist Gesundheitstag an eurer Schule! Der Roboter „Fitti“ soll allen Kindern Tipps für einen gesunden Tag geben. Doch über Nacht hat sich sein Speicher gesperrt. Fünf Schlösser schützen ihn. Löst die Rätsel rund um Essen, Trinken und Bewegung. Jedes geöffnete Schloss verrät einen Buchstaben für das Passwort.",
+  win:"Fitti piepst fröhlich und startet neu! Der Gesundheitstag kann beginnen. Fitti sagt: „Danke! Und vergesst nicht: Wasser trinken, bewegen und gut schlafen!“",
+  p:[
+   {ty:"rechnen",t:"Mias Trink-Tagebuch",intro:"Mia hat einen Tag lang aufgeschrieben, wie viel Wasser sie trinkt.",cols:["Wann?","Milliliter"],rows:[["zum Frühstück",250],["in der Schule",500],["zu Mittag",300],["am Nachmittag",400],["am Abend",250]],q:"Wie viele Milliliter Wasser hat Mia an diesem Tag getrunken?",code:"1700",rw:"L",
+    h:["Zählt alle fünf Zahlen zusammen.","250 + 500 + 300 + 400 + 250 = ?"]},
+   {ty:"rueck",t:"Fittis verdrehter Bildschirm",intro:"Auf Fittis Bildschirm steht ein Wort, aber irgendetwas stimmt damit nicht. Es ist das Wichtigste für einen fitten Körper.",enc:"NEGEWEB",code:"BEWEGEN",rw:"E",
+    h:["Lest das Wort einmal von hinten nach vorne.","Das Wort beginnt mit B. Laufen, Springen und Tanzen gehören dazu."]},
+   {ty:"wf",t:"Das Gesundheits-Quiz",intro:"Sechs Aussagen – nur die richtigen zählen. Ihre Buchstaben ergeben von oben nach unten das Codewort.",st:[["Wasser ist der beste Durstlöscher.",1,"O"],["In Limonade ist kein Zucker.",0,"M"],["Wer gut schläft, kann sich besser konzentrieren.",1,"B"],["Händewaschen schützt vor Krankheiten.",1,"S"],["Pommes sind das gesündeste Gemüse.",0,"U"],["Bewegung tut dem Körper gut.",1,"T"]],code:"OBST",rw:"A",
+    h:["Vier Aussagen sind richtig.","Äpfel, Birnen und Marillen gehören dazu."]},
+   {ty:"luecken",t:"Fittis Merkzettel",intro:"Auf Fittis Merkzettel fehlen Wörter. Die Anfangsbuchstaben ergeben von oben nach unten das Codewort.",s:[["In Limonade steckt viel","","ZUCKER"],["Wenn wir krank sind, gehen wir zum","oder zur Ärztin.","ARZT"],["Vor dem Essen waschen wir die","","HÄNDE"],["Spaghetti und Penne sind","","NUDELN"]],code:"ZAHN",rw:"F",
+    h:["Das Codewort hat 4 Buchstaben. Damit beißt du in einen Apfel.","Z – A – H – N"]},
+   {ty:"rechnen",t:"Der Jausen-Einkauf",intro:"Lena kauft am Jausenstand 1 Vollkornweckerl, 2 Äpfel und 1 Joghurt.",cols:["Am Jausenstand","Preis in Cent"],rows:[["1 Vollkornweckerl",80],["1 Apfel",40],["1 Joghurt",70],["1 Limonade",120]],q:"Wie viele Cent bezahlt Lena für ihre Jause?",code:"230",rw:"P",
+    h:["Lena kauft keine Limonade. Die Äpfel zählen doppelt.","80 + 40 + 40 + 70 = ?"]}
+  ]},
+ {id:"erfinder",t:"Die Erfinder-Werkstatt",goals:[9,7,12],c:"#e66b2b",min:45,final:"IDEEN",fh:"Erfinderinnen und Erfinder haben ganz viele davon.",
+  story:"Professorin Tüftel hat eine Maschine erfunden, die aus altem Müll neue, nützliche Dinge baut. Morgen will sie sie auf der Erfinder-Messe zeigen. Doch die Tür zu ihrer Werkstatt hat sich verriegelt! Fünf Schlösser halten sie zu. Löst die Rätsel rund um Erfindungen, Energie und Müll. Jedes geöffnete Schloss verrät einen Buchstaben für das Passwort.",
+  win:"Die Werkstatt-Tür geht auf! Professorin Tüftel kann ihre Maschine rechtzeitig zur Messe bringen. Sie sagt: „Ihr habt das Zeug zu echten Erfinderinnen und Erfindern!“",
+  p:[
+   {ty:"caesar",t:"Der Code am Akku",intro:"Am Akku der Maschine klebt ein verschlüsseltes Wort. Es verrät, woher die Maschine ihre Energie bekommt.",enc:"TPMBS",shift:1,code:"SOLAR",rw:"E",
+    h:["Geht bei jedem Buchstaben 1 Stelle im Alphabet zurück. Aus B wird A.","T wird zu S, P wird zu O. Es geht um Energie aus der Sonne."]},
+   {ty:"rechnen",t:"Das Reparatur-Café",intro:"An einem Nachmittag hat das Reparatur-Café 18 Fahrräder, 27 Spielsachen und 15 Lampen repariert. In diesem Rätsel spart jedes reparierte Ding 2 Kilogramm Müll.",q:"Wie viele Kilogramm Müll wurden an diesem Nachmittag gespart?",code:"120",rw:"N",
+    h:["Zählt zuerst alle reparierten Dinge zusammen.","18 + 27 + 15 = 60. Und jetzt mal 2."]},
+   {ty:"wf",t:"Das Erfinder-Quiz",intro:"Fünf Aussagen – nur die richtigen zählen. Ihre Buchstaben ergeben von oben nach unten das Codewort.",st:[["Reparieren spart Rohstoffe.",1,"R"],["Geräte im Stand-by verbrauchen keinen Strom.",0,"M"],["Sonne und Wind sind erneuerbare Energiequellen.",1,"A"],["Nur Erwachsene können Dinge erfinden.",0,"U"],["Upcycling heißt: aus Altem etwas Neues machen.",1,"D"]],code:"RAD",rw:"I",
+    h:["Drei Aussagen sind richtig.","Das Codewort ist ein Teil vom Fahrrad – und es dreht sich."]},
+   {ty:"reihe",t:"Wie eine Erfindung entsteht",intro:"Bringt die Schritte in die richtige Reihenfolge. Die Zahlen in dieser Reihenfolge sind der Code.",steps:[[2,"Wir testen das Modell und verbessern es."],[3,"Wir bauen ein Modell aus Karton und Klebeband."],[1,"Wir sammeln viele Ideen für eine Lösung."],[4,"Wir entdecken ein Problem, das uns stört."]],code:"4132",rw:"E",
+    h:["Am Anfang steht ein Problem, am Ende wird getestet.","Die erste Zahl ist 4."]},
+   {ty:"luecken",t:"Tüftels Bauplan",intro:"Auf dem Bauplan fehlen Wörter. Die Anfangsbuchstaben ergeben von oben nach unten das Codewort.",s:[["Die","liefert Licht und Wärme.","SONNE"],["Eine","hilft uns im Dunkeln.","TASCHENLAMPE"],["Statt Dinge wegzuwerfen, kann man sie","","REPARIEREN"],["Aus einem alten Karton kann man einen","für Hefte basteln.","ORDNER"],["Was niemand mehr braucht, landet im","","MÜLL"]],code:"STROM",rw:"D",
+    h:["Das Codewort hat 5 Buchstaben. Er fließt durch das Kabel zum Gerät.","S – T – R – O – M"]}
   ]}
 ];
 
